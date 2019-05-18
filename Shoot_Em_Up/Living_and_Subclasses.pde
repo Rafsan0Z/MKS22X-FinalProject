@@ -7,12 +7,16 @@ class Player extends Living{
     x = X; y = Y; health = life;
   }
   void move(){
-    if(keyPressed){
+    /*if(keyPressed){
       if(keyCode == UP){y -= 1;}
-      else if(keyCode == DOWN){y += 1;}
-      else if(keyCode == RIGHT){x += 1;}
-      else if(keyCode == LEFT){x -= 1;}
-    }
+      if(keyCode == DOWN){y += 1;}
+      if(keyCode == RIGHT){x += 1;}
+      if(keyCode == LEFT){x -= 1;}
+    }*/
+    if(mu){y-=3;}
+    if(ml){x-=3;}
+    if(mr){x+=3;}
+    if(md){y+=3;}
   }
   void display(){
     fill(205);
@@ -26,6 +30,10 @@ class Player extends Living{
     if(mousePressed){
       Bombs fire = new Bombs(x+12.7,y,10);
       shoot.add(fire);
+    }
+    if(f){
+      Bombs fire = new Bombs(x+12.7,y,10);
+      shoot.add(fire); 
     }
   }
 }

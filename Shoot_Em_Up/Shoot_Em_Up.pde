@@ -25,12 +25,45 @@ void draw(){
 }
 
 public void keyPressed(){
-  
+  if(key==CODED){
+     if(keyCode==UP){
+       mu=true; 
+     }
+     if(keyCode==LEFT){
+       ml=true; 
+     }
+     if(keyCode==RIGHT){
+       mr=true; 
+     }
+     if(keyCode==DOWN){
+       md=true; 
+     }
+  }
+  if(key=='x'){
+   f=true; 
+  }
 }
 
 public void keyReleased(){
-  
+  if(key==CODED){
+     if(keyCode==UP){
+       mu=false; 
+     }
+     if(keyCode==LEFT){
+       ml=false; 
+     }
+     if(keyCode==RIGHT){
+       mr=false; 
+     }
+     if(keyCode==DOWN){
+       md=false; 
+     }
+  }
+  if(key=='x'){
+   f=false; 
+  }
 }
+
 
 void mouseClicked(){
   if(mousePressed && !clicked){clicked = true;}
