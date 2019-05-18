@@ -1,9 +1,11 @@
 boolean clicked = false;
 Player human;
 ArrayList<Projectile> shoot = new ArrayList<Projectile>();
+ArrayList<Powerups> extra = new ArrayList<Powerups>();
 void setup(){
   size(1000,1000);
   human = new Player(500,960,100);
+  extra.add(new Health(500,100,10));
 }
 
 void draw(){
@@ -12,6 +14,10 @@ void draw(){
   human.move();
   human.attack();
   for(Projectile p: shoot){
+    p.move();
+    p.display();
+  }
+  for(Powerups p: extra){
     p.move();
     p.display();
   }
@@ -96,12 +102,35 @@ class Bullets extends Projectile{
 class Bombs extends Projectile{
   Bombs(float X, float Y, float Dam){super(X,Y,Dam);}
   void display(){
-   fill((int)(Math.random()*256),0,0);
+   fill(0,(int)(Math.random()*256),0);
    rect(x,y,15,15);
   }
   void move(){y -= 1;}
 }
 
-//abstract class Powerups implements Moveable,Displayable{}
+abstract class Powerups implements Moveable,Displayable{
+  float x,y;
+  Powerups(Float X, Float Y){x = X; y = Y;}
+  void display(){
+    fill(0,105,0);
+    ellipse(x,y,40,40);
+  }
+  void move(){
+    y += 1;
+  }
+}
 
-//class Health extends Powerups{}
+class Health extends Powerups{
+  float health;
+  Health(float X, float Y, float life){
+    super(X,Y);
+    health = life;
+  }
+  void display(){
+    super.display();
+    fill(0,200,0);
+    rect(x-7.5,y-2.5,15,5);
+    fill(0,200,0);
+    rect(x-2.5,y-7.5,5,15);
+  }
+}
