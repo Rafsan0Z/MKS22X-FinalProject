@@ -2,10 +2,10 @@ boolean clicked = false;
 Player human;
 ArrayList<Projectile> shoot = new ArrayList<Projectile>();
 ArrayList<Powerups> extra = new ArrayList<Powerups>();
-boolean mu,md,ml,mr,f;
+boolean mu,md,ml,mr,f,s;
 void setup(){
   size(1000,1000);
-  human = new Player(500,960,100);
+  human = new Player(500,960,100,5,100,5);
   extra.add(new Health(500,100,10));
 }
 
@@ -38,6 +38,9 @@ public void keyPressed(){
      if(keyCode==DOWN){
        md=true; 
      }
+     if(keyCode==SHIFT){
+       s=true; 
+     }
   }
   if(key=='x'){
    f=true; 
@@ -57,6 +60,9 @@ public void keyReleased(){
      }
      if(keyCode==DOWN){
        md=false; 
+     }
+     if(keyCode==SHIFT){
+       s=false; 
      }
   }
   if(key=='x'){
