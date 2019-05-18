@@ -17,6 +17,8 @@ May 18th Saturday----------
 Kenson:
 encoded controls in booleans, allowing for diagonal movement while shooting
 
+added slow movement while holding down Shift, allowed variable speed/maxspeed in constructor 
+
 May 19th Sunday----------
 
 
