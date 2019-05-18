@@ -14,7 +14,8 @@ May 17th Friday-----------
 
 
 May 18th Saturday----------
-
+Kenson:
+encoded controls in booleans, allowing for diagonal movement while shooting
 
 May 19th Sunday----------
 
