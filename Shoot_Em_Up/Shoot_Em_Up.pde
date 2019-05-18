@@ -1,4 +1,6 @@
+boolean clicked = false;
 Player human;
+ArrayList<Projectile> shoot = new ArrayList<Projectile>();
 void setup(){
   size(1000,1000);
   human = new Player(500,960,100);
@@ -8,6 +10,16 @@ void draw(){
   background(255);
   human.display();
   human.move();
+  human.attack();
+  for(Projectile p: shoot){
+    p.move();
+    p.display();
+  }
+}
+
+void mouseClicked(){
+  if(mousePressed && !clicked){clicked = true;}
+  else{clicked = false;}
 }
 
 interface Displayable{
@@ -40,6 +52,12 @@ class Player extends Living{
     fill(205);
     rect(x,y,40,40);
   }
+  void attack(){
+    if(mousePressed){
+      Bullets fire = new Bullets(x,y,10);
+      shoot.add(fire);
+    }
+  }
 }
 
 //class Enemy extends Living{}
@@ -52,9 +70,23 @@ class Player extends Living{
 
 //class MovingObs extends Obstacle implements Moveable{}
 
-//abstract class Projectile implements Moveable,Displayable{}
+abstract class Projectile implements Moveable,Displayable{
+  float x,y,damage;
+}
 
-//class Bullets extends Projectile{}
+class Bullets extends Projectile{
+  Bullets(float X, float Y, float Dam){
+    x = X; y = Y; damage = Dam;
+  }
+  void display(){
+    fill(175);
+    rect(x,y,5,15);
+  }
+  void move(){
+    y -= 1;
+  }
+  
+}
 
 //class Bombs extends Projectile{}
 
