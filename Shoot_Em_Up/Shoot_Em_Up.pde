@@ -51,10 +51,14 @@ class Player extends Living{
   void display(){
     fill(205);
     rect(x,y,40,40);
+    fill(100,0,0);
+    rect(x,y-15,10,15);
+    fill(100,0,0);
+    rect(x+30,y-15,10,15);
   }
   void attack(){
     if(mousePressed){
-      Bullets fire = new Bullets(x,y,10);
+      Bombs fire = new Bombs(x+12.7,y,10);
       shoot.add(fire);
     }
   }
@@ -72,12 +76,13 @@ class Player extends Living{
 
 abstract class Projectile implements Moveable,Displayable{
   float x,y,damage;
+  Projectile(float X, float Y, float Dam){
+    x = X; y = Y; damage = Dam;
+  }
 }
 
 class Bullets extends Projectile{
-  Bullets(float X, float Y, float Dam){
-    x = X; y = Y; damage = Dam;
-  }
+  Bullets(float X, float Y, float Dam){super(X,Y,Dam);}
   void display(){
     fill(175);
     rect(x,y,5,15);
@@ -88,7 +93,14 @@ class Bullets extends Projectile{
   
 }
 
-//class Bombs extends Projectile{}
+class Bombs extends Projectile{
+  Bombs(float X, float Y, float Dam){super(X,Y,Dam);}
+  void display(){
+   fill((int)(Math.random()*256),0,0);
+   rect(x,y,15,15);
+  }
+  void move(){y -= 1;}
+}
 
 //abstract class Powerups implements Moveable,Displayable{}
 
