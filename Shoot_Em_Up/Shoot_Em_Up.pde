@@ -1,4 +1,5 @@
 boolean clicked = false;
+int mode;
 Player human;
 ArrayList<Projectile> shoot = new ArrayList<Projectile>();
 ArrayList<Powerups> extra = new ArrayList<Powerups>();
@@ -7,9 +8,11 @@ void setup(){
   size(1000,1000);
   human = new Player(500,960,100,5,100,5);
   extra.add(new Health(500,100,10));
+  mode = 0;
 }
 
 void draw(){
+  if(mode == 0){
   background(255);
   human.display();
   human.move();
@@ -22,6 +25,14 @@ void draw(){
     p.move();
     p.display();
   }
+  }
+  else if(mode == 1){
+    background(255);
+    text("GAME OVER!",500,200);
+    text("PRESS E TO EXIT", 500, 300);
+    if(keyPressed && key == 'E'){exit();}
+  }
+  if(human.x < 0 || human.x > width || human.y < 0 || human.y > height){mode = 1;}
 }
 
 public void keyPressed(){
