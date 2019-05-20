@@ -1,12 +1,14 @@
 boolean clicked = false;
 int mode;
 Player human;
+Enemy e;
 ArrayList<Projectile> shoot = new ArrayList<Projectile>();
 ArrayList<Powerups> extra = new ArrayList<Powerups>();
 boolean mu,md,ml,mr,f,s;
 void setup(){
   size(1000,1000);
   human = new Player(500,960,100,5,100,5);
+  e = new testCircle(500,500,100,5,100,5);
   extra.add(new Health(500,100,10));
   mode = -1;
 }
@@ -22,9 +24,13 @@ void draw(){
   }
   else if(mode == 0){
   //background(255);
+  e.display();
   human.display();
   human.move();
   human.attack();
+  if(human.isTouching(e)){
+    mode=1;
+  }
   for(Projectile p: shoot){
     p.move();
     p.display();
