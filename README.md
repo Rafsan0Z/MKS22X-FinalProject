@@ -35,6 +35,6 @@ Powerup (only health powerup for now) added, with simple verticle movements
 Program organized into tabs and game over mode added when player touches the border (can be changed later)
 
 May 19th Sunday----------
-
+Rafsan: Added countdown mechanism (basic and needs updating)
 
 May 20th Monday ----------
