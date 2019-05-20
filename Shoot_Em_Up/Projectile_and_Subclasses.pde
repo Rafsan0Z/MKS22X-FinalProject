@@ -15,7 +15,7 @@ class Bullets extends Projectile{
   }
   void display(){
     fill(175);
-    ellipse(x,y,r*2,r*2);
+    ellipse(x,y,radius*2,radius*2);
   }
   void move(){
     y += dy;

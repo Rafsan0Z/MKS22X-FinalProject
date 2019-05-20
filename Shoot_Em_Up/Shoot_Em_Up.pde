@@ -1,5 +1,5 @@
 boolean clicked = false;
-int mode;
+int mode,time,t0;
 Player human;
 Enemy e;
 ArrayList<Projectile> shoot = new ArrayList<Projectile>();
@@ -20,11 +20,18 @@ void draw(){
     ellipse(500,500,400,400);
     Letter();
     text("PRESS P TO PLAY",370,550);
-    if(keyPressed && key == 'p'){mode++;}
+    if(keyPressed && key == 'p'){
+      t0=millis();
+      mode++;
+    }
   }
   else if(mode == 0){
   //background(255);
+  time=millis()-t0;
   e.display();
+  if(time%1000<=10){
+    e.attack();
+  }
   human.display();
   human.move();
   human.attack();
