@@ -7,9 +7,9 @@ abstract class Enemy extends Living{
     maxHealth = maxLife;
     maxSpd = maxSpeed;
   }
-  void move();
-  void display();
-  void attack();
-  void takeDamage();
-  boolean isDamaged();
+  abstract void move();
+  abstract void display();
+  abstract void attack();
+  abstract void takeDamage();
+  //abstract boolean isDamaged();
 }
