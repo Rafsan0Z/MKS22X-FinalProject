@@ -6,13 +6,20 @@ abstract class Projectile implements Moveable,Displayable{
 }
 
 class Bullets extends Projectile{
-  Bullets(float X, float Y, float Dam){super(X,Y,Dam);}
+  float dx, dy, radius;
+  Bullets(float X, float Y, float Dam, float _dx, float _dy, float r){
+    super(X,Y,Dam);
+    dx=_dx;
+    dy=_dy;
+    radius=r;
+  }
   void display(){
     fill(175);
-    ellipse(x,y,10,10);
+    ellipse(x,y,r*2,r*2);
   }
   void move(){
-    y -= 1;
+    y += dy;
+    x += dx;
   }
   
 }
