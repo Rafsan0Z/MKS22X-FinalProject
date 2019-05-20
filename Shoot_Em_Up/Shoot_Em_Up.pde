@@ -18,7 +18,7 @@ void draw(){
     ellipse(500,500,400,400);
     Letter();
     text("PRESS P TO PLAY",370,550);
-    if(keyPressed && key == 'P'){mode++;}
+    if(keyPressed && key == 'p'){mode++;}
   }
   else if(mode == 0){
   //background(255);
@@ -61,7 +61,7 @@ public void keyPressed(){
        s=true; 
      }
   }
-  if(key=='x'){
+  if(key=='z'){
    f=true; 
   }
 }
@@ -84,7 +84,7 @@ public void keyReleased(){
        s=false; 
      }
   }
-  if(key=='x'){
+  if(key=='z'){
    f=false; 
   }
 }
