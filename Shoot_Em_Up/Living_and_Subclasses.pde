@@ -1,9 +1,6 @@
 abstract class Living implements Displayable,Moveable,Damageable{
   float x,y,health,spd,maxHealth,maxSpd;
-}
-
-class Player extends Living{
-   Player(float X, float Y, float life, float speed, float maxLife, float maxSpeed){
+  Living(float X, float Y, float life, float speed, float maxLife, float maxSpeed){
     x = X; 
     y = Y; 
     health = life; 
@@ -11,11 +8,18 @@ class Player extends Living{
     maxHealth = maxLife;
     maxSpd = maxSpeed;
   }
+}
+
+class Player extends Living{
+   Player(float X, float Y, float life, float speed, float maxLife, float maxSpeed){
+     super(X,Y,life,speed,maxLife,maxSpeed);
+  }
   //new constuctor includes spd,maxHealth,maxSpd
-  
+  /*
   Player(float X, float Y, float life){
     x = X; y = Y; health = life;
   }
+  */
   void move(){
     /*if(keyPressed){
       if(keyCode == UP){y -= 1;}
