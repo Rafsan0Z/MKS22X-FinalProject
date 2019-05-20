@@ -58,8 +58,10 @@ class Player extends Living{
     rect(x,y-15,10,15);
     fill(100,0,0);
     rect(x+30,y-15,10,15);
+    if(s){
     fill(255);
     ellipse(x,y,20,20);
+    }
   }
   void attack(){
     if(mousePressed){
