@@ -28,6 +28,9 @@ void draw(){
   human.display();
   human.move();
   human.attack();
+  if(human.isTouching(e)){
+    mode=1;
+  }
   for(Projectile p: shoot){
     p.move();
     p.display();

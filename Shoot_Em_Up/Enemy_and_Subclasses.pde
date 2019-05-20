@@ -11,6 +11,7 @@ abstract class Enemy extends Living{
 class testCircle extends Enemy{
   testCircle(float X, float Y, float life, float speed, float maxLife, float maxSpeed){
     super(X,Y,life,speed,maxLife,maxSpeed);
+    radius=25;
   }
   void move(){
     
