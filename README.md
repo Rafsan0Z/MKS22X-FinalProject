@@ -26,7 +26,7 @@ Kenson:
 
 encoded controls in booleans, allowing for diagonal movement while shooting
 
-added slow movement while holding down Shift, allowed variable speed/maxspeed in constructor 
+added slow movement while holding down Shift, allowed variable speed/maxspeed in constructor
 
 Rafsan:
 
@@ -36,5 +36,9 @@ Program organized into tabs and game over mode added when player touches the bor
 
 May 19th Sunday----------
 Rafsan: Added countdown mechanism (basic and needs updating)
+
+Kenson:
+
+started enemy class, reorganized constructors of living, wrote circle-circle collision detection to be used in many cases
 
 May 20th Monday ----------
