@@ -14,16 +14,17 @@ class testCircle extends Enemy{
     radius=25;
   }
   void move(){
-    
+    y+=spd;
   }
   void display(){
     fill(0);
     ellipse(x,y,radius*2,radius*2);
   }
   void attack(){
-    shoot.add(new Bullets(this.x,this.y,1,0,5,10));
-    shoot.add(new Bullets(this.x,this.y,1,5,5,10));
-    shoot.add(new Bullets(this.x,this.y,1,-5,5,10));
+    shoot.add(new Bullets(this.x,this.y,1,0,5+spd,10));
+    shoot.add(new Bullets(this.x,this.y,1,5,5+spd,10));
+    shoot.add(new Bullets(this.x,this.y,1,-5,5+spd,10));
+    //shoot.add(new Bullets(this.x,this.y,1,spd,spd,10));
   }
   void takeDamage(){
     
