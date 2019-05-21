@@ -8,8 +8,8 @@ boolean mu,md,ml,mr,f,s;
 void setup(){
   size(1000,1000);
   human = new Player(500,960,100,5,100,5);
-  
-  e = new testCircle(500,500,100,5,100,5);
+  Enemy e = new testCircle(500,500,100,5,100,5);
+  enemies.add(e);
   extra.add(new Health(500,100,10));
   mode = -1;
 }
@@ -29,16 +29,18 @@ void draw(){
   }
   else if(mode == 0){
   //background(255);
-  time=millis()-prev;
-  e.display();
-  if(time>100){
-    e.attack();
-    prev=millis();
+  for(Enemy e:enemies){
+    time=millis()-prev;
+    e.display();
+    if(time>100){
+      e.attack();
+      prev=millis();
+    }
   }
   human.display();
   human.move();
   human.attack();
-  if(human.isTouching(e)){
+  if(human.isTouching(enemies.get(0))){
     mode=1;
   }
   for(Projectile p: shoot){
@@ -55,7 +57,7 @@ void draw(){
     //background(255);
     text("GAME OVER!",500,200);
     text("PRESS E TO EXIT", 500, 300);
-    if(keyPressed && key == 'E'){exit();}
+    if(keyPressed && key == 'e'){exit();}
   }
 }
 
