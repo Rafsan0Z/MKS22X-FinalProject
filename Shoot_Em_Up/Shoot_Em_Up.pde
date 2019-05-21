@@ -2,6 +2,7 @@ boolean clicked = false;
 int mode;
 Player human;
 Enemy e;
+Rect Sidebar;
 int initialT,waitTime;
 ArrayList<Projectile> shoot = new ArrayList<Projectile>();
 ArrayList<Powerups> extra = new ArrayList<Powerups>();
@@ -11,6 +12,7 @@ void setup(){
   human = new Player(500,960,100,5,100,5);
   e = new testCircle(500,500,100,5,100,5);
   extra.add(new Health(500,100,10));
+  Sidebar = new Rect(width-300,110,250,20);
   mode = -1;
 }
 
@@ -18,8 +20,7 @@ void sideBars(){
   fill(50);
   textFont(createFont("AgencyFB-Reg-48",16));
   text("HealthBar",width-200,100);
-  fill(red(color(255,204,0)),0,0);
-  rect(width-300,110,250,20);
+  Sidebar.display();
 }
 
 void draw(){ //<>//
