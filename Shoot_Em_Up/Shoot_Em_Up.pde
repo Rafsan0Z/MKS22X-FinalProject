@@ -2,6 +2,7 @@ boolean clicked = false;
 int mode;
 Player human;
 Enemy e;
+int initialT,waitTime;
 ArrayList<Projectile> shoot = new ArrayList<Projectile>();
 ArrayList<Powerups> extra = new ArrayList<Powerups>();
 boolean mu,md,ml,mr,f,s;
@@ -13,15 +14,24 @@ void setup(){
   mode = -1;
 }
 
-void draw(){
+void draw(){ //<>//
   background(255);
   if(mode == -1){
+    initialT = second();
+    waitTime = 5;
     fill(175);
     ellipse(500,500,400,400);
-    Letter();
-    text("PRESS P TO PLAY",370,550);
-    if(keyPressed && key == 'p'){mode++;}
-  }
+    fill(255);
+    text("PRESS P TO PLAY AND WAIT FIVE SECONDS",370,500);
+    if(keyPressed && key == 'p'){
+      int time = second() - initialT;
+         while(time < waitTime){
+           //println(time);
+           time = second() - initialT;
+         }
+    mode++;
+    }
+  } //<>//
   else if(mode == 0){
   //background(255);
   e.display();
@@ -101,14 +111,8 @@ void mouseClicked(){
   else{clicked = false;}
 }
 
-void Letter(){
+void Letter(int l){
   fill(255);
   textFont(createFont("Bauhaus93-48",32));
-  text("1",500,500);
-  //delay(1000);
-  //fill(255);
-  //text("2",500,500);
-  //fill(255);
-  //text("3",500,500);
-  //delay(1000);
+  text(""+l,500,500);
 }
