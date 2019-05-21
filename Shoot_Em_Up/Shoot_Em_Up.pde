@@ -7,22 +7,33 @@ ArrayList<Projectile> shoot = new ArrayList<Projectile>();
 ArrayList<Powerups> extra = new ArrayList<Powerups>();
 boolean mu,md,ml,mr,f,s;
 void setup(){
-  size(1000,1000);
+  size(1500,1000);
   human = new Player(500,960,100,5,100,5);
   e = new testCircle(500,500,100,5,100,5);
   extra.add(new Health(500,100,10));
   mode = -1;
 }
 
+void sideBars(){
+  fill(50);
+  textFont(createFont("AgencyFB-Reg-48",16));
+  text("HealthBar",width-200,100);
+  fill(red(color(255,204,0)),0,0);
+  rect(width-300,110,250,20);
+}
+
 void draw(){ //<>//
   background(255);
+  line(width-400,0,width-400,height);
+  sideBars();
   if(mode == -1){
     initialT = second();
     waitTime = 5;
     fill(175);
     ellipse(500,500,400,400);
     fill(255);
-    text("PRESS P TO PLAY AND WAIT FIVE SECONDS",370,500);
+    textFont(createFont(PFont.list()[10],16));
+    text("PRESS P TO PLAY AND WAIT FIVE SECONDS",320,500);
     if(keyPressed && key == 'p'){
       int time = second() - initialT;
          while(time < waitTime){
@@ -113,6 +124,6 @@ void mouseClicked(){
 
 void Letter(int l){
   fill(255);
-  textFont(createFont("Bauhaus93-48",32));
+  textFont(createFont("AgencyFB-Reg-48",32));
   text(""+l,500,500);
 }
