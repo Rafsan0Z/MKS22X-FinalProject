@@ -1,5 +1,5 @@
 boolean clicked;
-int mode,time,t0,prev;
+int mode,time,t0,prev,etime;
 Player human;
 ArrayList<Enemy> enemies = new ArrayList<Enemy>();
 ArrayList<Projectile> shoot = new ArrayList<Projectile>();
@@ -9,7 +9,9 @@ void setup(){
   size(1000,1000);
   human = new Player(500,960,100,5,100,5);
   Enemy e = new testCircle(500,500,100,5,100,5);
+  Enemy e2 = new testCircle(600,660,100,5,100,5);
   enemies.add(e);
+  enemies.add(e2);
   extra.add(new Health(500,100,10));
   mode = -1;
 }
@@ -29,13 +31,16 @@ void draw(){
   }
   else if(mode == 0){
   //background(255);
+  time=millis()-t0;
+  etime=millis()-prev;
   for(Enemy e:enemies){
-    time=millis()-prev;
-    e.display();
-    if(time>100){
+      e.display();
+  }
+  if(etime>100){
+    for(Enemy e:enemies){
       e.attack();
-      prev=millis();
     }
+    prev=millis();
   }
   human.display();
   human.move();
