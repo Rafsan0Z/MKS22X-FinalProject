@@ -18,12 +18,12 @@ class testCircle extends Enemy{
   }
   void display(){
     fill(0);
-    ellipse(x,y,50,50);
+    ellipse(x,y,radius*2,radius*2);
   }
   void attack(){
-    shoot.add(new Bullets(this.x,this.y,1,0,5,100));
-    shoot.add(new Bullets(this.x,this.y,1,5,5,100));
-    shoot.add(new Bullets(this.x,this.y,1,-5,5,100));
+    shoot.add(new Bullets(this.x,this.y,1,0,5,10));
+    shoot.add(new Bullets(this.x,this.y,1,5,5,10));
+    shoot.add(new Bullets(this.x,this.y,1,-5,5,10));
   }
   void takeDamage(){
     

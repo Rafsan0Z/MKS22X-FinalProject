@@ -1,13 +1,14 @@
-boolean clicked = false;
-int mode,time,t0;
+boolean clicked;
+int mode,time,t0,prev;
 Player human;
-Enemy e;
+ArrayList<Enemy> enemies = new ArrayList<Enemy>();
 ArrayList<Projectile> shoot = new ArrayList<Projectile>();
 ArrayList<Powerups> extra = new ArrayList<Powerups>();
 boolean mu,md,ml,mr,f,s;
 void setup(){
   size(1000,1000);
   human = new Player(500,960,100,5,100,5);
+  
   e = new testCircle(500,500,100,5,100,5);
   extra.add(new Health(500,100,10));
   mode = -1;
@@ -22,15 +23,17 @@ void draw(){
     text("PRESS P TO PLAY",370,550);
     if(keyPressed && key == 'p'){
       t0=millis();
+      prev=t0;
       mode++;
     }
   }
   else if(mode == 0){
   //background(255);
-  time=millis()-t0;
+  time=millis()-prev;
   e.display();
-  if(time%1000<=10){
+  if(time>100){
     e.attack();
+    prev=millis();
   }
   human.display();
   human.move();
