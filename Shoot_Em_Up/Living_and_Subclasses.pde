@@ -60,7 +60,7 @@ class Player extends Living{
     rect(x+30,y-15,10,15);
     if(s){
     fill(255);
-    ellipse(x,y,20,20);
+    ellipse(x,y,radius*2,radius*2);
     }
   }
   void attack(){

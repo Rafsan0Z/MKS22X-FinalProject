@@ -8,7 +8,7 @@ ArrayList<Projectile> shoot = new ArrayList<Projectile>();
 ArrayList<Powerups> extra = new ArrayList<Powerups>();
 boolean mu,md,ml,mr,f,s;
 void setup(){
-  size(1000,1000);
+  size(1000,800);
   human = new Player(500,960,100,5,100,5);
   Enemy e = new testCircle(500,100,100,3,100,5);
   Enemy e2 = new testCircle(600,160,100,2,100,5);
@@ -66,8 +66,19 @@ void draw(){
       p.move();
       p.display();
     }
-    if(human.x+human.radius < 0 || human.x-human.radius > width || human.y+human.radius < 0 || human.y-human.radius > height){
-      mode = 1;
+    if(human.x+human.radius < 0|| human.x-human.radius > width || human.y+human.radius < 0 || human.y-human.radius > height){
+    }
+    if(human.x+human.radius > width){
+      human.x=width-human.radius;
+    }
+    if(human.x-human.radius<0){
+      human.x=human.radius; 
+    }
+    if(human.y+human.radius>height){
+     human.y=height-human.radius; 
+    }
+    if(human.y-human.radius<0){
+     human.y=human.radius;
     }
   }
   else if(mode == 1){
