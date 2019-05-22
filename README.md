@@ -42,3 +42,15 @@ Kenson:
 started enemy class, reorganized constructors of living, wrote circle-circle collision detection to be used in many cases
 
 May 20th Monday ----------
+
+
+May 21st Tuesday ----------
+
+
+May 22nd Wednesday ----------
+
+
+May 23rd Thursday ------------
+
+
+May 24th Friday -------------
