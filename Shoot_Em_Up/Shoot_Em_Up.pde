@@ -44,13 +44,9 @@ void draw(){
        if(human.isTouching(e)){
       mode=1;
         }
-       if(e.x-e.radius < 0 || e.x+e.radius > width || e.y-e.radius < 0 || e.y+e.radius > height){
+       if(e.x+e.radius < 0 || e.x-e.radius > width || e.y+e.radius < 0 || e.y-e.radius > height){
          iter.remove();
-        }
-    }
-    for(Enemy e:enemies){
-        e.display();
-        e.move();
+       }
     }
     if(etime>100){
       for(Enemy e:enemies){
@@ -70,7 +66,9 @@ void draw(){
       p.move();
       p.display();
     }
-    if(human.x < 0 || human.x > width || human.y < 0 || human.y > height){mode = 1;}
+    if(human.x+human.radius < 0 || human.x-human.radius > width || human.y+human.radius < 0 || human.y-human.radius > height){
+      mode = 1;
+    }
   }
   else if(mode == 1){
     //background(255);
