@@ -3,8 +3,9 @@ int mode;
 Player human;
 Enemy e;
 Rect Sidebar;
-int initialT,waitTime;
-int score;
+int initialT,waitTime,time;
+int score,countdown;
+boolean run;
 ArrayList<Projectile> shoot = new ArrayList<Projectile>();
 ArrayList<Powerups> extra = new ArrayList<Powerups>();
 boolean mu,md,ml,mr,f,s;
@@ -16,6 +17,10 @@ void setup(){
   Sidebar = new Rect(width-300,110,250,20);
   mode = -1;
   score = 0;
+  countdown = 0;
+  initialT = 0;
+  waitTime = 5000;
+
 }
 
 void sideBars(){
@@ -24,31 +29,31 @@ void sideBars(){
   textFont(createFont("AgencyFB-Reg-48",16));
   text("HealthBar",width-200,100);
   text("Score", width-200,210);
-  text(score,width-200,250);
+  text(score,width-200,250); 
 }
 
 void draw(){ //<>//
   background(255);
-  sideBars();
-  line(width-400,0,width-400,height);
   if(mode == -1){
-    initialT = second();
-    waitTime = 5;
+    line(width-400,0,width-400,height);
     fill(175);
     ellipse(500,500,400,400);
     fill(255);
     textFont(createFont(PFont.list()[10],16));
     text("PRESS P TO PLAY AND WAIT FIVE SECONDS",320,500);
+    text(countdown,500,550);
     if(keyPressed && key == 'p'){
-      int time = second() - initialT;
-         while(time < waitTime){
-           //println(time);
-           time = second() - initialT;
-         }
-    mode++;
+        initialT = millis();
+        run = true;
     }
+    if(time - initialT < waitTime){
+        if(run){time = millis();}
+        countdown = (time - initialT)/1000;
+     }
+    else{mode++;}
   } //<>//
   else if(mode == 0){
+  sideBars();
   e.display();
   human.display();
   human.move();
