@@ -1,3 +1,5 @@
+import java.util.*;
+
 boolean clicked;
 int mode,time,t0,prev,etime;
 Player human;
@@ -30,34 +32,45 @@ void draw(){
     }
   }
   else if(mode == 0){
-  //background(255);
-  time=millis()-t0;
-  etime=millis()-prev;
-  for(Enemy e:enemies){
-      e.display();
-      e.move();
-  }
-  if(etime>100){
-    for(Enemy e:enemies){
-      e.attack();
+    println(enemies.size());
+    //background(255);
+    time=millis()-t0;
+    etime=millis()-prev;
+    Iterator<Enemy> iter = enemies.iterator();
+    while(iter.hasNext()){
+       Enemy e = iter.next();
+       e.display();
+       e.move();
+       if(human.isTouching(e)){
+      mode=1;
+        }
+       if(e.x-e.radius < 0 || e.x+e.radius > width || e.y-e.radius < 0 || e.y+e.radius > height){
+         iter.remove();
+        }
     }
-    prev=millis();
-  }
-  human.display();
-  human.move();
-  human.attack();
-  if(human.isTouching(enemies.get(0))){
-    mode=1;
-  }
-  for(Projectile p: shoot){
-    p.move();
-    p.display();
-  }
-  for(Powerups p: extra){
-    p.move();
-    p.display();
-  }
-  if(human.x < 0 || human.x > width || human.y < 0 || human.y > height){mode = 1;}
+    for(Enemy e:enemies){
+        e.display();
+        e.move();
+    }
+    if(etime>100){
+      for(Enemy e:enemies){
+        e.attack();
+      }
+      prev=millis();
+    }
+    human.display();
+    human.move();
+    human.attack();
+    
+    for(Projectile p: shoot){
+      p.move();
+      p.display();
+    }
+    for(Powerups p: extra){
+      p.move();
+      p.display();
+    }
+    if(human.x < 0 || human.x > width || human.y < 0 || human.y > height){mode = 1;}
   }
   else if(mode == 1){
     //background(255);
