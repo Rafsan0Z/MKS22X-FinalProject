@@ -17,16 +17,17 @@ void setup(){
 }
 
 void sideBars(){
+  Sidebar.display();
   fill(50);
   textFont(createFont("AgencyFB-Reg-48",16));
   text("HealthBar",width-200,100);
-  Sidebar.display();
 }
 
 void draw(){ //<>//
   background(255);
-  line(width-400,0,width-400,height);
   sideBars();
+  println(health,MAX_HEALTH);
+  line(width-400,0,width-400,height);
   if(mode == -1){
     initialT = second();
     waitTime = 5;
@@ -45,7 +46,6 @@ void draw(){ //<>//
     }
   } //<>//
   else if(mode == 0){
-  //background(255);
   e.display();
   human.display();
   human.move();
@@ -89,6 +89,20 @@ public void keyPressed(){
        s=true; 
      }
   }
+  if (health > 0 && key == 'a')
+  {
+    health -= 1;
+  }
+  if (health < MAX_HEALTH && key == 'b')
+  {
+    health += 1;
+  }
+  if(key == 'g' && health < MAX_HEALTH){
+    health += 50;
+  }
+  if(key == 'n' && health > 0){
+    health -= 50;
+  }
   if(key=='z'){
    f=true; 
   }
@@ -111,7 +125,7 @@ public void keyReleased(){
      if(keyCode==SHIFT){
        s=false; 
      }
-  }
+  }  
   if(key=='z'){
    f=false; 
   }
