@@ -18,22 +18,4 @@ class Rect implements Displayable{
   noFill();
   rect(width-340, 150, rectWidth, 25);
   }
-  void change(){
-    if (health > 0 && key == 'a')
-  {
-    health -= 1;
-  }
-  if (health < MAX_HEALTH && key == 'b')
-  {
-    health += 1;
-  }
-  if(key == 'g' && health < MAX_HEALTH){
-    if(health + 50 > MAX_HEALTH){health = MAX_HEALTH;}
-    else{health += 50;}
-  }
-  if(key == 'n' && health > 0){
-    if(health - 50 < 0){health = 0;}
-    else{health -= 50;}
-  }
-  }
 }

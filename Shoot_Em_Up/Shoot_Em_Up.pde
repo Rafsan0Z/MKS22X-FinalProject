@@ -4,6 +4,7 @@ Player human;
 Enemy e;
 Rect Sidebar;
 int initialT,waitTime;
+int score;
 ArrayList<Projectile> shoot = new ArrayList<Projectile>();
 ArrayList<Powerups> extra = new ArrayList<Powerups>();
 boolean mu,md,ml,mr,f,s;
@@ -14,6 +15,7 @@ void setup(){
   extra.add(new Health(500,100,10));
   Sidebar = new Rect(width-300,110,250,20);
   mode = -1;
+  score = 0;
 }
 
 void sideBars(){
@@ -21,12 +23,13 @@ void sideBars(){
   fill(50);
   textFont(createFont("AgencyFB-Reg-48",16));
   text("HealthBar",width-200,100);
+  text("Score", width-200,210);
+  text(score,width-200,250);
 }
 
 void draw(){ //<>//
   background(255);
   sideBars();
-  println(health,MAX_HEALTH);
   line(width-400,0,width-400,height);
   if(mode == -1){
     initialT = second();
@@ -98,10 +101,12 @@ public void keyPressed(){
     health += 1;
   }
   if(key == 'g' && health < MAX_HEALTH){
-    health += 50;
+    if(health + 50 > MAX_HEALTH){health = MAX_HEALTH;}
+    else{health += 50;}
   }
   if(key == 'n' && health > 0){
-    health -= 50;
+    if(health - 50 < 0){health = 0;}
+    else{health -= 50;}
   }
   if(key=='z'){
    f=true; 
