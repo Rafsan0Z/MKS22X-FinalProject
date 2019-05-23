@@ -4,7 +4,8 @@ boolean clicked;
 int mode,time,t0,prev,etime;
 Player human;
 ArrayList<Enemy> enemies = new ArrayList<Enemy>();
-ArrayList<Projectile> shoot = new ArrayList<Projectile>();
+ArrayList<Projectile> enemyproj = new ArrayList<Projectile>();
+ArrayList<Projectile> playerproj = new ArrayList<Projectile>();
 ArrayList<Powerups> extra = new ArrayList<Powerups>();
 boolean mu,md,ml,mr,f,s;
 void setup(){
@@ -32,7 +33,6 @@ void draw(){
     }
   }
   else if(mode == 0){
-    println(enemies.size());
     //background(255);
     time=millis()-t0;
     etime=millis()-prev;
@@ -48,17 +48,27 @@ void draw(){
          iter.remove();
        }
     }
-    if(etime>100){
+    if(etime>500){
       for(Enemy e:enemies){
         e.attack();
       }
       prev=millis();
     }
+    if(frameCount==600){
+      enemies.add(new testCircle(600,160,100,2,100,5));
+    }
     human.display();
     human.move();
     human.attack();
     
-    for(Projectile p: shoot){
+    for(Projectile p: enemyproj){
+      p.move();
+      p.display();
+      if(p.isTouching(human)){
+        mode=1;
+      }
+    }
+    for(Projectile p: playerproj){
       p.move();
       p.display();
     }

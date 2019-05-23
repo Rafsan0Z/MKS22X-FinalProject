@@ -3,6 +3,7 @@ abstract class Projectile implements Moveable,Displayable{
   Projectile(float X, float Y, float Dam){
     x = X; y = Y; damage = Dam;
   }
+  abstract boolean isTouching(Living other);
 }
 
 class Bullets extends Projectile{
@@ -21,7 +22,10 @@ class Bullets extends Projectile{
     y += dy;
     x += dx;
   }
-  
+  boolean isTouching(Living other){
+    return sqrt(sq(this.x-other.x)+sq(this.y-other.y))
+    <=this.radius+other.radius;
+  }
 }
 
 class Bombs extends Projectile{
@@ -31,4 +35,7 @@ class Bombs extends Projectile{
    rect(x,y,15,15);
   }
   void move(){y -= 30;}
+  boolean isTouching(Living other){
+   return false; 
+  }
 }

@@ -66,11 +66,11 @@ class Player extends Living{
   void attack(){
     if(mousePressed){
       Bombs fire = new Bombs(x+12.7,y,10);
-      shoot.add(fire);
+      enemyproj.add(fire);
     }
     if(f){
       Bombs fire = new Bombs(x+12.7,y,10);
-      shoot.add(fire); 
+      enemyproj.add(fire); 
     }
   }
 }
