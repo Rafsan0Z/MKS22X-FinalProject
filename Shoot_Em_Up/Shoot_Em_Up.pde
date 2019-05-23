@@ -6,7 +6,7 @@ Enemy e;
 Rect Sidebar;
 int initialT,waitTime,time,etime,prev;
 int score,countdown;
-boolean run;
+boolean run,row;
 ArrayList<Projectile> shoot = new ArrayList<Projectile>();
 ArrayList<Powerups> extra = new ArrayList<Powerups>();
 ArrayList<Enemy> enemies = new ArrayList<Enemy>();
@@ -75,31 +75,37 @@ void draw(){ //<>//
   }
   else if(mode == 1){
     //background(255);
-    text("GAME OVER!",500,200);
-    text("PRESS E TO EXIT", 500, 300);
+    textSize(32);
+    text("GAME OVER!",500,300);
+    text("PRESS E TO EXIT", 470, 420);
+    text("PRESS C TO CONTINUE", 450, 360);
     if(keyPressed && key == 'E'){exit();}
+    if(keyPressed && key == 'C'){textSize(64); text("NO",500,700);}
   }
   else if(mode == 2){
-    initialT = millis();
+    //initialT = millis();
     time = millis() - initialT;
     etime = millis() - prev;
     sideBars();
+    line(width-400,0,width-400,height);
     Iterator<Enemy> iter = enemies.iterator();
      while(iter.hasNext()){
       Enemy e = iter.next();
       e.display();
       e.move();
     }
-    if(etime< 100){
+    if(etime > 100 && enemies.size() == 0){
     for(int i = 1; i <= 10; i++){
       enemies.add(new testCircle(100*i,-10,100,5,100,5));
       iter = enemies.iterator();
     }
+    prev = millis();
     }
-    //println(iter);
+    println(etime);
     human.display();
     human.move();
     human.attack();
+    if(health <= 0){mode = 1;}
   }
 }
 
