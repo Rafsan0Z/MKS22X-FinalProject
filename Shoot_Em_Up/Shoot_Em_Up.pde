@@ -90,7 +90,7 @@ void draw(){ //<>//
       e.display();
       e.move();
     }
-    if(etime<100){
+    if(etime< 100){
     for(int i = 1; i <= 10; i++){
       enemies.add(new testCircle(100*i,-10,100,5,100,5));
       iter = enemies.iterator();
