@@ -44,13 +44,22 @@ started enemy class, reorganized constructors of living, wrote circle-circle col
 
 May 20th Monday ----------
 
+Kenson:
+
+made hitbox only visible in slow mode, started working on enemies shooting at regular time intervals
 
 May 21st Tuesday ----------
 
-Rafsan: I started working on the countdown system at the start of the game. I also added a healthbar, but color change needs to be improved. 
+Rafsan: I started working on the countdown system at the start of the game. I also added a healthbar, but color change needs to be improved.
+
+Kenson: enemies can now shoot at regular time intervals, multiple enemies can shoot at the same time, accounting for enemy velocity
+
 
 May 22nd Wednesday ----------
 
+Kenson:
+
+offscreen enemies are deleted, enemies and bullets kill player on contact, player projectile kill enemies, and enemies can be spawned at certain times or when the screen is cleared
 
 May 23rd Thursday ------------
 
