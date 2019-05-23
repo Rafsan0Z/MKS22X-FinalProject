@@ -36,8 +36,8 @@ void draw(){
     //background(255);
     time=millis()-t0;
     etime=millis()-prev;
-    Iterator<Enemy> iter = enemies.iterator();
-    while(iter.hasNext()){
+    //Iterator<Enemy> iter = enemies.iterator();
+    for(Iterator<Enemy> iter= enemies.iterator(); iter.hasNext();){
        Enemy e = iter.next();
        e.display();
        e.move();
@@ -79,10 +79,15 @@ void draw(){
       if(p.isTouching(human)){
         mode=1;
       }
+      /*if(p.x+p.radius < 0 || p.x-p.radius > width || p.y+p.radius < 0 || p.y-p.radius > height){
+         iter.remove();
+       }
+       */
     }
     for(Projectile p: playerproj){
       p.move();
       p.display();
+      
     }
     for(Powerups p: extra){
       p.move();

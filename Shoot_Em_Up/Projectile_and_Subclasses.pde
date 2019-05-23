@@ -4,6 +4,7 @@ abstract class Projectile implements Moveable,Displayable{
     x = X; y = Y; damage = Dam;
   }
   abstract boolean isTouching(Living other);
+  abstract boolean isOffscreen();
 }
 
 class Bullet extends Projectile{
@@ -26,9 +27,12 @@ class Bullet extends Projectile{
     return sqrt(sq(this.x-other.x)+sq(this.y-other.y))
     <=this.radius+other.radius;
   }
+  boolean isOffScreen(){
+     return x+radius < 0 || x-radius > width || y+radius < 0 || y-radius > height; 
+  }
 }
 
-class Bombs extends Projectile{
+/*class Bombs extends Projectile{
   Bombs(float X, float Y, float Dam){super(X,Y,Dam);}
   void display(){
    fill(0,(int)(Math.random()*256),0);
@@ -38,4 +42,4 @@ class Bombs extends Projectile{
   boolean isTouching(Living other){
    return false; 
   }
-}
+}*/
