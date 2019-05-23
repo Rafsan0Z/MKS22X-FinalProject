@@ -6,9 +6,9 @@ abstract class Projectile implements Moveable,Displayable{
   abstract boolean isTouching(Living other);
 }
 
-class Bullets extends Projectile{
+class Bullet extends Projectile{
   float dx, dy, radius;
-  Bullets(float X, float Y, float Dam, float _dx, float _dy, float r){
+  Bullet(float X, float Y, float Dam, float _dx, float _dy, float r){
     super(X,Y,Dam);
     dx=_dx;
     dy=_dy;

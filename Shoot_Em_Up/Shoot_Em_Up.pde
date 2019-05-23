@@ -47,6 +47,13 @@ void draw(){
        if(e.x+e.radius < 0 || e.x-e.radius > width || e.y+e.radius < 0 || e.y-e.radius > height){
          iter.remove();
        }
+       else{
+          for(Projectile p: playerproj){
+           if(p.isTouching(e)){
+             iter.remove();
+           }
+          }
+       }
     }
     if(etime>500){
       for(Enemy e:enemies){
@@ -54,7 +61,7 @@ void draw(){
       }
       prev=millis();
     }
-    if(frameCount==600){
+    if(frameCount==200){
       enemies.add(new testCircle(600,160,100,2,100,5));
     }
     human.display();
@@ -75,8 +82,6 @@ void draw(){
     for(Powerups p: extra){
       p.move();
       p.display();
-    }
-    if(human.x+human.radius < 0|| human.x-human.radius > width || human.y+human.radius < 0 || human.y-human.radius > height){
     }
     if(human.x+human.radius > width){
       human.x=width-human.radius;

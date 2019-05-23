@@ -52,25 +52,23 @@ class Player extends Living{
     }
   }
   void display(){
-    fill(205);
+    /*fill(205);
     rect(x,y,40,40);
     fill(100,0,0);
     rect(x,y-15,10,15);
     fill(100,0,0);
     rect(x+30,y-15,10,15);
+    */
+    fill(120);
+    ellipse(x,y,radius*4,radius*4);
     if(s){
     fill(255);
     ellipse(x,y,radius*2,radius*2);
     }
   }
   void attack(){
-    if(mousePressed){
-      Bombs fire = new Bombs(x+12.7,y,10);
-      enemyproj.add(fire);
-    }
-    if(f){
-      Bombs fire = new Bombs(x+12.7,y,10);
-      enemyproj.add(fire); 
+    if((mousePressed||f)&&frameCount%5==0){
+      playerproj.add(new Bullet(x,y,1,0,-10,15)); 
     }
   }
 }

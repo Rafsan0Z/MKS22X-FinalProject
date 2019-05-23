@@ -21,10 +21,10 @@ class testCircle extends Enemy{
     ellipse(x,y,radius*2,radius*2);
   }
   void attack(){
-    enemyproj.add(new Bullets(this.x,this.y,1,0,5+spd,10));
-    enemyproj.add(new Bullets(this.x,this.y,1,5,5+spd,10));
-    enemyproj.add(new Bullets(this.x,this.y,1,-5,5+spd,10));
-    //shoot.add(new Bullets(this.x,this.y,1,spd,spd,10));
+    enemyproj.add(new Bullet(this.x,this.y,1,0,5+spd,10));
+    enemyproj.add(new Bullet(this.x,this.y,1,5,5+spd,10));
+    enemyproj.add(new Bullet(this.x,this.y,1,-5,5+spd,10));
+    //shoot.add(new Bullet(this.x,this.y,1,spd,spd,10));
   }
   void takeDamage(){
     
