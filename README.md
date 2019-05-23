@@ -35,6 +35,7 @@ Powerup (only health powerup for now) added, with simple verticle movements
 Program organized into tabs and game over mode added when player touches the border (can be changed later)
 
 May 19th Sunday----------
+
 Rafsan: Added countdown mechanism (basic and needs updating)
 
 Kenson:
@@ -46,6 +47,7 @@ May 20th Monday ----------
 
 May 21st Tuesday ----------
 
+Rafsan: I started working on the countdown system at the start of the game. I also added a healthbar, but color change needs to be improved. 
 
 May 22nd Wednesday ----------
 
