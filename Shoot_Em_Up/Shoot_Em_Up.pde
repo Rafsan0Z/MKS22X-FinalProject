@@ -36,7 +36,6 @@ void draw(){
     //background(255);
     time=millis()-t0;
     etime=millis()-prev;
-    //Iterator<Enemy> iter = enemies.iterator();
     for(Iterator<Enemy> iter= enemies.iterator(); iter.hasNext();){
        Enemy e = iter.next();
        e.display();
@@ -72,8 +71,8 @@ void draw(){
     human.display();
     human.move();
     human.attack();
-    
-    for(Projectile p: enemyproj){
+    for(Iterator<Projectile> iter = enemyproj.iterator();iter.hasNext();){
+      Projectile p = iter.next();
       p.move();
       p.display();
       if(p.isTouching(human)){
@@ -83,11 +82,17 @@ void draw(){
          iter.remove();
        }
        */
+      if(p.isOffScreen()){
+       iter.remove(); 
+      }
     }
-    for(Projectile p: playerproj){
+    for(Iterator<Projectile> iter = playerproj.iterator();iter.hasNext();){
+      Projectile p = iter.next();
       p.move();
       p.display();
-      
+      if(p.isOffScreen()){
+       iter.remove(); 
+      }
     }
     for(Powerups p: extra){
       p.move();
