@@ -1,7 +1,7 @@
 import java.util.*;
 
 boolean clicked;
-int mode,time,t0,prev,etime;
+int mode,time,t0,prev,etime,phase;
 Player human;
 ArrayList<Enemy> enemies = new ArrayList<Enemy>();
 ArrayList<Projectile> enemyproj = new ArrayList<Projectile>();
@@ -61,8 +61,13 @@ void draw(){
       }
       prev=millis();
     }
+    
     if(frameCount==200){
       enemies.add(new testCircle(600,160,100,2,100,5));
+    }
+    if(enemies.size()==0&&phase==0){
+     enemies.add(new testCircle(200,160,100,2,100,5));
+     phase++;
     }
     human.display();
     human.move();
