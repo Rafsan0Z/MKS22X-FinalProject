@@ -14,7 +14,7 @@ class testCircle extends Enemy{
     radius=25;
   }
   void move(){
-    y+=spd;
+    //y+=spd;
   }
   void display(){
     fill(0);
@@ -31,11 +31,7 @@ class testCircle extends Enemy{
   }
   void createRings(){
     for(int i=0;i<10;i++){
-      pushMatrix();
-      translate(x,y);
-      rotate(radians(36*i%360));
-      enemyproj.add(new Bullet(this.x+20,this.y+20,1,0,0,10)); 
-      popMatrix();
+      enemyproj.add(new Bullet(x+100*cos(radians(i*36)),y+100*sin(radians(i*36)),1,0,3+spd,10));
     }
   }
   void takeDamage(){

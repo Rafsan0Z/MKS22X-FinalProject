@@ -12,9 +12,9 @@ void setup(){
   size(1000,800);
   human = new Player(500,960,100,5,100,5);
   Enemy e = new testCircle(500,100,100,3,100,5);
-  Enemy e2 = new testCircle(600,160,100,2,100,5);
+  //Enemy e2 = new testCircle(600,160,100,2,100,5);
   enemies.add(e);
-  enemies.add(e2);
+  //enemies.add(e2);
   extra.add(new Health(500,100,10));
   mode = -1;
 }
