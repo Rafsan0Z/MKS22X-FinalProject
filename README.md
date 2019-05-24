@@ -63,5 +63,8 @@ offscreen enemies are deleted, enemies and bullets kill player on contact, playe
 
 May 23rd Thursday ------------
 
+Kenson:
+projectiles are now deleted when they come in contact with an enemy or go offscreen
+
 
 May 24th Friday -------------
