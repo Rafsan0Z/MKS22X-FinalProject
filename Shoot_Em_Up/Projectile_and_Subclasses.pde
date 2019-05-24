@@ -29,8 +29,7 @@ class Bullet extends Projectile{
   }
   boolean isOffScreen(){
      return x+radius < 0 || x-radius > width || y+radius < 0 || y-radius > height; 
-  }
-  
+  } 
 }
 
 /*class Bombs extends Projectile{

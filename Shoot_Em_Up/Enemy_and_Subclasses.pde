@@ -21,10 +21,22 @@ class testCircle extends Enemy{
     ellipse(x,y,radius*2,radius*2);
   }
   void attack(){
+    //shootDown();
+    createRings();
+  }
+  void shootDown(){
     enemyproj.add(new Bullet(this.x,this.y,1,0,5+spd,10));
     enemyproj.add(new Bullet(this.x,this.y,1,5,5+spd,10));
     enemyproj.add(new Bullet(this.x,this.y,1,-5,5+spd,10));
-    //shoot.add(new Bullet(this.x,this.y,1,spd,spd,10));
+  }
+  void createRings(){
+    for(int i=0;i<10;i++){
+      pushMatrix();
+      translate(x,y);
+      rotate(radians(36*i%360));
+      enemyproj.add(new Bullet(this.x+20,this.y+20,1,0,0,10)); 
+      popMatrix();
+    }
   }
   void takeDamage(){
     
