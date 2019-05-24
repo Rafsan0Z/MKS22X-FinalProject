@@ -47,9 +47,11 @@ void draw(){
          iter.remove();
        }
        else{
-          for(Projectile p: playerproj){
+          for(Iterator<Projectile> iterp = playerproj.iterator(); iterp.hasNext();){
+           Projectile p = iterp.next();
            if(p.isTouching(e)){
              iter.remove();
+             iterp.remove();
            }
           }
        }
