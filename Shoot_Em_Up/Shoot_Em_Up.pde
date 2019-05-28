@@ -1,13 +1,13 @@
 import java.util.*;
 
 boolean clicked;
-int mode,time,t0,prev,etime,phase;
+int mode,time,t0,prev,etime,phase,partition;
 Player human;
 ArrayList<Enemy> enemies = new ArrayList<Enemy>();
 ArrayList<Projectile> enemyproj = new ArrayList<Projectile>();
 ArrayList<Projectile> playerproj = new ArrayList<Projectile>();
 ArrayList<Powerups> extra = new ArrayList<Powerups>();
-boolean mu,md,ml,mr,f,s;
+boolean mu,md,ml,mr,f,s,gr;
 void setup(){
   size(1000,800);
   human = new Player(500,960,100,5,100,5);
@@ -17,6 +17,7 @@ void setup(){
   //enemies.add(e2);
   extra.add(new Health(500,100,10));
   mode = -1;
+  partition=20;
 }
 
 void draw(){
@@ -33,6 +34,14 @@ void draw(){
     }
   }
   else if(mode == 0){
+    if(gr){
+      for(int i=0;i<partition;i++){
+        line(width/partition*i,0,width/partition*i,height);
+      }
+      for(int i=0;i<100;i++){
+        line(0,height/partition*i,width,height/partition*i);
+      }
+    }
     //background(255);
     time=millis()-t0;
     etime=millis()-prev;
@@ -141,6 +150,9 @@ public void keyPressed(){
   if(key=='z'){
    f=true; 
   }
+  if(key==TAB){
+   gr=true; 
+  }
 }
 
 public void keyReleased(){
@@ -163,6 +175,9 @@ public void keyReleased(){
   }
   if(key=='z'){
    f=false; 
+  }
+  if(key==TAB){
+   gr=false; 
   }
 }
 
