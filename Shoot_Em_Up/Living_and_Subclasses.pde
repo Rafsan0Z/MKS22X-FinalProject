@@ -73,10 +73,10 @@ class Player extends Living{
     */
     
     if(s){
-    fill(255,255,0);
-    ellipse(x,y,radius*2,radius*2);
     fill(120,120,120,50);
     ellipse(x,y,radius*4,radius*4);
+    fill(255,0,0);
+    ellipse(x,y,radius*2,radius*2);
     }
     else{
     fill(120);
