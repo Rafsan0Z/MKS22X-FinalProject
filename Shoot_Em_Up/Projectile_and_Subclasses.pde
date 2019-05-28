@@ -43,6 +43,17 @@ abstract class advBullet extends Bullet{
    }
 }
 
+class aimBullet extends advBullet{
+   float targetIniX, targetIniY;
+   Living target;
+   aimBullet(float X, float Y, float Dam, float r, int _state, Living source,Living _target){
+     super(X,Y,Dam,0,0,r,_state,source);
+     target=_target;
+     targetIniX=target.x;
+     targetIniY=target.y;
+   }
+}
+
 class hoverBullet extends advBullet{
    float srcIniX, srcIniY;
    hoverBullet(float X, float Y, float Dam, float r, int _state, Living source){

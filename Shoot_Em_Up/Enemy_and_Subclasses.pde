@@ -11,7 +11,7 @@ abstract class Enemy extends Living{
 class testCircle extends Enemy{
   testCircle(float X, float Y, float life, float speed, float maxLife, float maxSpeed){
     super(X,Y,life,speed,maxLife,maxSpeed);
-    radius=25;
+    radius=15;
   }
   void move(){
     y+=spd;
@@ -22,7 +22,7 @@ class testCircle extends Enemy{
   }
   void attack(){
     //shootDown();
-    createRings(5);
+    createRings(20);
   }
   void shootDown(){
     enemyproj.add(new Bullet(this.x,this.y,1,0,5+spd,10));
