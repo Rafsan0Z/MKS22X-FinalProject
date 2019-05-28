@@ -22,7 +22,8 @@ class testCircle extends Enemy{
   }
   void attack(){
     //shootDown();
-    createRings(20);
+    //createRings(20);
+    aimShot(10,human);
   }
   void shootDown(){
     enemyproj.add(new Bullet(this.x,this.y,1,0,5+spd,10));
@@ -34,8 +35,10 @@ class testCircle extends Enemy{
       enemyproj.add(new hoverBullet(x+100*cos(radians(i*360.0/num)),y+100*sin(radians(i*360.0/num)),1,10,0,this));
     }
   }
-  void aimShot(){
-    
+  void aimShot(int num,Living t){
+    for(int i=0;i<num;i++){
+      enemyproj.add(new aimBullet(x+75*cos(radians(i*360/num)),y+75*sin(radians(i*360/num)),1,10,0,this,t)); 
+    }
   }
   void takeDamage(){
     

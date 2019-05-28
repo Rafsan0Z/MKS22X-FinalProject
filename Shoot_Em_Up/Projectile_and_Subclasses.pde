@@ -69,7 +69,15 @@ class aimBullet extends advBullet{
      target=_target;
      targetIniX=target.x;
      targetIniY=target.y;
-     }
+     dx=-(x-targetIniX)/100.0;
+     dy=-(y-targetIniY)/100.0;
+   }
+   void move(){
+     dx*=(1.01);
+     dy*=(1.01);
+     y+=dy;
+     x+=dx;
+   }
 }
 
 class hoverBullet extends advBullet{
@@ -81,8 +89,8 @@ class hoverBullet extends advBullet{
    }
    void move(){
      if(state>0){
-       dx=(x-srcIniX)/100.0;
-       dy=(y-srcIniY)/100.0;
+       dx=(x-srcIniX)/100;
+       dy=(y-srcIniY)/100;
        //dx=(x-src.x)/dist(x,y,src.x,src.y);
        //dy=(y-src.y)/dist(x,y,src.x,src.y);
      }

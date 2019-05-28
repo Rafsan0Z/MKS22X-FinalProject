@@ -109,10 +109,6 @@ void draw(){
       if(p.isTouching(human)){
         mode=1;
       }
-      /*if(p.x+p.radius < 0 || p.x-p.radius > width || p.y+p.radius < 0 || p.y-p.radius > height){
-         iter.remove();
-       }
-       */
       if(p.isOffScreen()){
        iter.remove(); 
       }
