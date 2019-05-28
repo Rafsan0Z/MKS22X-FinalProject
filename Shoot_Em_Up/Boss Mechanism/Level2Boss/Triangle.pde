@@ -6,12 +6,22 @@ class Triangle{
   void display(){
     triangle(x1,y1,x2,y2,x3,y3);
   }
-  void move(){
+  void drop(){
     y1 -= typey;
     y2 -= typey;
     y3 -= typey;
     x1 += typex;
     x2 += typex;
     x3 += typex;
+  }
+  void move(){
+    if(keyPressed){
+      if(keyCode == LEFT && typex == -1 && typey == 0){
+        x1 -=1;x2-=1;x3-=1;
+      }
+      if(keyCode == RIGHT && typex == 1 && typey == 0){
+        x1 +=1;x2+=1;x3+=1;
+      }
+    }
   }
 }
