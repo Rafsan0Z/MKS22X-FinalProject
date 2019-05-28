@@ -23,4 +23,7 @@ class Health extends Powerups{
     fill(0,200,0);
     rect(x-2.5,y-7.5,5,15);
   }
+  boolean isTouching(Living other){
+    return false; 
+  }
 }

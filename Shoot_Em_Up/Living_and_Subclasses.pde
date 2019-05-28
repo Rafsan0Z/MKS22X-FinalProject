@@ -9,7 +9,7 @@ abstract class Living implements Displayable,Moveable,Damageable{
     maxSpd = maxSpeed;
   }
   boolean isTouching(Living other){
-    return sqrt(sq(this.x-other.x)+sq(this.y-other.y))
+    return dist(x,y,other.x,other.y)
     <=this.radius+other.radius;
   }
 }
