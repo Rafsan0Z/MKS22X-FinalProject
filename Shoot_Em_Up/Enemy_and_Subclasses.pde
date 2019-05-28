@@ -31,8 +31,11 @@ class testCircle extends Enemy{
   }
   void createRings(){
     for(int i=0;i<10;i++){
-      enemyproj.add(new Bullet(x+100*cos(radians(i*36)),y+100*sin(radians(i*36)),1,0,3+spd,10));
+      enemyproj.add(new advBullet(x+100*cos(radians(i*36)),y+100*sin(radians(i*36)),1,0,3+spd,10,0,this));
     }
+  }
+  void aimShot(){
+    
   }
   void takeDamage(){
     

@@ -32,6 +32,17 @@ class Bullet extends Projectile{
   } 
 }
 
+class advBullet extends Bullet{
+   int state;
+   Living source;
+   advBullet(float X, float Y, float Dam, float _dx, float _dy, float r, int _state, Living src){
+     super(X,Y,Dam,_dx,_dy,r);
+     state = _state;
+     source = src;
+   }
+}
+
+
 /*class Bombs extends Projectile{
   Bombs(float X, float Y, float Dam){super(X,Y,Dam);}
   void display(){
