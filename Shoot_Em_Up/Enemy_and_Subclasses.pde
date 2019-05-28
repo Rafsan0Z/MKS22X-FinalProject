@@ -22,16 +22,16 @@ class testCircle extends Enemy{
   }
   void attack(){
     //shootDown();
-    createRings();
+    createRings(5);
   }
   void shootDown(){
     enemyproj.add(new Bullet(this.x,this.y,1,0,5+spd,10));
     enemyproj.add(new Bullet(this.x,this.y,1,5,5+spd,10));
     enemyproj.add(new Bullet(this.x,this.y,1,-5,5+spd,10));
   }
-  void createRings(){
-    for(int i=0;i<10;i++){
-      enemyproj.add(new hoverBullet(x+100*cos(radians(i*36)),y+100*sin(radians(i*36)),1,10,0,this));
+  void createRings(int num){
+    for(int i=0;i<num;i++){
+      enemyproj.add(new hoverBullet(x+100*cos(radians(i*360.0/num)),y+100*sin(radians(i*360.0/num)),1,10,0,this));
     }
   }
   void aimShot(){
