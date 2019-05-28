@@ -32,14 +32,34 @@ class Bullet extends Projectile{
   } 
 }
 
-class advBullet extends Bullet{
-   int state;
-   Living source;
-   advBullet(float X, float Y, float Dam, float _dx, float _dy, float r, int _state, Living src){
+abstract class advBullet extends Bullet{
+   int state,starttime;
+   Living src;
+   advBullet(float X, float Y, float Dam, float _dx, float _dy, float r, int _state, Living source){
      super(X,Y,Dam,_dx,_dy,r);
      state = _state;
-     source = src;
+     src = source;
+     starttime=frameCount;
    }
+}
+
+class hoverBullet extends advBullet{
+   hoverBullet(float X, float Y, float Dam, float r, int _state, Living source){
+     super(X,Y,Dam,0,0,r,_state,source); 
+   }
+   void move(){
+     if(state>0){
+       dx=(x-src.x)/dist(x,y,src.x,src.y);
+       dy=(y-src.y)/dist(x,y,src.x,src.y);
+       y+=dy;
+       x+=dx;
+     }
+     else{
+       if(frameCount>starttime+60){
+          state++; 
+       }
+     }
+  }
 }
 
 
