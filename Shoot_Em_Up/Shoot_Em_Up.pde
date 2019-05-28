@@ -1,7 +1,7 @@
 import java.util.*;
 
 boolean clicked;
-int mode,time,t0,prev,etime,phase,partsize;
+int mode,time,t0,prev,etime,phase,partnum;
 Player human;
 ArrayList<Enemy> enemies = new ArrayList<Enemy>();
 ArrayList<Projectile> enemyproj = new ArrayList<Projectile>();
@@ -18,8 +18,8 @@ void setup(){
   //enemies.add(e2);
   extra.add(new Health(500,100,10));
   mode = -1;
-  partsize=20;
-  partition= new boolean[partsize][partsize];
+  partnum=10;
+  partition= new boolean[partnum][partnum];
 }
 
 void draw(){
@@ -37,17 +37,17 @@ void draw(){
   }
   else if(mode == 0){
     if(gr){
-      for(int i=0;i<partsize;i++){
-        line(width/partsize*i,0,width/partsize*i,height);
+      for(int i=0;i<partnum;i++){
+        line(width/partnum*i,0,width/partnum*i,height);
       }
-      for(int i=0;i<partsize;i++){
-        line(0,height/partsize*i,width,height/partsize*i);
+      for(int i=0;i<partnum;i++){
+        line(0,height/partnum*i,width,height/partnum*i);
       }
-      for(int i=0;i<partsize;i++){
-         for(int j=0;i<partsize;j++){
-            if(human.isTouchingRect(width/i,height/i,width/partsize*i,height/partsize*i)){
+      for(int i=0;i<partnum;i++){
+         for(int j=0;j<partnum;j++){
+            if(human.isTouchingRect(width/partnum*i,height/partnum*j,width/partnum,height/partnum)){
               fill(0,255,0);
-              rect(width/i,height/i,width/partsize*i,height/partsize*i);
+              rect(width/partnum*i,height/partnum*j,width/partnum,height/partnum);
             }
          }
       }

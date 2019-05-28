@@ -21,15 +21,15 @@ class Player extends Living{
   }
   //new constuctor includes spd,maxHealth,maxSpd
   boolean isTouchingRect(float rx, float ry, float rw, float rh){
-    float checkX = 0;
-    float checkY = 0;
+    float checkX = x;
+    float checkY = y;
     if(x<rx){
        checkX=rx; 
     }
     else if(x > rx+rw){
        checkX=rx+rw; 
     }
-    if(x<ry){
+    if(y<ry){
        checkY=ry; 
     }
     if(y>ry+rh){
