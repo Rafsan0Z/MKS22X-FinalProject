@@ -1,26 +1,20 @@
 //This is for Enemies in level 2!./
-float x,y,l,w,angle;
+Rect square;
+float counter;
 void setup(){
-  size(500,500);
-  x = 250; y = 250; l = 40; w = 40;angle = 1;
+  size(1500,1500);
+  square = new Rect(750,550,20,20);
+  counter = 0.0;
 }
 
 void draw(){
   background(255);
-  rect(250,250,10,10);
-  //angle++;
-  if(angle >= 360){angle = 0;}
-  keyPressed();
+  counter++;
+  square.display();
+  square.move();
 }
 
 void keyPressed(){
   if(key == 'r'){     
-     float c = cos(angle);
-  pushMatrix();
-  translate(250,250);
-  rotate(PI/3.0);
-  rect(0,0,10,10);
-  popMatrix();
-  angle++;
   }
 }
