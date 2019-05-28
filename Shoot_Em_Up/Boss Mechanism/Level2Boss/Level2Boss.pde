@@ -1,20 +1,20 @@
 Triangle t1,t2,t3;
 boolean release;
+float a,b,x,y;
 void setup(){
   size(500,500);
-  t1 = new Triangle(240,280,260,280,250,290,0,-1);
-  t2 = new Triangle(240,220,260,220,250,210,0,1);
-  t3 = new Triangle(200,240,200,260,190,250,-1,0);
-  Ts.add(t1);
-  Ts.add(t2);
-  Ts.add(t3);
+  a = 60;b = 30;x=250;y=250;
+  Ts.add(new Triangle(x-10,y+b/2,x+10,y+b/2,x,y+20+b/2,0,-1));
+  Ts.add(new Triangle(x-10,y-b/2,x+10,y-b/2,x,y-20-b/2,0,1));
+  Ts.add(new Triangle(x-a/2,y-10,x-a/2,y+10,x-20-a/2,y,-1,0));
+  Ts.add(new Triangle(x+a/2,y-10,x+a/2,y+10,x+20+a/2,y,1,0));
   release = false;
 }
 ArrayList<Bullet> shapes = new ArrayList<Bullet>();
 ArrayList<Triangle> Ts = new ArrayList<Triangle>();
 void draw(){
   background(255);
-  ellipse(250,250,60,30);
+  ellipse(x,y,a,b);
   for(Triangle t: Ts){
     t.display();
     if(release){t.move();}
