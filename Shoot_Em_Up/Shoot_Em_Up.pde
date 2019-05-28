@@ -45,7 +45,10 @@ void draw(){
       }
       for(int i=0;i<partsize;i++){
          for(int j=0;i<partsize;j++){
-            if(
+            if(human.isTouchingRect(width/i,height/i,width/partsize*i,height/partsize*i)){
+              fill(0,255,0);
+              rect(width/i,height/i,width/partsize*i,height/partsize*i);
+            }
          }
       }
     }
