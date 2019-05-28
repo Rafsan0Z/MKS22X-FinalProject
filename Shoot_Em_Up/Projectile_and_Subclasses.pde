@@ -49,16 +49,16 @@ class hoverBullet extends advBullet{
    }
    void move(){
      if(state>0){
-       dx=(x-src.x)/dist(x,y,src.x,src.y);
-       dy=(y-src.y)/dist(x,y,src.x,src.y);
-       y+=dy;
-       x+=dx;
+       dx=(x-src.x)/dist(x,y,src.x,src.y)+Math.signum(x-src.x)*(frameCount-starttime)/10.0;
+       dy=(y-src.y)/dist(x,y,src.x,src.y)+Math.signum(y-src.y)*(frameCount-starttime)/10.0;
      }
      else{
        if(frameCount>starttime+60){
           state++; 
        }
      }
+     y+=dy;
+     x+=dx;
   }
 }
 
