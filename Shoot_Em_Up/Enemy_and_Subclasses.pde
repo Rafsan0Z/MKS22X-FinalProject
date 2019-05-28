@@ -14,7 +14,7 @@ class testCircle extends Enemy{
     radius=25;
   }
   void move(){
-    //y+=spd;
+    y+=spd;
   }
   void display(){
     fill(0);

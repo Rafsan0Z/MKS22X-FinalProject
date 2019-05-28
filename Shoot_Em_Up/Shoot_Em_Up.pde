@@ -36,6 +36,12 @@ void draw(){
     //background(255);
     time=millis()-t0;
     etime=millis()-prev;
+    if(etime>500){
+      for(Enemy e:enemies){
+        e.attack();
+      }
+      prev=millis();
+    }
     for(Iterator<Enemy> iter= enemies.iterator(); iter.hasNext();){
        Enemy e = iter.next();
        e.display();
@@ -56,13 +62,6 @@ void draw(){
           }
        }
     }
-    if(etime>500){
-      for(Enemy e:enemies){
-        e.attack();
-      }
-      prev=millis();
-    }
-    
     if(frameCount==200){
       enemies.add(new testCircle(600,160,100,2,100,5));
     }
@@ -70,8 +69,8 @@ void draw(){
      enemies.add(new testCircle(200,160,100,2,100,5));
      phase++;
     }
-    human.display();
     human.move();
+    human.display();
     human.attack();
     for(Iterator<Projectile> iter = enemyproj.iterator();iter.hasNext();){
       Projectile p = iter.next();

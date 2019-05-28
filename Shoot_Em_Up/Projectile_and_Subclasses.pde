@@ -44,13 +44,16 @@ abstract class advBullet extends Bullet{
 }
 
 class hoverBullet extends advBullet{
+   float srcIniX, srcIniY;
    hoverBullet(float X, float Y, float Dam, float r, int _state, Living source){
      super(X,Y,Dam,0,0,r,_state,source); 
+     srcIniX=src.x;
+     srcIniY=src.y;
    }
    void move(){
      if(state>0){
-       dx=(x-src.x)/100.0;
-       dy=(y-src.y)/100.0;
+       dx=(x-srcIniX)/100.0;
+       dy=(y-srcIniY)/100.0;
        //dx=(x-src.x)/dist(x,y,src.x,src.y);
        //dy=(y-src.y)/dist(x,y,src.x,src.y);
      }
