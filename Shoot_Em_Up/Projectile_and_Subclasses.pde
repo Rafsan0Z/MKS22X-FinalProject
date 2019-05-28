@@ -5,6 +5,7 @@ abstract class Projectile implements Moveable,Displayable{
   }
   abstract boolean isTouching(Living other);
   abstract boolean isOffScreen();
+  abstract boolean isTouchingRect(float rx, float ry, float rw, float rh);
 }
 
 class Bullet extends Projectile{
@@ -29,7 +30,24 @@ class Bullet extends Projectile{
   }
   boolean isOffScreen(){
      return x+radius < 0 || x-radius > width || y+radius < 0 || y-radius > height; 
-  } 
+  }
+  boolean isTouchingRect(float rx, float ry, float rw, float rh){
+    float checkX = x;
+    float checkY = y;
+    if(x<rx){
+       checkX=rx; 
+    }
+    else if(x > rx+rw){
+       checkX=rx+rw; 
+    }
+    if(y<ry){
+       checkY=ry; 
+    }
+    if(y>ry+rh){
+       checkY=ry+rh; 
+    }
+    return dist(x,y,checkX,checkY)<=radius;
+  }
 }
 
 abstract class advBullet extends Bullet{
@@ -51,7 +69,7 @@ class aimBullet extends advBullet{
      target=_target;
      targetIniX=target.x;
      targetIniY=target.y;
-   }
+     }
 }
 
 class hoverBullet extends advBullet{

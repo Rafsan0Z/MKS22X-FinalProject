@@ -12,14 +12,6 @@ abstract class Living implements Displayable,Moveable,Damageable{
     return dist(x,y,other.x,other.y)
     <=this.radius+other.radius;
   }
-}
-
-class Player extends Living{
-   Player(float X, float Y, float life, float speed, float maxLife, float maxSpeed){
-     super(X,Y,life,speed,maxLife,maxSpeed);
-     radius=15;
-  }
-  //new constuctor includes spd,maxHealth,maxSpd
   boolean isTouchingRect(float rx, float ry, float rw, float rh){
     float checkX = x;
     float checkY = y;
@@ -37,6 +29,14 @@ class Player extends Living{
     }
     return dist(x,y,checkX,checkY)<=radius;
   }
+}
+
+class Player extends Living{
+   Player(float X, float Y, float life, float speed, float maxLife, float maxSpeed){
+     super(X,Y,life,speed,maxLife,maxSpeed);
+     radius=15;
+  }
+  //new constuctor includes spd,maxHealth,maxSpd
   void move(){
     /*if(keyPressed){
       if(keyCode == UP){y -= 1;}
