@@ -36,6 +36,16 @@ void draw(){
     }
   }
   else if(mode == 0){
+     for(int i=0;i<partnum;i++){
+         for(int j=0;j<partnum;j++){
+            if(human.isTouchingRect(width/partnum*i,height/partnum*j,width/partnum,height/partnum)){
+              partition[i][j]=true;
+            }
+            else{
+              partition[i][j]=false; 
+            }
+         }
+      }
     if(gr){
       for(int i=0;i<partnum;i++){
         line(width/partnum*i,0,width/partnum*i,height);
@@ -45,13 +55,14 @@ void draw(){
       }
       for(int i=0;i<partnum;i++){
          for(int j=0;j<partnum;j++){
-            if(human.isTouchingRect(width/partnum*i,height/partnum*j,width/partnum,height/partnum)){
+            if(partition[i][j]){
               fill(0,255,0);
               rect(width/partnum*i,height/partnum*j,width/partnum,height/partnum);
             }
          }
       }
     }
+   
     //background(255);
     time=millis()-t0;
     etime=millis()-prev;
