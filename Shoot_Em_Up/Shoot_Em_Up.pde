@@ -168,7 +168,7 @@ public void keyPressed(){
        s=true; 
      }
   }
-  if(key=='z'){
+  if(key=='z'||key=='Z'){
    f=true; 
   }
   if(key==TAB){
@@ -194,7 +194,7 @@ public void keyReleased(){
        s=false; 
      }
   }
-  if(key=='z'){
+  if(key=='z'||key=='Z'){
    f=false; 
   }
   if(key==TAB){
