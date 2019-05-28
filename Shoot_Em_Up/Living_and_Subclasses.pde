@@ -20,11 +20,23 @@ class Player extends Living{
      radius=10;
   }
   //new constuctor includes spd,maxHealth,maxSpd
-  /*
-  Player(float X, float Y, float life){
-    x = X; y = Y; health = life;
+  boolean isTouchingRect(float rx, float ry, float rw, float rh){
+    float checkX = 0;
+    float checkY = 0;
+    if(x<rx){
+       checkX=rx; 
+    }
+    else if(x > rx+rw){
+       checkX=rx+rw; 
+    }
+    if(x<ry){
+       checkY=ry; 
+    }
+    if(y>ry+rh){
+       checkY=ry+rh; 
+    }
+    return dist(x,y,checkX,checkY)<=radius;
   }
-  */
   void move(){
     /*if(keyPressed){
       if(keyCode == UP){y -= 1;}

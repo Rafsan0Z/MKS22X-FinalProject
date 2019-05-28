@@ -1,13 +1,14 @@
 import java.util.*;
 
 boolean clicked;
-int mode,time,t0,prev,etime,phase,partition;
+int mode,time,t0,prev,etime,phase,partsize;
 Player human;
 ArrayList<Enemy> enemies = new ArrayList<Enemy>();
 ArrayList<Projectile> enemyproj = new ArrayList<Projectile>();
 ArrayList<Projectile> playerproj = new ArrayList<Projectile>();
 ArrayList<Powerups> extra = new ArrayList<Powerups>();
 boolean mu,md,ml,mr,f,s,gr;
+boolean[][] partition;
 void setup(){
   size(1000,800);
   human = new Player(500,960,100,5,100,5);
@@ -17,7 +18,8 @@ void setup(){
   //enemies.add(e2);
   extra.add(new Health(500,100,10));
   mode = -1;
-  partition=20;
+  partsize=20;
+  partition= new boolean[partsize][partsize];
 }
 
 void draw(){
@@ -35,11 +37,16 @@ void draw(){
   }
   else if(mode == 0){
     if(gr){
-      for(int i=0;i<partition;i++){
-        line(width/partition*i,0,width/partition*i,height);
+      for(int i=0;i<partsize;i++){
+        line(width/partsize*i,0,width/partsize*i,height);
       }
-      for(int i=0;i<100;i++){
-        line(0,height/partition*i,width,height/partition*i);
+      for(int i=0;i<partsize;i++){
+        line(0,height/partsize*i,width,height/partsize*i);
+      }
+      for(int i=0;i<partsize;i++){
+         for(int j=0;i<partsize;j++){
+            if(
+         }
       }
     }
     //background(255);
