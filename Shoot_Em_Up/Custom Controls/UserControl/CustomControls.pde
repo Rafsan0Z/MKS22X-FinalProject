@@ -13,7 +13,10 @@ class Controls{
     setCode();
   }
   void setCode(){
-    Code = UP;
+    if(text=="Up"){Code = UP;}
+    if(text=="Down"){Code = DOWN;}
+    if(text=="Right"){Code = RIGHT;}
+    if(text=="Left"){Code = LEFT;}
   }
   void display(){
     change();
