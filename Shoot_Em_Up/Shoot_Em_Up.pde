@@ -9,6 +9,7 @@ ArrayList<Projectile> playerproj = new ArrayList<Projectile>();
 ArrayList<Powerups> extra = new ArrayList<Powerups>();
 boolean mu,md,ml,mr,f,s,gr;
 boolean[][] partition;
+Grid grid;
 void setup(){
   size(1000,800);
   human = new Player(500,960,100,5,100,5);
