@@ -22,4 +22,8 @@ class Question{
     ans = text;
   }
   void confirm(){answer = true;}
+  void clear(){
+    ans = "";
+    answer = false;
+  }
 }
