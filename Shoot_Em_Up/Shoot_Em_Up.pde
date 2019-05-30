@@ -36,6 +36,7 @@ void draw(){
     }
   }
   else if(mode == 0){
+     println(frameRate);
      for(int i=0;i<partnum;i++){
          for(int j=0;j<partnum;j++){
             if(human.isTouchingRect(width/partnum*i,height/partnum*j,width/partnum,height/partnum)){

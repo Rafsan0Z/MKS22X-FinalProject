@@ -22,8 +22,8 @@ class testCircle extends Enemy{
   }
   void attack(){
     //shootDown();
-    //createRings(20);
-    aimShot(10,human);
+    createRings(100);
+    //aimShot(10,human);
   }
   void shootDown(){
     enemyproj.add(new Bullet(this.x,this.y,1,0,5+spd,10));
