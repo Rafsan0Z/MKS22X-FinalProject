@@ -81,4 +81,13 @@ Rafsan: Created plan for level 3 enemies, and Design for Level 3 boss. Read thro
 
 ## May 27th Monday --------------
 
-Rafsan: 
+Rafsan: Stored the level plans as pdfs in the repository. Created an elliptical boss with triangular parts that fire bullets and release
+when the health becomes low. 
+
+## May 28th Tuesday -------------
+
+Rafsan: Made a special type of Enemy that spins as it attacks, allowing its bullets to spread out. Next step is to add firing mechanism from testlevel1.
+
+## May 29th Wednesday ------------
+
+Rafsan: Made use of controls from the demo, but adding other controls such as fire, slow speed, laser. 
