@@ -15,8 +15,8 @@ class Controls{
   void setCode(){
     if(text==commands[0]){Code = UP;}
     if(text==commands[1]){Code = DOWN;}
-    if(text==commands[2]){Code = RIGHT;}
-    if(text==commands[3]){Code = LEFT;}
+    if(text==commands[2]){Code = LEFT;}
+    if(text==commands[3]){Code = RIGHT;}
   }
   void display(){
     setCode();
