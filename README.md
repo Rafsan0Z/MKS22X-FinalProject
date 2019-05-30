@@ -69,16 +69,33 @@ projectiles are now deleted when they come in contact with an enemy or go offscr
 
 ## May 24th Friday -------------
 
-Rafsan: Read about formatting syntax in github. Researched about smooth collisions (if we ever plan to use it). 
+Rafsan: Read about formatting syntax in github. Researched about smooth collisions (if we ever plan to use it).
 
 ## May 25th Saturday ------------
 
-Rafsan: Created plan for level 2 enemies, and a Design for Level 2 boss. Read about user inputs in processsing. 
+Rafsan: Created plan for level 2 enemies, and a Design for Level 2 boss. Read about user inputs in processsing.
 
 ## May 26th Sunday --------------
 
 Rafsan: Created plan for level 3 enemies, and Design for Level 3 boss. Read through the code for testlevel1, planning to change some global variable names to reduce the number of merge conflicts
 
+Kenson: created a ring of bullets which hover in place before dispersing, initial work on spatial partitioning
+
 ## May 27th Monday --------------
 
-Rafsan: 
+Rafsan: Stored the level plans as pdfs in the repository. Created an elliptical boss with triangular parts that fire bullets and release
+when the health becomes low.
+
+Kenson: created projectiles which enemies can aim at the player
+
+## May 28th Tuesday -------------
+
+Rafsan: Made a special type of Enemy that spins as it attacks, allowing its bullets to spread out. Next step is to add firing mechanism from testlevel1.
+
+Kenson: Research into methods for spatial partitioning
+
+## May 29th Wednesday ------------
+
+Rafsan: Made use of controls from the demo, but adding other controls such as fire, slow speed, laser.
+
+## May 30th Thursdsay
