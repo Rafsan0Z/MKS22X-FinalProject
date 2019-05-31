@@ -9,9 +9,11 @@ abstract class Enemy extends Living{
   //abstract boolean isDamaged();
 }
 class testCircle extends Enemy{
-  testCircle(float X, float Y, float life, float speed, float maxLife, float maxSpeed){
+  int[] attbehavior;
+  testCircle(float X, float Y, float life, float speed, float maxLife, float maxSpeed, int[] ab){
     super(X,Y,life,speed,maxLife,maxSpeed);
     radius=15;
+    attbehavior=ab;
   }
   void move(){
     y+=spd;
@@ -21,9 +23,15 @@ class testCircle extends Enemy{
     ellipse(x,y,radius*2,radius*2);
   }
   void attack(){
-    //shootDown();
-    //createRings(20);
-    //aimShot(10,human);
+    if(attbehavior[0]>0){
+      shootDown();
+    }
+    if(attbehavior[1]>0){
+      createRings(attbehavior[1]);
+    }
+    if(attbehavior[2]>0){
+      aimShot(attbehavior[2],human);
+    }
   }
   void shootDown(){
     enemyproj.add(new Bullet(this.x,this.y,1,0,5+spd,10));

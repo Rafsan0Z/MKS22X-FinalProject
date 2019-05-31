@@ -12,7 +12,7 @@ boolean[][] partition;
 void setup(){
   size(1000,800);
   human = new Player(500,960,100,5,100,5);
-  Enemy e = new testCircle(500,100,3,3,100,5);
+  Enemy e = new testCircle(500,100,3,3,100,5,new int[] {1,0,0});
   //Enemy e2 = new testCircle(600,160,100,2,100,5);
   enemies.add(e);
   //enemies.add(e2);
@@ -36,6 +36,13 @@ void draw(){
     }
   }
   else if(mode == 0){
+    if(frameCount==200){
+      enemies.add(new testCircle(600,160,3,2,100,5,new int[] {0,10,0}));
+    }
+    if(enemies.size()==0&&phase==0){
+     enemies.add(new testCircle(200,160,3,2,100,5,new int[] {1,10,5}));
+     phase++;
+    }
      for(int i=0;i<partnum;i++){
          for(int j=0;j<partnum;j++){
             if(human.isTouchingRect(width/partnum*i,height/partnum*j,width/partnum,height/partnum)){
@@ -96,13 +103,6 @@ void draw(){
            }
         }
      }
-    if(frameCount==200){
-      enemies.add(new testCircle(600,160,3,2,100,5));
-    }
-    if(enemies.size()==0&&phase==0){
-     enemies.add(new testCircle(200,160,3,2,100,5));
-     phase++;
-    }
     human.move();
     human.display();
     human.attack();
