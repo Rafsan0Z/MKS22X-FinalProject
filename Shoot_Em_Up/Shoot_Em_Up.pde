@@ -12,7 +12,7 @@ boolean[][] partition;
 void setup(){
   size(1000,800);
   human = new Player(500,960,100,5,100,5);
-  Enemy e = new testCircle(500,100,100,3,100,5);
+  Enemy e = new testCircle(500,100,3,3,100,5);
   //Enemy e2 = new testCircle(600,160,100,2,100,5);
   enemies.add(e);
   //enemies.add(e2);
@@ -82,21 +82,25 @@ void draw(){
        if(e.x+e.radius < 0 || e.x-e.radius > width || e.y+e.radius < 0 || e.y-e.radius > height){
          iter.remove();
        }
-       else{
-          for(Iterator<Projectile> iterp = playerproj.iterator(); iterp.hasNext();){
-           Projectile p = iterp.next();
+       if(e.health<=0){
+             iter.remove(); 
+        }
+    }
+    for(Iterator<Projectile> iterp = playerproj.iterator(); iterp.hasNext();){
+        Projectile p = iterp.next();
+        for(Iterator<Enemy> iter= enemies.iterator(); iter.hasNext();){
+           Enemy e = iter.next();
            if(p.isTouching(e)){
-             iter.remove();
+             e.takeDamage(p.damage);
              iterp.remove();
            }
-          }
-       }
-    }
+        }
+     }
     if(frameCount==200){
-      enemies.add(new testCircle(600,160,100,2,100,5));
+      enemies.add(new testCircle(600,160,3,2,100,5));
     }
     if(enemies.size()==0&&phase==0){
-     enemies.add(new testCircle(200,160,100,2,100,5));
+     enemies.add(new testCircle(200,160,3,2,100,5));
      phase++;
     }
     human.move();

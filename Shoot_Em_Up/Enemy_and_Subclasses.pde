@@ -5,7 +5,7 @@ abstract class Enemy extends Living{
   abstract void move();
   abstract void display();
   abstract void attack();
-  abstract void takeDamage();
+  abstract void takeDamage(float d);
   //abstract boolean isDamaged();
 }
 class testCircle extends Enemy{
@@ -23,7 +23,7 @@ class testCircle extends Enemy{
   void attack(){
     //shootDown();
     //createRings(20);
-    aimShot(10,human);
+    //aimShot(10,human);
   }
   void shootDown(){
     enemyproj.add(new Bullet(this.x,this.y,1,0,5+spd,10));
@@ -40,7 +40,7 @@ class testCircle extends Enemy{
       enemyproj.add(new aimBullet(x+75*cos(radians(i*360/num)),y+75*sin(radians(i*360/num)),1,10,0,this,t)); 
     }
   }
-  void takeDamage(){
-    
+  void takeDamage(float d){
+    health-=d;
   }
 }
