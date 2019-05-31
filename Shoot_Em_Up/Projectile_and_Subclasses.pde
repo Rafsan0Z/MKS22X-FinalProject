@@ -1,5 +1,6 @@
 abstract class Projectile implements Moveable,Displayable{
   float x,y,damage;
+  
   Projectile(float X, float Y, float Dam){
     x = X; y = Y; damage = Dam;
     addToPart(grid);
@@ -7,14 +8,17 @@ abstract class Projectile implements Moveable,Displayable{
   abstract boolean isTouching(Living other);
   abstract boolean isOffScreen();
   abstract boolean isTouchingRect(float rx, float ry, float rw, float rh);
-  void addToPart(Grid g){
+  void addToPart(){
   for(int i=0;i<partnum;i++){
          for(int j=0;j<partnum;j++){
             if(isTouchingRect(width/partnum*i,height/partnum*j,width/partnum,height/partnum)){
-              g.cells.get(i).get(j).enemyproj.add(this);
+              grid.cells.get(i).get(j).enemyproj.add(this);
         }
       }
     }
+  }
+  void updatePart(){
+     
   }
 }
 
