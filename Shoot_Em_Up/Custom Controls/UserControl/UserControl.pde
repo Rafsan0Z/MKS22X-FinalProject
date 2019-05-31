@@ -8,11 +8,11 @@ boolean answer = false,keyReleased = false,Default = true;
 PShape LA,RA,UA,DA;
 void setup(){
   size(1500,1500);
-  Balls.add(new Controls(750,100,commands[0]));
-  Balls.add(new Controls(750,250,commands[1]));
-  Balls.add(new Controls(650,175,commands[2]));
-  Balls.add(new Controls(850,175,commands[3]));
-  Balls.add(new Controls(750,175,commands[4]));
+  Balls.add(new Controls(750,100,commands[0] = "Up"));
+  Balls.add(new Controls(750,250,commands[1] = "Down"));
+  Balls.add(new Controls(650,175,commands[2] = "Left"));
+  Balls.add(new Controls(850,175,commands[3] = "Right"));
+  Balls.add(new Controls(750,175,commands[4] = "Fire"));
   Qs.add(new Question("Enter Key for Up",750,200));
   Qs.add(new Question("Enter Key for Down",750,300));
   Qs.add(new Question("Enter Key for Left",750,400));
@@ -35,10 +35,13 @@ void draw(){
     } //<>// //<>//
     else if(minimode < commands.length && minimode >= 0){
       Question q = Qs.get((int)minimode);
+      Controls b = Balls.get((int)minimode); 
       q.display();
       if(!q.isAnswered()){
         if(keyPressed){
           q.setAns(key + "");
+          commands[(int)minimode] = q.ans;
+          b.setText(commands[(int)minimode]);
        }
        if(mousePressed && q.ans != ""){q.confirm();}
       }
@@ -46,8 +49,11 @@ void draw(){
       Default = false;
     }
     else if (minimode != -1){
+    int counter = 0;
     for(Question q: Qs){
+      if(Default){q.setAns(commands[counter]);q.confirm();}
       q.display();
+      counter++;
     }
     text("ARE YOU SURE?",750,750);
     if(keyPressed && key == 'N'){
@@ -56,7 +62,7 @@ void draw(){
       minimode = 0;
     }
     else if(keyPressed && key == 'Y'){
-      int counter = 0;
+      counter = 0;
       for(Question q: Qs){
         commands[counter] = q.ans;
         counter++;
@@ -69,13 +75,13 @@ void draw(){
   textSize(16);
   int counter = 0;
   for(Controls b: Balls){
-    b.setText(commands[counter]);
+    //b.setText(commands[counter]);
     b.mutate();
     b.display();
    // println(b.text,key);
     counter++;
   }
-  leftArrow();
-  shape(LA);
+  //leftArrow();
+  //shape(LA);
   }
 }

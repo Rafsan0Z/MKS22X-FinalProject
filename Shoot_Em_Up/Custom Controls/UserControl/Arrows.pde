@@ -1,15 +1,15 @@
-void rightArrow(){
-  RA = loadShape("RA.png");
-}
+//void rightArrow(){
+//  RA = loadShape("RA.png");
+//}
 
-void leftArrow(){
-  LA = loadShape("LA.png");
-}
+//void leftArrow(){
+//  LA = loadShape("LA.svg");
+//}
 
-void upArrow(){
-  UA = loadShape("UA.png");
-}
+//void upArrow(){
+//  UA = loadShape("UA.png");
+//}
 
-void downArrow(){
-  DA = loadShape("DA.png");
-}
+//void downArrow(){
+//  DA = loadShape("DA.png");
+//}

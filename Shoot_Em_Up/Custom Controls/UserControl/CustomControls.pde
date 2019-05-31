@@ -10,16 +10,16 @@ class Controls{
     c = 255;
     text = T;
     on = false;
-    setCode();
+    if(Default){setCode();}
   }
   void setCode(){
-    if(text==commands[0]){Code = UP;}
-    if(text==commands[1]){Code = DOWN;}
-    if(text==commands[2]){Code = LEFT;}
-    if(text==commands[3]){Code = RIGHT;}
+    if(text=="Up"){Code = UP;}
+    if(text=="Down"){Code = DOWN;}
+    if(text== "Left"){Code = LEFT;}
+    if(text== "Right"){Code = RIGHT;}
   }
   void display(){
-    setCode();
+    //setCode();
     change();
     fill(c);
     rect(x,y,size,size);
@@ -34,8 +34,10 @@ class Controls{
     else{c = 255;}
   }
   void mutate(){
-    if(keyPressed && keyCode == Code){on = true;}
+    if(keyPressed && (Default && keyCode == Code)){on = true;}
+    else if(keyPressed && text.equals(key + "")){on = true;}
     else{on = false;}
+    //println(key,text);
   }
 }
 
