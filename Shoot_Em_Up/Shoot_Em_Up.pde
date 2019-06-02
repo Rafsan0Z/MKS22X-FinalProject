@@ -21,10 +21,21 @@ boolean mu,md,ml,mr,f,s,gr;
 boolean[][] partition;
 void setup(){
   size(1500,1000);
+  Balls.add(new Controls(750,100,commands[0] = "Up"));
+  Balls.add(new Controls(750,250,commands[1] = "Down"));
+  Balls.add(new Controls(650,175,commands[2] = "Left"));
+  Balls.add(new Controls(850,175,commands[3] = "Right"));
+  Balls.add(new Controls(750,175,commands[4] = "Fire"));
+  Qs.add(new Question("Enter Key for Up",550,200));
+  Qs.add(new Question("Enter Key for Down",550,300));
+  Qs.add(new Question("Enter Key for Left",550,400));
+  Qs.add(new Question("Enter Key for Right",550,500));
+  Qs.add(new Question("Enter Key for Fire",550,600));
+  minimode = -1;
   human = new Player(500,960,100,5,100,5);
   extra.add(new Health(500,100,10));
   Sidebar = new Rect(width-300,110,250,20);
-  mode = -2;
+  mode = -3;
   score = 0;
   countdown = 0;
   initialT = 0;
@@ -52,7 +63,7 @@ void sideBars(){
 
 void draw(){ //<>//
   background(255);
-  if(mode == -2){
+  if(mode == -3){
     textSize(90);
     fill(random(105),random(135),random(75));
     text("Space Patrol",250,400);
@@ -61,31 +72,66 @@ void draw(){ //<>//
     text("Press O for Options!",360,600);
     if(keyPressed){
       if(key == 'P'){mode = -1;}
-      else if(key == 'O'){}
+      else if(key == 'O'){mode = -2;}
       else{text("Please Enter valid Key!",350,700);}
     }
   }
-  else if(mode == -1){
-    line(width-400,0,width-400,height);
-    fill(175);
-    ellipse(500,500,400,400);
-  /*
-    fill(255);
-    textFont(createFont(PFont.list()[10],16));
-    text("PRESS P TO PLAY AND WAIT FIVE SECONDS",320,500);
-    text(countdown,500,550);
-    if(keyPressed && key == 'p'){
-        initialT = millis();
-        run = true;
+  else if(mode == -2){
+    if(minimode == -1){
+    textSize(32);
+    fill(155);
+    text("Default Controls. The Press D",550,200);
+    text("Custom Controls. Then Press C",550,300);
+    if(keyPressed && key == 'C'){minimode++;}
+    else if(keyPressed && key == 'D'){minimode = commands.length;}
+    } //<>//
+    else if(minimode < commands.length && minimode >= 0){
+      text("Click on mouse to confirm selection!",750,100);
+      Question q = Qs.get((int)minimode);
+      Controls b = Balls.get((int)minimode); 
+      q.display();
+      if(!q.isAnswered()){
+        if(keyPressed){
+          if(key == CODED){
+            String T = CodeKey(keyCode);
+            if(T == b.text){q.setAns(b.text);}
+            else{q.setAns(T);b.Default = false;}
+          }
+          else{
+            q.setAns(key + "");
+            b.Default = false;}
+            commands[(int)minimode] = q.ans;
+            b.setText(q.ans);
+       }
+       if(mousePressed && q.ans != ""){q.confirm();}
+      }
+      else if(q.isAnswered()){minimode++;}
     }
-    if(time - initialT < waitTime){
-        if(run){time = millis();}
-        countdown = (time - initialT)/1000;
-     }
-    else{mode++;}
+    else if (minimode >= commands.length){
+    int counter = 0;
+    for(Question q: Qs){
+      if(Balls.get(counter).Default){q.setAns(commands[counter]);q.confirm();}
+      q.display();
+      counter++;
+    }
+    text("ARE YOU SURE ? : PRESS Y/N",550,750);
+    if(keyPressed && key == 'N'){
+      background(255);
+      for(Question q: Qs){q.clear();}
+      minimode = 0;
+    }
+    else if(keyPressed && key == 'Y'){mode = -3;}
+    }
+  }
+  else if(mode == -1){
+    int counter = 0;
+  for(Controls b: Balls){
+    //b.setText(commands[counter]);
+    b.mutate();
+    b.display();
+   // println(b.text,key);
+    counter++;
   } //<>//
-  */
-
   sideBars();
     Letter(10);
     text("PRESS P TO PLAY",370,550);
@@ -267,4 +313,12 @@ void Letter(int l){
   fill(255);
   textFont(createFont("AgencyFB-Reg-48",32));
   text(""+l,500,500);
+}
+
+String CodeKey(int Key){
+  if(Key == UP){return "Up";}
+  else if(Key == LEFT){return "Left";}
+  else if(Key == RIGHT){return "Right";}
+  else if(Key == DOWN){return "Down";}
+  return "";
 }
