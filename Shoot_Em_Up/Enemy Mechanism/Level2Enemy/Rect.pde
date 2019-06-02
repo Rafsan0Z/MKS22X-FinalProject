@@ -12,6 +12,9 @@ class Rect{
     popMatrix();
   }
   void move(){
-    y += 1;
+    if(keyPressed && keyCode == DOWN){y += 1;}
+    if(keyPressed && keyCode == UP){y -= 1;}
+    if(keyPressed && keyCode == RIGHT){x+=1;}
+    if(keyPressed && keyCode == LEFT){x-=1;}
   }
 }

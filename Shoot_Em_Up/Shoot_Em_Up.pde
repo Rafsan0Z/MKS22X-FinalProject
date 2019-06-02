@@ -1,7 +1,7 @@
 import java.util.*;
 
 boolean clicked;
-int mode,time,t0,prev,etime,phase,partnum,fci;
+int mode,time,t0,prev,etime,phase,partnum,fci,minimode;
 Player human;
 Rect Sidebar;
 int initialT,waitTime;
@@ -11,6 +11,12 @@ ArrayList<Enemy> enemies = new ArrayList<Enemy>();
 ArrayList<Projectile> enemyproj = new ArrayList<Projectile>();
 ArrayList<Projectile> playerproj = new ArrayList<Projectile>();
 ArrayList<Powerups> extra = new ArrayList<Powerups>();
+ArrayList<Controls> Balls = new ArrayList<Controls>();
+ArrayList<Question> Qs = new ArrayList<Question>();
+String[] commands = new String[5];
+Controls Up,Down,Left,Right;
+char Button;
+boolean answer = false,keyReleased = false;
 boolean mu,md,ml,mr,f,s,gr;
 boolean[][] partition;
 void setup(){
