@@ -23,14 +23,16 @@ class testCircle extends Enemy{
     ellipse(x,y,radius*2,radius*2);
   }
   void attack(){
-    if(attbehavior[0]>0){
-      shootDown();
-    }
-    if(attbehavior[1]>0){
-      createRings(attbehavior[1]);
-    }
-    if(attbehavior[2]>0){
-      aimShot(attbehavior[2],human);
+    if((frameCount-fci)%30==0){
+      if(attbehavior[0]>0){
+        shootDown();
+      }
+      if(attbehavior[1]>0){
+        createRings(attbehavior[1]);
+      }
+      if(attbehavior[2]>0){
+        aimShot(attbehavior[2],human);
+      }
     }
   }
   void shootDown(){

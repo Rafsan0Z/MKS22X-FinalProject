@@ -1,7 +1,7 @@
 import java.util.*;
 
 boolean clicked;
-int mode,time,t0,prev,etime,phase,partnum;
+int mode,time,t0,prev,etime,phase,partnum,fci;
 Player human;
 ArrayList<Enemy> enemies = new ArrayList<Enemy>();
 ArrayList<Projectile> enemyproj = new ArrayList<Projectile>();
@@ -10,13 +10,16 @@ ArrayList<Powerups> extra = new ArrayList<Powerups>();
 boolean mu,md,ml,mr,f,s,gr;
 boolean[][] partition;
 void setup(){
-  size(1000,800);
+  size(800,1000);
   human = new Player(500,960,100,5,100,5);
-  Enemy e = new testCircle(500,100,3,3,100,5,new int[] {1,0,0});
-  //Enemy e2 = new testCircle(600,160,100,2,100,5);
-  enemies.add(e);
+  for(int i=0;i<5;i++){
+    Enemy e = new testCircle(100,50+i*100,3,1.5,100,5,new int[] {1,0,0});
+    Enemy e2 = new testCircle(700,50+i*100,3,1.5,100,5,new int[] {1,0,0});
+    enemies.add(e);
+    enemies.add(e2);
+  }
   //enemies.add(e2);
-  extra.add(new Health(500,100,10));
+  //extra.add(new Health(500,100,10));
   mode = -1;
   partnum=10;
   partition= new boolean[partnum][partnum];
@@ -33,10 +36,11 @@ void draw(){
       t0=millis();
       prev=t0;
       mode++;
+      fci=frameCount;
     }
   }
   else if(mode == 0){
-    if(frameCount==200){
+    if(frameCount-fci==60){
       enemies.add(new testCircle(600,160,3,2,100,5,new int[] {0,10,0}));
     }
     if(enemies.size()==0&&phase==0){
@@ -73,12 +77,12 @@ void draw(){
     //background(255);
     time=millis()-t0;
     etime=millis()-prev;
-    if(etime>500){
-      for(Enemy e:enemies){
+    //if(etime>500){
+    for(Enemy e:enemies){
         e.attack();
-      }
-      prev=millis();
     }
+    //  prev=millis();
+    //}
     for(Iterator<Enemy> iter= enemies.iterator(); iter.hasNext();){
        Enemy e = iter.next();
        e.display();
