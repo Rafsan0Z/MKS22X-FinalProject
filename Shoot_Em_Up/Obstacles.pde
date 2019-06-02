@@ -5,7 +5,7 @@ Obstacle(float X, float Y, float Rad){
 }
 void display(){
   fill(140);
-  rect(x,y,x+2*radius,y+2*radius);
+  rect(x,y,radius,radius);
 }
   boolean isTouching(Living other){
     return dist(x,y,other.x,other.y) <=this.radius+other.radius;

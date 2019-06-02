@@ -7,6 +7,8 @@ Rect Sidebar;
 char Button;
 boolean[][] partition;
 Controls Up,Down,Left,Right;
+Obstacle o;
+MovingObs m;
 ArrayList<Enemy> enemies = new ArrayList<Enemy>();
 ArrayList<Projectile> enemyproj = new ArrayList<Projectile>();
 ArrayList<Projectile> playerproj = new ArrayList<Projectile>();
@@ -16,6 +18,8 @@ ArrayList<Question> Qs = new ArrayList<Question>();
 String[] commands = new String[5];
 void setup(){
   size(1500,1000);
+  o = new Obstacle(500,100,20);
+  m = new MovingObs(800,100,20);
   Balls.add(new Controls(750,100,commands[0] = "Up"));
   Balls.add(new Controls(750,250,commands[1] = "Down"));
   Balls.add(new Controls(650,175,commands[2] = "Left"));
@@ -30,7 +34,7 @@ void setup(){
   human = new Player(500,960,100,5,100,5);
   extra.add(new Health(500,100,10));
   Sidebar = new Rect(width-300,110,250,20);
-  mode = -3;
+  mode = -4;
   score = 0;
   countdown = 0;
   initialT = 0;
@@ -58,6 +62,11 @@ void sideBars(){
 
 void draw(){ //<>//
   background(255);
+  if(mode == -4){
+    o.display();
+    m.display();
+    m.move();
+  }
   if(mode == -3){
     rect(550,200,90,90);
     fill(random(105),random(135),random(75));
