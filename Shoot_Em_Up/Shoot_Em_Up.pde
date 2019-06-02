@@ -18,7 +18,7 @@ void setup(){
   human = new Player(500,960,100,5,100,5);
   extra.add(new Health(500,100,10));
   Sidebar = new Rect(width-300,110,250,20);
-  mode = -1;
+  mode = -2;
   score = 0;
   countdown = 0;
   initialT = 0;
@@ -46,7 +46,20 @@ void sideBars(){
 
 void draw(){ //<>//
   background(255);
-  if(mode == -1){
+  if(mode == -2){
+    textSize(90);
+    fill(random(105),random(135),random(75));
+    text("Space Patrol",250,400);
+    textSize(32);
+    text("Press P to Play!",400,500);
+    text("Press O for Options!",360,600);
+    if(keyPressed){
+      if(key == 'P'){mode = -1;}
+      else if(key == 'O'){}
+      else{text("Please Enter valid Key!",350,700);}
+    }
+  }
+  else if(mode == -1){
     line(width-400,0,width-400,height);
     fill(175);
     ellipse(500,500,400,400);
