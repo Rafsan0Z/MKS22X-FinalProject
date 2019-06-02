@@ -2,7 +2,7 @@ class Controls{
   float size,x,y;
   float c;
   String text;
-  boolean on;
+  boolean on,Default = true;
   int Code;
   Controls(float X, float Y, String T){
     size = 40;
@@ -17,6 +17,7 @@ class Controls{
     if(text=="Down"){Code = DOWN;}
     if(text== "Left"){Code = LEFT;}
     if(text== "Right"){Code = RIGHT;}
+    if(text== "Fire"){Code = TAB;}
   }
   void display(){
     //setCode();
