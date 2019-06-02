@@ -18,4 +18,7 @@ class Rect implements Displayable{
   noFill();
   rect(width-340, 150, rectWidth, 25);
   }
+  boolean isTouching(Living other){
+     return false; 
+  }
 }

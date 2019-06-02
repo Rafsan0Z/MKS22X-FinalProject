@@ -1,5 +1,6 @@
 interface Displayable{
   void display();
+  boolean isTouching(Living other);
 }
 
 interface Moveable{
