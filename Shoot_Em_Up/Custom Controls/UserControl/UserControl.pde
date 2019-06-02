@@ -90,5 +90,6 @@ String CodeKey(int Key){
   if(Key == UP){return "Up";}
   else if(Key == LEFT){return "Left";}
   else if(Key == RIGHT){return "Right";}
-  else{return "Down";}
+  else if(Key == DOWN){return "Down";}
+  return "";
 }

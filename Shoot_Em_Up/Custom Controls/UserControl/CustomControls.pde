@@ -36,6 +36,7 @@ class Controls{
   }
   void mutate(){
     if(keyPressed && (Default && keyCode == Code)){on = true;}
+    else if(keyPressed && key == CODED && text.equals(CodeKey(keyCode))){on = true;}
     else if(keyPressed && text.equals(key + "")){on = true;}
     else{on = false;}
     //println(key,text);
