@@ -1,12 +1,12 @@
 import java.util.*;
 
-boolean clicked;
-int mode,time,t0,prev,etime,phase,partnum,fci,minimode;
+boolean clicked,run,answer = false,mu,md,ml,mr,f,s,gr;
+int mode,time,t0,prev,etime,phase,partnum,fci,minimode,initialT,waitTime,score,countdown;
 Player human;
 Rect Sidebar;
-int initialT,waitTime;
-int score,countdown;
-boolean run;
+char Button;
+boolean[][] partition;
+Controls Up,Down,Left,Right;
 ArrayList<Enemy> enemies = new ArrayList<Enemy>();
 ArrayList<Projectile> enemyproj = new ArrayList<Projectile>();
 ArrayList<Projectile> playerproj = new ArrayList<Projectile>();
@@ -14,11 +14,6 @@ ArrayList<Powerups> extra = new ArrayList<Powerups>();
 ArrayList<Controls> Balls = new ArrayList<Controls>();
 ArrayList<Question> Qs = new ArrayList<Question>();
 String[] commands = new String[5];
-Controls Up,Down,Left,Right;
-char Button;
-boolean answer = false,keyReleased = false;
-boolean mu,md,ml,mr,f,s,gr;
-boolean[][] partition;
 void setup(){
   size(1500,1000);
   Balls.add(new Controls(750,100,commands[0] = "Up"));
@@ -64,9 +59,11 @@ void sideBars(){
 void draw(){ //<>//
   background(255);
   if(mode == -3){
-    textSize(90);
+    rect(550,200,90,90);
     fill(random(105),random(135),random(75));
-    text("Space Patrol",250,400);
+    textFont(createFont("Arial Bold", 90));
+    text("SPACE PATROL",250,400);
+    textFont(createFont("Lucida Sans",32));
     textSize(32);
     text("Press P to Play!",400,500);
     text("Press O for Options!",360,600);
@@ -133,7 +130,7 @@ void draw(){ //<>//
     counter++;
   } //<>//
   sideBars();
-    Letter(10);
+    Letter(10+"");
     text("PRESS P TO PLAY",370,550);
     if(keyPressed && key == 'p'){
       t0=millis();
@@ -309,10 +306,10 @@ void mouseClicked(){
   else{clicked = false;}
 }
 
-void Letter(int l){
+void Letter(String l){
   fill(255);
   textFont(createFont("AgencyFB-Reg-48",32));
-  text(""+l,500,500);
+  text(l,500,500);
 }
 
 String CodeKey(int Key){
