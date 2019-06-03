@@ -7,3 +7,14 @@ void draw(){
     rect(mouseX,mouseY,10,10);
   }
 }
+
+class explosion{
+  ArrayList<particle> group;
+  PVector center;
+  explosion(){
+    group = new ArrayList<particle>();
+  }
+  void add(float x, float y){
+    group.add(new particle(new PVector(x,y)));
+  }
+}
