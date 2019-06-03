@@ -17,4 +17,9 @@ class explosion{
   void add(float x, float y){
     group.add(new particle(new PVector(x,y)));
   }
+  void move(){
+    for(particle p: group){
+      //move particle
+    }
+  }
 }
