@@ -98,4 +98,19 @@ Kenson: Research into methods for spatial partitioning
 
 Rafsan: Made use of controls from the demo, but adding other controls such as fire, slow speed, laser.
 
-## May 30th Thursdsay
+## May 30th Thursdsay -------------
+
+
+## May 31st Friday ---------------
+
+
+## June 1st Saturday -------------
+
+
+## June 2nd Sunday --------------
+
+
+## June 3rd Monday --------------
+
+
+## June 4th Wednesday -----------
