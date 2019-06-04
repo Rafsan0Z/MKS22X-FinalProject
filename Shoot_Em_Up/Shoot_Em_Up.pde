@@ -15,7 +15,7 @@ ArrayList<Controls> Balls = new ArrayList<Controls>();
 ArrayList<Question> Qs = new ArrayList<Question>();
 String[] commands = new String[5];
 void setup(){
-  size(1500,1000);
+  size(1500,800);
   Balls.add(new Controls(750,100,commands[0] = "Up"));
   Balls.add(new Controls(750,250,commands[1] = "Down"));
   Balls.add(new Controls(650,175,commands[2] = "Left"));
@@ -68,7 +68,7 @@ void draw(){ //<>//
     text("Press P to Play!",400,500);
     text("Press O for Options!",360,600);
     if(keyPressed){
-      if(key == 'P'){mode = -1;}
+      if(key == 'P'){mode = 0;}
       else if(key == 'O'){mode = -2;}
       else{text("Please Enter valid Key!",350,700);}
     }
@@ -294,9 +294,9 @@ public void keyReleased(){
      if(keyCode==SHIFT){
        s=false; 
      }
+  }
   if(key=='z'||key=='Z'){
    f=false; 
-    }
   }
 }
 
