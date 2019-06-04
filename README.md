@@ -8,6 +8,8 @@ UML Link: https://www.draw.io/#G1RLAxiiLrnN3N4yy_u8gt_xPWXEU1h1OJ
 
 About:
 
+This is a simple shoot-em-up game with 2 levels, each of which contains a boss. The game allows you to customize the controls. The controls include up,down,left,right movement, firing bullets,bombs and firing lasers when aquired. 
+
 # Development Log:
 
 ## May 17th Friday-----------
@@ -112,5 +114,6 @@ Rafsan: Made use of controls from the demo, but adding other controls such as fi
 
 ## June 3rd Monday --------------
 
+Rafsan: Added explosion system for opening screen animation and for laser firing. A target pointer system is also created to accompany that. Improved the UML diagram.
 
-## June 4th Wednesday -----------
+## June 4th Tuesday -----------
