@@ -143,14 +143,18 @@ void draw(){ //<>//
     }
   }
   else if(mode == 0){
-   
+    
     /*if(frameCount-fci==60){
       enemies.add(new testCircle(600,160,3,2,100,5,new int[] {0,10,0}));
     }
     */
     if(enemies.size()==0&&phase==0){
-     enemies.add(new testCircle(200,160,3,2,100,5,new int[] {1,10,5}));
+     for(int i=0;i<5;i++){
+       Enemy e = new testCircle(100+i*75,100,3,1.5,100,5,new int[] {1,0,0},i*12);
+       enemies.add(e);
+     }
      phase++;
+      // enemies.add(new testCircle(200,160,3,2,100,5,new int[] {1,10,5}));
     }
      for(int i=0;i<partnum;i++){
          for(int j=0;j<partnum;j++){
@@ -192,7 +196,7 @@ void draw(){ //<>//
        if(human.isTouching(e)){
       mode=1;
         }
-       if(e.x+e.radius < 0 || e.x-e.radius > width-Sidebar.x || e.y+e.radius < 0 || e.y-e.radius > height){
+       if(e.x+e.radius < 0 || e.x-e.radius > Sidebar.x || e.y+e.radius < 0 || e.y-e.radius > height){
          iter.remove();
        }
        if(e.health<=0){
