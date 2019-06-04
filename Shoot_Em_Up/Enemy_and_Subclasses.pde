@@ -10,10 +10,27 @@ abstract class Enemy extends Living{
 }
 class testCircle extends Enemy{
   int[] attbehavior;
+  int delay,period;
   testCircle(float X, float Y, float life, float speed, float maxLife, float maxSpeed, int[] ab){
     super(X,Y,life,speed,maxLife,maxSpeed);
     radius=15;
     attbehavior=ab;
+    delay = 0;
+    period = 60;
+  }
+  testCircle(float X, float Y, float life, float speed, float maxLife, float maxSpeed, int[] ab, int _delay){
+    super(X,Y,life,speed,maxLife,maxSpeed);
+    radius=15;
+    attbehavior=ab;
+    delay = _delay;
+    period = 60;
+  }
+  testCircle(float X, float Y, float life, float speed, float maxLife, float maxSpeed, int[] ab, int _delay, int _p){
+    super(X,Y,life,speed,maxLife,maxSpeed);
+    radius=15;
+    attbehavior=ab;
+    delay = _delay;
+    period = _p;
   }
   void move(){
     y+=spd;
@@ -23,22 +40,28 @@ class testCircle extends Enemy{
     ellipse(x,y,radius*2,radius*2);
   }
   void attack(){
-    if((frameCount-fci)%30==0){
+    if((frameCount-fci)%period==delay){
       if(attbehavior[0]>0){
-        shootDown();
+        shootDown(attbehavior[0]);
       }
-      if(attbehavior[1]>0){
+      if(attbehavior.length>1&&attbehavior[1]>0){
         createRings(attbehavior[1]);
       }
-      if(attbehavior[2]>0){
+      if(attbehavior.length>2&&attbehavior[2]>0){
         aimShot(attbehavior[2],human);
+      }
+      if(attbehavior.length>5&&attbehavior[5]>0&&(attbehavior[3]>0||attbehavior[4]>0)){
+       shootDown2(attbehavior[3],attbehavior[4],attbehavior[5]); 
       }
     }
   }
-  void shootDown(){
-    enemyproj.add(new Bullet(this.x,this.y,1,0,5+spd,10));
-    enemyproj.add(new Bullet(this.x,this.y,1,5,5+spd,10));
-    enemyproj.add(new Bullet(this.x,this.y,1,-5,5+spd,10));
+  void shootDown(int dy){
+     enemyproj.add(new Bullet(this.x,this.y,1,0,dy+spd,10));
+  }
+  void shootDown2(int dx, int dy, int size){
+    
+    enemyproj.add(new Bullet(this.x,this.y,1,dx,dy+spd,size));
+    enemyproj.add(new Bullet(this.x,this.y,1,-dx,dy+spd,size));
   }
   void createRings(int num){
     for(int i=0;i<num;i++){

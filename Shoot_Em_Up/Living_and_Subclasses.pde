@@ -34,7 +34,7 @@ abstract class Living implements Displayable,Moveable,Damageable{
 class Player extends Living{
    Player(float X, float Y, float life, float speed, float maxLife, float maxSpeed){
      super(X,Y,life,speed,maxLife,maxSpeed);
-     radius=15;
+     radius=10;
   }
   //new constuctor includes spd,maxHealth,maxSpd
   void move(){
@@ -74,7 +74,7 @@ class Player extends Living{
     
     if(s){
     fill(120,120,120,50);
-    ellipse(x,y,radius*4,radius*4);
+    ellipse(x,y,radius*3,radius*3);
     fill(255,0,0);
     ellipse(x,y,radius*2,radius*2);
     }
