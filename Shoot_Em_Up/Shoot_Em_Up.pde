@@ -28,7 +28,7 @@ void setup(){
   Qs.add(new Question("Enter Key for Fire",550,600));
   minimode = -1;
   human = new Player(500,960,100,5,100,5);
-  extra.add(new Health(500,100,10));
+  //extra.add(new Health(500,100,10));
   Sidebar = new Rect(width-300,110,250,20);
   mode = -3;
   score = 0;
@@ -37,10 +37,10 @@ void setup(){
   waitTime = 5000;
   human = new Player(500,960,100,5,100,5);
   /*for(int i=0;i<5;i++){
-    Enemy e = new testCircle(100,50+i*100,3,1.5,100,5,new int[] {1,0,0});
-    Enemy e2 = new testCircle(700,50+i*100,3,1.5,100,5,new int[] {1,0,0});
+    Enemy e = new testCircle(100,50+i*100,3,1.5,100,5,new int[] {1,0,0},i*12);
+    //Enemy e2 = new testCircle(200,50+i*100,3,1.5,100,5,new int[] {1,0,0},i*3);
     enemies.add(e);
-    enemies.add(e2);
+    //enemies.add(e2);
   }
   */
   partnum=10;
@@ -144,9 +144,10 @@ void draw(){ //<>//
   }
   else if(mode == 0){
    
-    if(frameCount-fci==60){
+    /*if(frameCount-fci==60){
       enemies.add(new testCircle(600,160,3,2,100,5,new int[] {0,10,0}));
     }
+    */
     if(enemies.size()==0&&phase==0){
      enemies.add(new testCircle(200,160,3,2,100,5,new int[] {1,10,5}));
      phase++;

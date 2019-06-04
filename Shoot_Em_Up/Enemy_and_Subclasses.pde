@@ -10,10 +10,17 @@ abstract class Enemy extends Living{
 }
 class testCircle extends Enemy{
   int[] attbehavior;
+  int delay;
   testCircle(float X, float Y, float life, float speed, float maxLife, float maxSpeed, int[] ab){
     super(X,Y,life,speed,maxLife,maxSpeed);
     radius=15;
     attbehavior=ab;
+  }
+  testCircle(float X, float Y, float life, float speed, float maxLife, float maxSpeed, int[] ab, int _delay){
+    super(X,Y,life,speed,maxLife,maxSpeed);
+    radius=15;
+    attbehavior=ab;
+    delay = _delay;
   }
   void move(){
     y+=spd;
@@ -23,7 +30,7 @@ class testCircle extends Enemy{
     ellipse(x,y,radius*2,radius*2);
   }
   void attack(){
-    if((frameCount-fci)%60==0){
+    if((frameCount-fci)%60==delay){
       if(attbehavior[0]>0){
         shootDown();
       }
