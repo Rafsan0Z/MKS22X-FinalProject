@@ -17,6 +17,12 @@ ArrayList<Question> Qs = new ArrayList<Question>();
 String[] commands = new String[5];
 void setup(){
   size(1500,800);
+  enemies.clear();
+  enemyproj.clear();
+  playerproj.clear();
+  extra.clear();
+  Balls.clear();
+  Qs.clear();
   Balls.add(new Controls(750,100,commands[0] = "Up"));
   Balls.add(new Controls(750,250,commands[1] = "Down"));
   Balls.add(new Controls(650,175,commands[2] = "Left"));
@@ -36,7 +42,6 @@ void setup(){
   countdown = 0;
   initialT = 0;
   waitTime = 5000;
-  human = new Player(500,960,100,5,100,5);
   for(int i=0;i<5;i++){
    Enemy e = new testCircle(100,50+i*100,3,1.5,100,5,new int[] {1,0,0});
    Enemy e2 = new testCircle(700,50+i*100,3,1.5,100,5,new int[] {1,0,0});
@@ -150,7 +155,7 @@ void draw(){ //<>//
      enemies.add(new testCircle(200,160,3,2,100,5,new int[] {1,10,5}));
      phase++;
     }
-     for(int i=0;i<partnum;i++){
+     /*for(int i=0;i<partnum;i++){
          for(int j=0;j<partnum;j++){
             if(human.isTouching(width/partnum*i,height/partnum*j,width/partnum,height/partnum)){
               partition[i][j]=true;
@@ -160,6 +165,7 @@ void draw(){ //<>//
             }
          }
       }
+      
     if(gr){
       for(int i=0;i<partnum;i++){
         line(width/partnum*i,0,width/partnum*i,height);
@@ -176,7 +182,7 @@ void draw(){ //<>//
          }
       }
     }
-   
+   */
     //background(255);
     time=millis()-t0;
     etime=millis()-prev;
@@ -254,6 +260,7 @@ void draw(){ //<>//
     text("GAME OVER!",500,200);
     text("PRESS E TO EXIT", 500, 300);
     if(keyPressed && key == 'e'){exit();}
+    if(keyPressed && key == 'r'){setup();}
   }
 }
 
