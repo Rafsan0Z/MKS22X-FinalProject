@@ -4,6 +4,7 @@ boolean clicked,run,answer = false,mu,md,ml,mr,f,s,gr;
 int mode,time,t0,prev,etime,phase,partnum,fci,minimode,initialT,waitTime,score,countdown;
 Player human;
 Rect Sidebar;
+explosion Ex = new explosion(new PVector(width/2,8));
 char Button;
 boolean[][] partition;
 Controls Up,Down,Left,Right;
@@ -59,6 +60,8 @@ void sideBars(){
 void draw(){ //<>//
   background(255);
   if(mode == -3){
+    Ex.Add(mouseX,mouseY);
+    Ex.move();
     rect(550,200,90,90);
     fill(random(105),random(135),random(75));
     textFont(createFont("Arial Bold", 90));
@@ -149,7 +152,7 @@ void draw(){ //<>//
     }
      for(int i=0;i<partnum;i++){
          for(int j=0;j<partnum;j++){
-            if(human.isTouchingRect(width/partnum*i,height/partnum*j,width/partnum,height/partnum)){
+            if(human.isTouching(width/partnum*i,height/partnum*j,width/partnum,height/partnum)){
               partition[i][j]=true;
             }
             else{

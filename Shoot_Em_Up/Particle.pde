@@ -3,7 +3,7 @@ class particle{
   float life;
   particle(PVector p){
     A = new PVector(0,.01);
-    V = new PVector(random(-2,2),random(-2,0));
+    V = new PVector(random(-2,2),random(2,0));
     P = p.copy();
     life = 50;
   }
