@@ -102,15 +102,19 @@ Rafsan: Made use of controls from the demo, but adding other controls such as fi
 
 ## May 30th Thursdsay -------------
 
+Rafsan: 
 
 ## May 31st Friday ---------------
 
+Rafsan: I completed a basic user controls system. I am yet to make the system customizable and incorperate it with the main code. Removed arrows from Custom Controls and replaced it with words (LEFT for left key instead of a left arrow shape) 
 
 ## June 1st Saturday -------------
 
+Rafsan: Found some problems with user controls, researched on how to fix those problems.
 
 ## June 2nd Sunday --------------
 
+Rafsan: I fixed problems with customizable user controls. I created an opening page with the game tittle, options and play. I transfered the code from Custom Controls to main file. Cleared any unnecessary code in the setup and draw section
 
 ## June 3rd Monday --------------
 
