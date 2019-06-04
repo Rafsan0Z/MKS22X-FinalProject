@@ -7,7 +7,7 @@ Player human;
 Rect Sidebar;
 char Button;
 boolean[][] partition;
-int[] level1phaseTimes = new int[] {9,5,5};
+int[] level1phaseTimes = new int[] {9,6,4};
 Controls Up,Down,Left,Right;
 ArrayList<Enemy> enemies = new ArrayList<Enemy>();
 ArrayList<Projectile> enemyproj = new ArrayList<Projectile>();
@@ -60,7 +60,7 @@ void sideBars(){
   text(score,width-200,250);
 }
 
- //<>// //<>//
+ //<>//
 void draw(){ //<>//
   background(255);
   if(mode == -3){
@@ -85,7 +85,7 @@ void draw(){ //<>//
     text("Default Controls. The Press D",550,200);
     text("Custom Controls. Then Press C",550,300);
     if(keyPressed && key == 'C'){minimode++;}
-    else if(keyPressed && key == 'D'){minimode = commands.length;} //<>// //<>//
+    else if(keyPressed && key == 'D'){minimode = commands.length;} //<>//
     } //<>//
     else if(minimode < commands.length && minimode >= 0){
       text("Click on mouse to confirm selection!",750,100);
@@ -132,7 +132,7 @@ void draw(){ //<>//
     b.mutate();
     b.display();
    // println(b.text,key);
-    counter++; //<>// //<>//
+    counter++; //<>//
   } //<>//
   sideBars();
     Letter(10+"");
@@ -158,26 +158,20 @@ void draw(){ //<>//
     }
     if(phase==0){
      for(int i=0;i<6;i++){
-       enemies.add(new testCircle(100+i*100,50,3,1,100,5,new int[] {2},i*10,60));
+       enemies.add(new testCircle(100+i*100,50,3,1,100,5,new int[] {2},i*20,120));
      }
-
+     phase++;
     }
     if(phase==2){
       for(int i=0;i<3;i++){
-        enemies.add(new testCircle((i+1)*700.0/4,50,3,1.5,100,5,new int[] {1,0,0,1,1,10}));
+        enemies.add(new testCircle((i+1)*700.0/4,50,3,1.5,100,5,new int[] {1}));
       }
+      phase++;
     }
     if(phase==4){
-      enemies.add(new testCircle(200,50,8,1,100,5,new int[] {0,13},0,40));
-      enemies.add(new testCircle(500,50,8,1,100,5,new int[] {0,13},20,40));
-    }
-    if(phase==6){
-      for(int i=0;i<6;i++){
-        enemies.add(new testCircle((100+i*100),30,3,1,100,5,new int[] {0,0,0,1,2,10},0,50));
-      }
-    }
-    if(phase%2==0){
-      phase++;
+        enemies.add(new testCircle(200,50,10,1,100,5,new int[] {0,13},0,40));
+        enemies.add(new testCircle(500,50,10,1,100,5,new int[] {0,13},20,40));
+        phase++;
     }
      for(int i=0;i<partnum;i++){
          for(int j=0;j<partnum;j++){

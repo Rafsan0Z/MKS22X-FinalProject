@@ -42,7 +42,7 @@ class testCircle extends Enemy{
   void attack(){
     if((frameCount-fci)%period==delay){
       if(attbehavior[0]>0){
-        shootDown(attbehavior[0],attbehavior[0],10);
+        shootDown(attbehavior[0]);
       }
       if(attbehavior.length>1&&attbehavior[1]>0){
         createRings(attbehavior[1]);
@@ -51,12 +51,15 @@ class testCircle extends Enemy{
         aimShot(attbehavior[2],human);
       }
       if(attbehavior.length>5&&attbehavior[5]>0&&(attbehavior[3]>0||attbehavior[4]>0)){
-       shootDown(attbehavior[3],attbehavior[4],attbehavior[5]); 
+       shootDown2(attbehavior[3],attbehavior[4],attbehavior[5]); 
       }
     }
   }
-  void shootDown(int dx, int dy, int size){
-    enemyproj.add(new Bullet(this.x,this.y,1,0,dy+spd,size));
+  void shootDown(int dy){
+     enemyproj.add(new Bullet(this.x,this.y,1,0,dy+spd,10));
+  }
+  void shootDown2(int dx, int dy, int size){
+    
     enemyproj.add(new Bullet(this.x,this.y,1,dx,dy+spd,size));
     enemyproj.add(new Bullet(this.x,this.y,1,-dx,dy+spd,size));
   }
