@@ -1,13 +1,12 @@
 import java.util.*;
 
 boolean clicked,run,answer = false,mu,md,ml,mr,f,s,gr;
-int mode,time,t0,prev,etime,partnum,fci,minimode,initialT,waitTime,score,countdown,phasefc;
-int phase=1;
+int mode,time,t0,prev,etime,phase,partnum,fci,minimode,initialT,waitTime,score,countdown,phasefc;
 Player human;
 Rect Sidebar;
 char Button;
 boolean[][] partition;
-int[] level1phaseTimes = new int[] {9,6,4};
+int[] level1phaseTimes = new int[] {9,6};
 Controls Up,Down,Left,Right;
 ArrayList<Enemy> enemies = new ArrayList<Enemy>();
 ArrayList<Projectile> enemyproj = new ArrayList<Projectile>();
@@ -60,7 +59,7 @@ void sideBars(){
   text(score,width-200,250);
 }
 
- //<>//
+
 void draw(){ //<>//
   background(255);
   if(mode == -3){
@@ -85,7 +84,7 @@ void draw(){ //<>//
     text("Default Controls. The Press D",550,200);
     text("Custom Controls. Then Press C",550,300);
     if(keyPressed && key == 'C'){minimode++;}
-    else if(keyPressed && key == 'D'){minimode = commands.length;} //<>//
+    else if(keyPressed && key == 'D'){minimode = commands.length;}
     } //<>//
     else if(minimode < commands.length && minimode >= 0){
       text("Click on mouse to confirm selection!",750,100);
@@ -132,7 +131,7 @@ void draw(){ //<>//
     b.mutate();
     b.display();
    // println(b.text,key);
-    counter++; //<>//
+    counter++;
   } //<>//
   sideBars();
     Letter(10+"");
@@ -169,8 +168,7 @@ void draw(){ //<>//
       phase++;
     }
     if(phase==4){
-        enemies.add(new testCircle(200,50,10,1,100,5,new int[] {0,13},0,40));
-        enemies.add(new testCircle(500,50,10,1,100,5,new int[] {0,13},20,40));
+        enemies.add(new testCircle(200,50,10,0.5,100,5,new int[] {0,10}));
         phase++;
     }
      for(int i=0;i<partnum;i++){
