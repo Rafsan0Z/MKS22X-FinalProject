@@ -2,12 +2,12 @@ import java.util.*;
 
 boolean clicked,run,answer = false,mu,md,ml,mr,f,s,gr;
 int mode,time,t0,prev,etime,partnum,fci,minimode,initialT,waitTime,score,countdown,phasefc;
-int phase=1;
+int phase=5;
 Player human;
 Rect Sidebar;
 char Button;
 boolean[][] partition;
-int[] level1phaseTimes = new int[] {9,5,5};
+int[] level1phaseTimes = new int[] {9,5,6,6,3};
 Controls Up,Down,Left,Right;
 ArrayList<Enemy> enemies = new ArrayList<Enemy>();
 ArrayList<Projectile> enemyproj = new ArrayList<Projectile>();
@@ -173,8 +173,14 @@ void draw(){ //<>//
     }
     if(phase==6){
       for(int i=0;i<6;i++){
-        enemies.add(new testCircle((100+i*100),30,3,1,100,5,new int[] {0,0,0,1,2,10},0,50));
+        enemies.add(new testCircle((100+i*100),30,3,1,100,5,new int[] {0,0,0,1,3,9},0,70));
       }
+    }
+    if(phase==8){
+      enemies.add(new testCircle(300,30,2,3,100,5,new int[] {0,0,5},0,50));
+      enemies.add(new testCircle(400,30,2,3,100,5,new int[] {0,0,5},0,50));
+      enemies.add(new testCircle(200,80,2,2.5,100,5,new int[] {0,0,5},0,50));
+      enemies.add(new testCircle(500,80,2,2.5,100,5,new int[] {0,0,5},0,50));
     }
     if(phase%2==0){
       phase++;
