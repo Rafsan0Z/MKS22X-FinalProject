@@ -161,7 +161,7 @@ void draw(){ //<>//
     }
     if(phase==0){
      for(int i=0;i<6;i++){
-       enemies.add(new rotate(100+i*100,50,3,1,100,5,new int[] {2},i*10,60));
+       enemies.add(new zigzag(100+i*100,50,3,1,100,5,new int[] {2},i*10,60));
      }
 
     }

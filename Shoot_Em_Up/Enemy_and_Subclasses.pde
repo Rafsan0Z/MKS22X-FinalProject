@@ -99,3 +99,23 @@ class rotate extends testCircle{
     popMatrix();
   }
 }
+
+class zigzag extends testCircle{
+   float horiz = 5,factor = -1;
+   zigzag(float X, float Y, float life, float speed, float maxLife, float maxSpeed, int[] ab){
+    super(X,Y,life,speed,maxLife,maxSpeed,ab);
+  }
+  zigzag(float X, float Y, float life, float speed, float maxLife, float maxSpeed, int[] ab, int _delay){
+    super(X,Y,life,speed,maxLife,maxSpeed,ab,_delay);
+  }
+  zigzag(float X, float Y, float life, float speed, float maxLife, float maxSpeed, int[] ab, int _delay, int _p){
+    super(X,Y,life,speed,maxLife,maxSpeed,ab,_delay,_p);
+  }
+  void move(){
+      x -= factor;
+      horiz += factor;
+      if(horiz == 0){factor *= -1;}
+      if(horiz > 50){factor *= -1;}
+      super.move();
+  }
+}
