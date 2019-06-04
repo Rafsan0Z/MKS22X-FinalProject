@@ -150,19 +150,20 @@ void draw(){ //<>//
     */
     if(phase==0){
      for(int i=0;i<6;i++){
-       Enemy e = new testCircle(100+i*100,50,3,1.5,100,5,new int[] {1,0,0},i*10);
-       enemies.add(e);
+       enemies.add(new testCircle(100+i*100,50,3,1,100,5,new int[] {2},i*20,120));
      }
      phase++;
       // enemies.add(new testCircle(200,160,3,2,100,5,new int[] {1,10,5}));
     }
     if(phase==1){
-      if(frameCount-fci==60*8||enemies.size()==0){
+      if(frameCount-fci==60*9||enemies.size()==0){
         phase++;  
       }
     }
     if(phase==2){
-      enemies.add(new testCircle(600,160,3,2,100,5,new int[] {0,10,0}));
+      for(int i=0;i<3;i++){
+        enemies.add(new testCircle((i+1)*700.0/4,50,3,1.5,100,5,new int[] {1}));
+      }
       phase++;
     }
      for(int i=0;i<partnum;i++){

@@ -23,7 +23,7 @@ class testCircle extends Enemy{
     radius=15;
     attbehavior=ab;
     delay = _delay;
-    period = 60
+    period = 60;
   }
   testCircle(float X, float Y, float life, float speed, float maxLife, float maxSpeed, int[] ab, int _delay, int _p){
     super(X,Y,life,speed,maxLife,maxSpeed);
@@ -40,15 +40,18 @@ class testCircle extends Enemy{
     ellipse(x,y,radius*2,radius*2);
   }
   void attack(){
-    if((frameCount-fci)%60==delay){
+    if((frameCount-fci)%period==delay){
       if(attbehavior[0]>0){
-        shootDown(2,2,10);
+        shootDown(attbehavior[0],attbehavior[0],10);
       }
-      if(attbehavior[1]>0){
+      if(attbehavior.length>1&&attbehavior[1]>0){
         createRings(attbehavior[1]);
       }
-      if(attbehavior[2]>0){
+      if(attbehavior.length>2&&attbehavior[2]>0){
         aimShot(attbehavior[2],human);
+      }
+      if(attbehavior.length>5&&attbehavior[5]>0&&(attbehavior[3]>0||attbehavior[4]>0)){
+       shootDown(attbehavior[3],attbehavior[4],attbehavior[5]); 
       }
     }
   }
