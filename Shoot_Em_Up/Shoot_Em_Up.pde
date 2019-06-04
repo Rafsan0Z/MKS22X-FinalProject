@@ -2,7 +2,7 @@ import java.util.*;
 
 boolean clicked,run,answer = false,mu,md,ml,mr,f,s,gr;
 int mode,time,t0,prev,etime,partnum,fci,minimode,initialT,waitTime,score,countdown,phasefc;
-int phase=0;
+int phase=5;
 Player human;
 Rect Sidebar;
 explosion Ex = new explosion(new PVector(width/2,8));
@@ -161,11 +161,25 @@ void draw(){ //<>//
     }
     if(phase==0){
      for(int i=0;i<6;i++){
-       enemies.add(new zigzag(100+i*100,50,3,1,100,5,new int[] {2},i*10,60));
+       enemies.add(new rotate(100+i*100,50,3,1,100,5,new int[] {2},i*10,60));
      }
 
     }
-    
+    if(phase==2){
+      for(int i=0;i<3;i++){
+        enemies.add(new testCircle((i+1)*700.0/4,50,3,1.5,100,5,new int[] {1,0,0,1,1,10}));
+      }
+    }
+    if(phase == 4){
+      for(int i=0;i<6;i++){
+       enemies.add(new zigzag(100+i*100,50,3,1,100,5,new int[] {1,0,0,1,1,10},i*10,60));
+     }
+    }
+    if(phase == 6){
+      for(int i=0;i<6;i++){
+       enemies.add(new zigzag(100+i*100,50,3,1,100,5,new int[] {1,0,0,1,1,10}));
+     }
+    }
     if(phase%2==0){
       phase++;
     }
