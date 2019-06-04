@@ -259,6 +259,7 @@ void draw(){ //<>//
     //background(255);
     text("GAME OVER!",500,200);
     text("PRESS E TO EXIT", 500, 300);
+    text("PRESS R TO RESET", 500, 400);
     if(keyPressed && key == 'e'){exit();}
     if(keyPressed && key == 'r'){setup();}
   }
