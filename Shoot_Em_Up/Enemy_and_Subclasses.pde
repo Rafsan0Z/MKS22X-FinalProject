@@ -77,3 +77,25 @@ class testCircle extends Enemy{
     health-=d;
   }
 }
+
+class rotate extends testCircle{
+  float counter = 0;
+  rotate(float X, float Y, float life, float speed, float maxLife, float maxSpeed, int[] ab){
+    super(X,Y,life,speed,maxLife,maxSpeed,ab);
+  }
+  rotate(float X, float Y, float life, float speed, float maxLife, float maxSpeed, int[] ab, int _delay){
+    super(X,Y,life,speed,maxLife,maxSpeed,ab,_delay);
+  }
+  rotate(float X, float Y, float life, float speed, float maxLife, float maxSpeed, int[] ab, int _delay, int _p){
+    super(X,Y,life,speed,maxLife,maxSpeed,ab,_delay,_p);
+  }
+  void display(){
+    counter++;
+    fill(155);
+    pushMatrix();
+    translate(x,y);
+    rotate(counter*TWO_PI/360);
+    rect(0,0,20,20);
+    popMatrix();
+  }
+}

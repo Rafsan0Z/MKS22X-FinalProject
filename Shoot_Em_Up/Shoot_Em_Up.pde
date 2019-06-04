@@ -2,7 +2,7 @@ import java.util.*;
 
 boolean clicked,run,answer = false,mu,md,ml,mr,f,s,gr;
 int mode,time,t0,prev,etime,partnum,fci,minimode,initialT,waitTime,score,countdown,phasefc;
-int phase=5;
+int phase=0;
 Player human;
 Rect Sidebar;
 explosion Ex = new explosion(new PVector(width/2,8));
@@ -161,36 +161,17 @@ void draw(){ //<>//
     }
     if(phase==0){
      for(int i=0;i<6;i++){
-       enemies.add(new testCircle(100+i*100,50,3,1,100,5,new int[] {2},i*10,60));
+       enemies.add(new rotate(100+i*100,50,3,1,100,5,new int[] {2},i*10,60));
      }
 
     }
-    if(phase==2){
-      for(int i=0;i<3;i++){
-        enemies.add(new testCircle((i+1)*700.0/4,50,3,1.5,100,5,new int[] {1,0,0,1,1,10}));
-      }
-    }
-    if(phase==4){
-      enemies.add(new testCircle(200,50,8,1,100,5,new int[] {0,13},0,40));
-      enemies.add(new testCircle(500,50,8,1,100,5,new int[] {0,13},20,40));
-    }
-    if(phase==6){
-      for(int i=0;i<6;i++){
-        enemies.add(new testCircle((100+i*100),30,3,1,100,5,new int[] {0,0,0,1,3,9},0,70));
-      }
-    }
-    if(phase==8){
-      enemies.add(new testCircle(300,30,2,3,100,5,new int[] {0,0,5},0,50));
-      enemies.add(new testCircle(400,30,2,3,100,5,new int[] {0,0,5},0,50));
-      enemies.add(new testCircle(200,80,2,2.5,100,5,new int[] {0,0,5},0,50));
-      enemies.add(new testCircle(500,80,2,2.5,100,5,new int[] {0,0,5},0,50));
-    }
+    
     if(phase%2==0){
       phase++;
     }
      for(int i=0;i<partnum;i++){
          for(int j=0;j<partnum;j++){
-            if(human.isTouching(width/partnum*i,height/partnum*j,width/partnum,height/partnum)){
+            if(human.isTouchingRect(width/partnum*i,height/partnum*j,width/partnum,height/partnum)){
               partition[i][j]=true;
             }
             else{
