@@ -2,7 +2,7 @@ import java.util.*;
 
 boolean clicked,run,answer = false,mu,md,ml,mr,f,s,gr;
 int mode,time,t0,prev,etime,partnum,fci,minimode,initialT,waitTime,score,countdown,phasefc;
-int phase=5;
+int phase=9;
 Player human;
 Rect Sidebar;
 explosion Ex = new explosion(new PVector(width/2,8));
@@ -179,6 +179,44 @@ void draw(){ //<>//
       for(int i=0;i<6;i++){
        enemies.add(new zigzag(100+i*100,50,3,1,100,5,new int[] {1,0,0,1,1,10}));
      }
+    }
+    if(phase == 6){
+      for(int i=0;i<6;i++){
+       enemies.add(new zigzag(100+i*100,50,3,1,100,5,new int[] {1,0,0,1,1,10}));
+     }
+    }
+    if(phase == 8){
+      for(int i=0;i<6;i++){
+       enemies.add(new zigzag(100+i*100,50,3,1,100,5,new int[] {1,0,0,1,1,10}));
+       if(i%2 == 0){enemies.add(new testCircle(120+i*100,70,3,1,100,5,new int[] {1,0,0,1,1,10}));}
+     }
+    }
+    if(phase == 10){
+      for(int i=0;i<8;i++){
+       enemies.add(new testCircle(80+i*80,50,3,1,100,5,new int[] {1,0,0,1,1,10}));
+       if(i%2 == 0){enemies.add(new rotate(120+i*80,70,3,1,100,5,new int[] {1,0,0,1,1,10}));}
+     }
+    }
+    if(phase == 12){
+      for(int i=0;i<8;i++){
+       enemies.add(new rotate(80+i*80,50,3,1,100,5,new int[] {1,0,0,1,1,10}));
+       if(i%2 == 0){enemies.add(new zigzag(120+i*80,70,3,1,100,5,new int[] {1,0,0,1,1,10}));}
+     }
+    }
+    if(phase == 14){
+      for(int i=0;i<8;i++){
+       enemies.add(new zigzag(80+i*80,50,3,1,100,5,new int[] {1,0,0,1,1,10}));
+       if(i%2 == 0){enemies.add(new rotate(120+i*80,70,3,1,100,5,new int[] {1,0,0,1,1,10}));}
+     }
+    }
+    if(phase == 16){
+      for(int i=0;i<8;i++){
+       enemies.add(new rotate(80+i*80,50,3,1,100,5,new int[] {1,0,0,1,1,10}));
+       if(i%2 == 0){enemies.add(new testCircle(120+i*80,70,3,1,100,5,new int[] {1,0,0,1,1,10}));}
+     }
+    }
+    if(phase == 18){
+      
     }
     if(phase%2==0){
       phase++;

@@ -91,7 +91,7 @@ class rotate extends testCircle{
   }
   void display(){
     counter++;
-    fill(155);
+    fill(0);
     pushMatrix();
     translate(x,y);
     rotate(counter*TWO_PI/360);
