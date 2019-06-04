@@ -1,11 +1,12 @@
 import java.util.*;
 
 boolean clicked,run,answer = false,mu,md,ml,mr,f,s,gr;
-int mode,time,t0,prev,etime,phase,partnum,fci,minimode,initialT,waitTime,score,countdown;
+int mode,time,t0,prev,etime,phase,partnum,fci,minimode,initialT,waitTime,score,countdown,phasefc;
 Player human;
 Rect Sidebar;
 char Button;
 boolean[][] partition;
+int[] level1phaseTimes = new int[] {9,1};
 Controls Up,Down,Left,Right;
 ArrayList<Enemy> enemies = new ArrayList<Enemy>();
 ArrayList<Projectile> enemyproj = new ArrayList<Projectile>();
@@ -48,16 +49,16 @@ void setup(){
 }
 
 void sideBars(){
-  
+
   Sidebar.display();
   line(Sidebar.x,0,Sidebar.x,height);
   fill(50);
   textFont(createFont("AgencyFB-Reg-48",16));
   text("HealthBar",width-200,100);
   text("Score", width-200,210);
-  text(score,width-200,250); 
+  text(score,width-200,250);
 }
- 
+
 
 void draw(){ //<>//
   background(255);
@@ -88,7 +89,7 @@ void draw(){ //<>//
     else if(minimode < commands.length && minimode >= 0){
       text("Click on mouse to confirm selection!",750,100);
       Question q = Qs.get((int)minimode);
-      Controls b = Balls.get((int)minimode); 
+      Controls b = Balls.get((int)minimode);
       q.display();
       if(!q.isAnswered()){
         if(keyPressed){
@@ -143,11 +144,16 @@ void draw(){ //<>//
     }
   }
   else if(mode == 0){
-    
+    phasefc++;
     /*if(frameCount-fci==60){
       enemies.add(new testCircle(600,160,3,2,100,5,new int[] {0,10,0}));
     }
     */
+    if(phase%2==1&&phase<level1phaseTimes.length*2){
+       if(phasefc==level1phaseTimes[phase/2]*60||enemies.size()==0){
+         phase++;
+       }
+    }
     if(phase==0){
      for(int i=0;i<6;i++){
        enemies.add(new testCircle(100+i*100,50,3,1,100,5,new int[] {2},i*20,120));
@@ -155,11 +161,11 @@ void draw(){ //<>//
      phase++;
       // enemies.add(new testCircle(200,160,3,2,100,5,new int[] {1,10,5}));
     }
-    if(phase==1){
-      if(frameCount-fci==60*9||enemies.size()==0){
-        phase++;  
+    /*if(phase==1){
+      if(phasefc==60*9||enemies.size()==0){
+        phase++;
       }
-    }
+    }*/
     if(phase==2){
       for(int i=0;i<3;i++){
         enemies.add(new testCircle((i+1)*700.0/4,50,3,1.5,100,5,new int[] {1}));
@@ -172,7 +178,7 @@ void draw(){ //<>//
               partition[i][j]=true;
             }
             else{
-              partition[i][j]=false; 
+              partition[i][j]=false;
             }
          }
       }
@@ -192,7 +198,7 @@ void draw(){ //<>//
          }
       }
     }
-   
+
     //background(255);
     time=millis()-t0;
     etime=millis()-prev;
@@ -210,7 +216,7 @@ void draw(){ //<>//
          iter.remove();
        }
        if(e.health<=0){
-             iter.remove(); 
+             iter.remove();
         }
     }
     for(Iterator<Projectile> iterp = playerproj.iterator(); iterp.hasNext();){
@@ -234,7 +240,7 @@ void draw(){ //<>//
         mode=1;
       }
       if(p.isOffScreen()){
-       iter.remove(); 
+       iter.remove();
       }
     }
     for(Iterator<Projectile> iter = playerproj.iterator();iter.hasNext();){
@@ -242,7 +248,7 @@ void draw(){ //<>//
       p.move();
       p.display();
       if(p.isOffScreen()){
-       iter.remove(); 
+       iter.remove();
       }
     }
     for(Powerups p: extra){
@@ -253,10 +259,10 @@ void draw(){ //<>//
       human.x=Sidebar.x-human.radius;
     }
     if(human.x-human.radius<0){
-      human.x=human.radius; 
+      human.x=human.radius;
     }
     if(human.y+human.radius>height){
-     human.y=height-human.radius; 
+     human.y=height-human.radius;
     }
     if(human.y-human.radius<0){
      human.y=human.radius;
@@ -274,46 +280,46 @@ void draw(){ //<>//
 public void keyPressed(){
   if(key==CODED){
      if(keyCode==UP){
-       mu=true; 
+       mu=true;
      }
      if(keyCode==LEFT){
-       ml=true; 
+       ml=true;
      }
      if(keyCode==RIGHT){
-       mr=true; 
+       mr=true;
      }
      if(keyCode==DOWN){
-       md=true; 
+       md=true;
      }
      if(keyCode==SHIFT){
-       s=true; 
+       s=true;
      }
   }
   if(key=='z'||key=='Z'){
-   f=true; 
+   f=true;
   }
 }
 
 public void keyReleased(){
   if(key==CODED){
      if(keyCode==UP){
-       mu=false; 
+       mu=false;
      }
      if(keyCode==LEFT){
-       ml=false; 
+       ml=false;
      }
      if(keyCode==RIGHT){
-       mr=false; 
+       mr=false;
      }
      if(keyCode==DOWN){
-       md=false; 
+       md=false;
      }
      if(keyCode==SHIFT){
-       s=false; 
+       s=false;
      }
   }
   if(key=='z'||key=='Z'){
-   f=false; 
+   f=false;
   }
 }
 
