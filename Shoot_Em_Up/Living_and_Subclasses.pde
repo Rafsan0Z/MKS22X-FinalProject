@@ -84,7 +84,7 @@ class Player extends Living{
     }
   }
   void attack(){
-    if((mousePressed||f)&&frameCount%5==0){
+    if(f&&frameCount%5==0){
       playerproj.add(new Bullet(x,y,1,0,-10,15)); 
     }
   }
