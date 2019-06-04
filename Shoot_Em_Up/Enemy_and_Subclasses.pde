@@ -23,7 +23,7 @@ class testCircle extends Enemy{
     ellipse(x,y,radius*2,radius*2);
   }
   void attack(){
-    if((frameCount-fci)%30==0){
+    if((frameCount-fci)%60==0){
       if(attbehavior[0]>0){
         shootDown();
       }
@@ -36,9 +36,9 @@ class testCircle extends Enemy{
     }
   }
   void shootDown(){
-    enemyproj.add(new Bullet(this.x,this.y,1,0,5+spd,10));
-    enemyproj.add(new Bullet(this.x,this.y,1,5,5+spd,10));
-    enemyproj.add(new Bullet(this.x,this.y,1,-5,5+spd,10));
+    enemyproj.add(new Bullet(this.x,this.y,1,0,2+spd,10));
+    enemyproj.add(new Bullet(this.x,this.y,1,2,2+spd,10));
+    enemyproj.add(new Bullet(this.x,this.y,1,-2,2+spd,10));
   }
   void createRings(int num){
     for(int i=0;i<num;i++){

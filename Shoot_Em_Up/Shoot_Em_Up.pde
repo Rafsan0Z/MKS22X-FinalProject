@@ -15,7 +15,7 @@ ArrayList<Controls> Balls = new ArrayList<Controls>();
 ArrayList<Question> Qs = new ArrayList<Question>();
 String[] commands = new String[5];
 void setup(){
-  size(1500,800);
+  size(1000,900);
   Balls.add(new Controls(750,100,commands[0] = "Up"));
   Balls.add(new Controls(750,250,commands[1] = "Down"));
   Balls.add(new Controls(650,175,commands[2] = "Left"));
@@ -36,18 +36,21 @@ void setup(){
   initialT = 0;
   waitTime = 5000;
   human = new Player(500,960,100,5,100,5);
-  for(int i=0;i<5;i++){
-   Enemy e = new testCircle(100,50+i*100,3,1.5,100,5,new int[] {1,0,0});
-   Enemy e2 = new testCircle(700,50+i*100,3,1.5,100,5,new int[] {1,0,0});
-   enemies.add(e);
-  enemies.add(e2);
+  /*for(int i=0;i<5;i++){
+    Enemy e = new testCircle(100,50+i*100,3,1.5,100,5,new int[] {1,0,0});
+    Enemy e2 = new testCircle(700,50+i*100,3,1.5,100,5,new int[] {1,0,0});
+    enemies.add(e);
+    enemies.add(e2);
   }
+  */
   partnum=10;
   partition= new boolean[partnum][partnum];
 }
 
 void sideBars(){
+  
   Sidebar.display();
+  line(Sidebar.x,0,Sidebar.x,height);
   fill(50);
   textFont(createFont("AgencyFB-Reg-48",16));
   text("HealthBar",width-200,100);
@@ -140,6 +143,7 @@ void draw(){ //<>//
     }
   }
   else if(mode == 0){
+   
     if(frameCount-fci==60){
       enemies.add(new testCircle(600,160,3,2,100,5,new int[] {0,10,0}));
     }
@@ -177,12 +181,9 @@ void draw(){ //<>//
     //background(255);
     time=millis()-t0;
     etime=millis()-prev;
-    //if(etime>500){
     for(Enemy e:enemies){
         e.attack();
     }
-    //  prev=millis();
-    //}
     for(Iterator<Enemy> iter= enemies.iterator(); iter.hasNext();){
        Enemy e = iter.next();
        e.display();
@@ -190,7 +191,7 @@ void draw(){ //<>//
        if(human.isTouching(e)){
       mode=1;
         }
-       if(e.x+e.radius < 0 || e.x-e.radius > width || e.y+e.radius < 0 || e.y-e.radius > height){
+       if(e.x+e.radius < 0 || e.x-e.radius > width-Sidebar.x || e.y+e.radius < 0 || e.y-e.radius > height){
          iter.remove();
        }
        if(e.health<=0){
@@ -233,8 +234,8 @@ void draw(){ //<>//
       p.move();
       p.display();
     }
-    if(human.x+human.radius > width){
-      human.x=width-human.radius;
+    if(human.x+human.radius > Sidebar.x){
+      human.x=Sidebar.x-human.radius;
     }
     if(human.x-human.radius<0){
       human.x=human.radius; 
@@ -245,6 +246,7 @@ void draw(){ //<>//
     if(human.y-human.radius<0){
      human.y=human.radius;
     }
+    sideBars();
   }
   else if(mode == 1){
     //background(255);

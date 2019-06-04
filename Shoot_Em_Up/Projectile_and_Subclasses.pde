@@ -29,7 +29,7 @@ class Bullet extends Projectile{
     <=this.radius+other.radius;
   }
   boolean isOffScreen(){
-     return x+radius < 0 || x-radius > width || y+radius < 0 || y-radius > height; 
+     return x+radius < 0 || x-radius > Sidebar.x || y+radius < 0 || y-radius > height; 
   }
   boolean isTouchingRect(float rx, float ry, float rw, float rh){
     float checkX = x;
