@@ -10,17 +10,27 @@ abstract class Enemy extends Living{
 }
 class testCircle extends Enemy{
   int[] attbehavior;
-  int delay;
+  int delay,period;
   testCircle(float X, float Y, float life, float speed, float maxLife, float maxSpeed, int[] ab){
     super(X,Y,life,speed,maxLife,maxSpeed);
     radius=15;
     attbehavior=ab;
+    delay = 0;
+    period = 60;
   }
   testCircle(float X, float Y, float life, float speed, float maxLife, float maxSpeed, int[] ab, int _delay){
     super(X,Y,life,speed,maxLife,maxSpeed);
     radius=15;
     attbehavior=ab;
     delay = _delay;
+    period = 60
+  }
+  testCircle(float X, float Y, float life, float speed, float maxLife, float maxSpeed, int[] ab, int _delay, int _p){
+    super(X,Y,life,speed,maxLife,maxSpeed);
+    radius=15;
+    attbehavior=ab;
+    delay = _delay;
+    period = _p;
   }
   void move(){
     y+=spd;
@@ -32,7 +42,7 @@ class testCircle extends Enemy{
   void attack(){
     if((frameCount-fci)%60==delay){
       if(attbehavior[0]>0){
-        shootDown();
+        shootDown(2,2,10);
       }
       if(attbehavior[1]>0){
         createRings(attbehavior[1]);
@@ -42,10 +52,10 @@ class testCircle extends Enemy{
       }
     }
   }
-  void shootDown(){
-    enemyproj.add(new Bullet(this.x,this.y,1,0,2+spd,10));
-    enemyproj.add(new Bullet(this.x,this.y,1,2,2+spd,10));
-    enemyproj.add(new Bullet(this.x,this.y,1,-2,2+spd,10));
+  void shootDown(int dx, int dy, int size){
+    enemyproj.add(new Bullet(this.x,this.y,1,0,dy+spd,size));
+    enemyproj.add(new Bullet(this.x,this.y,1,dx,dy+spd,size));
+    enemyproj.add(new Bullet(this.x,this.y,1,-dx,dy+spd,size));
   }
   void createRings(int num){
     for(int i=0;i<num;i++){

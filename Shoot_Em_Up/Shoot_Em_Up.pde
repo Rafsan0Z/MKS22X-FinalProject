@@ -148,13 +148,22 @@ void draw(){ //<>//
       enemies.add(new testCircle(600,160,3,2,100,5,new int[] {0,10,0}));
     }
     */
-    if(enemies.size()==0&&phase==0){
-     for(int i=0;i<5;i++){
-       Enemy e = new testCircle(100+i*75,100,3,1.5,100,5,new int[] {1,0,0},i*12);
+    if(phase==0){
+     for(int i=0;i<6;i++){
+       Enemy e = new testCircle(100+i*100,50,3,1.5,100,5,new int[] {1,0,0},i*10);
        enemies.add(e);
      }
      phase++;
       // enemies.add(new testCircle(200,160,3,2,100,5,new int[] {1,10,5}));
+    }
+    if(phase==1){
+      if(frameCount-fci==60*8||enemies.size()==0){
+        phase++;  
+      }
+    }
+    if(phase==2){
+      enemies.add(new testCircle(600,160,3,2,100,5,new int[] {0,10,0}));
+      phase++;
     }
      for(int i=0;i<partnum;i++){
          for(int j=0;j<partnum;j++){
