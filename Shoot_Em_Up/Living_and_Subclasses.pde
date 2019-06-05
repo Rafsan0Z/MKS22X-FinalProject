@@ -88,4 +88,7 @@ class Player extends Living{
       playerproj.add(new Bullet(x,y,1,0,-10,15)); 
     }
   }
+  void takeDamage(float d){
+    health-=d;
+  }
 }

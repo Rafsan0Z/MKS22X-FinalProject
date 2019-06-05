@@ -1,5 +1,6 @@
-float health = 1000;
+/*float health = 1000;
 float MAX_HEALTH = health;
+*/
 float rectWidth = 300;
 class Rect implements Displayable{
   float x,y,Long,Tall;
@@ -10,9 +11,9 @@ class Rect implements Displayable{
   }
   void display(){
   //background(255);
-  fill(health*1.5,0,0);
+  fill(human.health*1.5,0,0);
   noStroke();
-  float drawWidth = (health / MAX_HEALTH) * rectWidth;
+  float drawWidth = (human.health / human.maxHealth) * rectWidth;
   rect(width-300, 120, drawWidth, 25);
   stroke(0);
   noFill();
