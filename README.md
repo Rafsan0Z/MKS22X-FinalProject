@@ -8,13 +8,17 @@ UML Link: https://www.draw.io/#G1RLAxiiLrnN3N4yy_u8gt_xPWXEU1h1OJ
 
 About:
 
-This is a simple shoot-em-up game with 2 levels, each of which contains a boss. The game allows you to customize the controls. The controls include up,down,left,right movement, firing bullets,bombs and firing lasers when aquired.
+This is a simple shoot-em-up game with 2 levels. The game allows you to customize the controls. The controls include up,down,left,right movement and firing bullets.
+
+All capitalized keys referred to in this document and in the game require the keyboard key+SHIFT to be pressed at the same time.
 
 When you open the game, you can chose to play the game by pressing P, go to options by pressing O and see the credits by pressing C. When options is chosen, the user is given the chance to view the default controls, and even chose custom controls. When players press P, they will be reminded of the controls before starting the game.
 
-In each level, of which there is two, there are waves of enemies with varying characters such as movement and shooting method. After the end of the wave, the player will face a boss. There will be health dropped by the enemies occasionally and the user will die when the health bar reaches 0. 
+In each level, of which there is two, there are waves of enemies with varying characters such as movement and shooting method.The user will die when the health bar reaches 0.
 
 When the player dies, he/she is given the chance to return to the main menu, or exit the game.
+
+Press S on the home screen to skip to near the end of level 1.
 
 # Development Log:
 
@@ -63,13 +67,13 @@ Kenson: enemies can now shoot at regular time intervals, multiple enemies can sh
 
 ## May 22nd Wednesday ----------
 
-Kenson: 
+Kenson:
 
 offscreen enemies are deleted, enemies and bullets kill player on contact, player projectile kill enemies, and enemies can be spawned at certain times or when the screen is cleared
 
 ## May 23rd Thursday ------------
 
-Rafsan: Wrote almost no code, but came up with many ideas for enemies and boss, and plans of implementing them. Likely we will implement about 4-5 of these. 
+Rafsan: Wrote almost no code, but came up with many ideas for enemies and boss, and plans of implementing them. Likely we will implement about 4-5 of these.
 
 Kenson:
 projectiles are now deleted when they come in contact with an enemy or go offscreen
@@ -111,7 +115,9 @@ Rafsan: I implemented a simple version of custom controls. Improved the user int
 
 ## May 31st Friday ---------------
 
-Rafsan: I completed a basic user controls system. I am yet to make the system customizable and incorperate it with the main code. Removed arrows from Custom Controls and replaced it with words (LEFT for left key instead of a left arrow shape) 
+Kenson: Enemies now may die after more than one bullet, and can have variable attack behavior with a new field.
+
+Rafsan: I completed a basic user controls system. I am yet to make the system customizable and incorperate it with the main code. Removed arrows from Custom Controls and replaced it with words (LEFT for left key instead of a left arrow shape)
 
 ## June 1st Saturday -------------
 
@@ -119,12 +125,18 @@ Rafsan: Found some problems with user controls, researched on how to fix those p
 
 ## June 2nd Sunday --------------
 
+Kenson: Merged, conflicts fixed.
+
 Rafsan: I fixed problems with customizable user controls. I created an opening page with the game tittle, options and play. I transfered the code from Custom Controls to main file. Cleared any unnecessary code in the setup and draw section
 
 ## June 3rd Monday --------------
+
+Kenson: Added half of the level 1 phases, allowed for more attack behaviors. Made sidebar display correctly.
 
 Rafsan: Added explosion system for opening screen animation and for laser firing. A target pointer system is also created to accompany that. Improved the UML diagram.
 
 ## June 4th Tuesday -----------
 
-Rafsan: Completed Level 2. Created different types of enemies: zigzag, split and rotate. Attempted a Leaderboard system. Created a Boss, wrote the about page and the credit page. Fixed Bugs, and corrected the sizes and lengths. 
+Kenson: Completed level 1. Merged all branches, including level2. The game can now be reset when lost, without closing the program. There is a difficulty selection, and the player no longer dies in one hit. The healthbar displays correctly. Final bugfix and testing, added cheat code for demo purposes.
+
+Rafsan: Completed Level 2. Created different types of enemies: zigzag, split and rotate. Attempted a Leaderboard system. Created a Boss, wrote the about page and the credit page. Fixed Bugs, and corrected the sizes and lengths.
