@@ -82,10 +82,18 @@ class aimBullet extends advBullet{
 
 class hoverBullet extends advBullet{
    float srcIniX, srcIniY;
+   int delay;
    hoverBullet(float X, float Y, float Dam, float r, int _state, Living source){
      super(X,Y,Dam,0,0,r,_state,source); 
      srcIniX=src.x;
      srcIniY=src.y;
+     delay = 60;
+   }
+   hoverbullet(float X, float Y, float Dam, float r, int _state, Living source, int _d){
+     super(X,Y,Dam,0,0,r,_state,source); 
+     srcIniX=src.x;
+     srcIniY=src.y;
+     delay = _d;
    }
    void move(){
      if(state>0){
@@ -95,7 +103,7 @@ class hoverBullet extends advBullet{
        //dy=(y-src.y)/dist(x,y,src.x,src.y);
      }
      else{
-       if(frameCount>starttime+60){
+       if(frameCount>starttime+delay){
           state++; 
        }
      }

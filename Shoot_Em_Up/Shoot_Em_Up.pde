@@ -62,7 +62,7 @@ void sideBars(){
 
  //<>// //<>//
 void draw(){ //<>//
-  background(255);
+  background(255); //<>//
   if(mode == -3){
     rect(550,200,90,90);
     fill(random(105),random(135),random(75));
@@ -89,7 +89,7 @@ void draw(){ //<>//
     } //<>//
     else if(minimode < commands.length && minimode >= 0){
       text("Click on mouse to confirm selection!",750,100);
-      Question q = Qs.get((int)minimode);
+      Question q = Qs.get((int)minimode); //<>//
       Controls b = Balls.get((int)minimode);
       q.display();
       if(!q.isAnswered()){
@@ -136,7 +136,7 @@ void draw(){ //<>//
   } //<>//
   sideBars();
     Letter(10+"");
-    text("PRESS P TO PLAY",370,550);
+    text("PRESS P TO PLAY",370,550); //<>//
     if(keyPressed && key == 'p'){
       t0=millis();
       prev=t0;
@@ -185,7 +185,7 @@ void draw(){ //<>//
     if(phase%2==0){
       phase++;
     }
-     for(int i=0;i<partnum;i++){
+    /* for(int i=0;i<partnum;i++){
          for(int j=0;j<partnum;j++){
             if(human.isTouchingRect(width/partnum*i,height/partnum*j,width/partnum,height/partnum)){
               partition[i][j]=true;
@@ -211,7 +211,7 @@ void draw(){ //<>//
          }
       }
     }
-
+    */
     //background(255);
     time=millis()-t0;
     etime=millis()-prev;
