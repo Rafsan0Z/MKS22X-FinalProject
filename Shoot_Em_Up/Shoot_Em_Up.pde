@@ -70,15 +70,33 @@ void draw(){ //<>// //<>// //<>//
     Ex.move();
     fill(random(105),random(135),random(75));
     textFont(createFont("Arial Bold", 90));
-    text("SPACE PATROL",250,400);
+    text("SPACE PATROL",190,400);
     textFont(createFont("Lucida Sans",32)); //<>// //<>//
     textSize(32);
     text("Press P to Play!",400,500);
-    text("Press O for Options!",360,600);
+    text("Press O for Options!",360,550);
+    text("Press A for About!",360,600);
+    text("Press C for Credits!",360,650);
     if(keyPressed){
       if(key == 'P'){mode = -1;}
       else if(key == 'O'){mode = -2;}
-      else{text("Please Enter valid Key!",350,200);}
+      else if(key == 'A'){mode = -4;}
+      else if(key == 'C'){mode = -5;}
+      else if(keyCode != SHIFT){text("Please Enter valid Key!",350,200);}
+    }
+  }
+  else if(mode == -4){
+    About();
+    text("Press R to return to Menu",750,800);
+    if(keyPressed){
+      if(key == 'R'){mode = -3;}
+    }
+  }
+  else if(mode == -5){
+    Credits();
+    text("Press R to return to Menu",650,800);
+    if(keyPressed){
+      if(key == 'R'){mode = -3;}
     }
   }
   else if(mode == -2){
@@ -260,11 +278,7 @@ void draw(){ //<>// //<>// //<>//
      }
     }
     if(phase == 18){
-    }
-    if(phase==10){
-      enemies.add(new zigzag(350,30,5,2,100,5,new int[]{0,3,0,0,0,0,3,-60},0,20,125,-5,250));
-      enemies.add(new zigzag(150,30,5,2,100,5,new int[]{0,3,0,0,0,0,3,-60},0,20,5,-1,50));
-      enemies.add(new zigzag(550,30,5,2,100,5,new int[]{0,3,0,0,0,0,3,-60},0,20,5,-1,50));
+      
     }
        if(phase%2==1&&phase<level1phaseTimes.length*2){
        if(phasefc==level1phaseTimes[phase/2]*60||enemies.size()==0){
