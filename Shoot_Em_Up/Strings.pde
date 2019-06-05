@@ -23,13 +23,15 @@ void About(){
 void Credits(){
  fill(0);
  textSize(32);
- text("CREDITS",730,100);
- textSize(40);
- text("Contributors", 700,200);
- text("Md. Rafsan Zaman and Kenson Lui",530,250);
- text("Level1: Kenson Lui",630,320);
- text("Level2: Md. Rafsan Zaman",580,370);
- text("Main Menu: Md. Rafsan Zaman",540,420);
- text("About and Credit page: Md. Rafsan Zaman",450,470);
- text("Controls:Md. Rafsan Zaman and Kenson Lui",440,520);
+ text("CREDITS",400,100);
+ textSize(25);
+ textAlign(CENTER,CENTER);
+ text("Contributors", 400,200);
+ text("Md. Rafsan Zaman and Kenson Lui",400,250);
+ text("Level1: Kenson Lui",400,320);
+ text("Level2: Md. Rafsan Zaman",400,370);
+ text("Main Menu: Md. Rafsan Zaman",400,420);
+ text("About and Credit page: Md. Rafsan Zaman",400,470);
+ text("Controls:Md. Rafsan Zaman and Kenson Lui",400,520);
+ textAlign(NORMAL);
 }
