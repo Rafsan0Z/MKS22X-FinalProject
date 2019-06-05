@@ -63,6 +63,7 @@ void sideBars(){
 
  //<>// //<>// //<>//
 void draw(){ //<>// //<>// //<>//
+  println(phase);
   background(255); //<>// //<>//
   if(mode == -3){
     Ex.Add(mouseX,mouseY);
@@ -133,7 +134,7 @@ void draw(){ //<>// //<>// //<>//
     b.mutate();
     b.display();
    // println(b.text,key);
-    counter++; //<>// //<>// //<>//
+    //counter++; //<>// //<>// //<>//
   } //<>// //<>//
   sideBars(); //<>// //<>//
     Letter(10+""); //<>// //<>//
@@ -148,9 +149,59 @@ void draw(){ //<>// //<>// //<>//
   }
   else if(mode == 0){
     if(level == 1){
-      phasefc = 0;
-      phase = 0;
-      level++;
+      phasefc++;
+     if(phase%2==1&&phase<level1phaseTimes.length*2){
+       if(phasefc==level1phaseTimes[phase/2]*60||enemies.size()==0){
+         phase++;
+         phasefc=0;
+       }
+      }
+     if(phase==0){
+     for(int i=0;i<6;i++){
+       enemies.add(new testCircle(100+i*100,50,3,1,100,5,new int[] {2},i*10,60));
+     }
+
+    }
+    if(phase==2){
+      for(int i=0;i<3;i++){
+        enemies.add(new testCircle((i+1)*700.0/4,50,3,1.5,100,5,new int[] {1,0,0,1,1,10}));
+      }
+    }
+    if(phase==4){
+      enemies.add(new testCircle(200,50,8,1,100,5,new int[] {0,13},0,40));
+      enemies.add(new testCircle(500,50,8,1,100,5,new int[] {0,13},20,40));
+    }
+    if(phase==6){
+      for(int i=0;i<6;i++){
+        enemies.add(new testCircle((100+i*100),30,3,1,100,5,new int[] {0,0,0,1,3,9},0,70));
+      }
+    }
+    if(phase==8){
+      enemies.add(new testCircle(300,30,2,3,100,5,new int[] {0,0,5},0,50));
+      enemies.add(new testCircle(400,30,2,3,100,5,new int[] {0,0,5},0,50));
+      enemies.add(new testCircle(200,80,2,2.5,100,5,new int[] {0,0,5},0,50));
+      enemies.add(new testCircle(500,80,2,2.5,100,5,new int[] {0,0,5},0,50));
+    }
+    if(phase==10){
+      enemies.add(new zigzag(350,30,5,2,100,5,new int[]{0,3,0,0,0,0,3,-60},0,20,125,-5,250));
+      enemies.add(new zigzag(150,30,5,2,100,5,new int[]{0,3,0,0,0,0,3,-60},0,20,5,-1,50));
+      enemies.add(new zigzag(550,30,5,2,100,5,new int[]{0,3,0,0,0,0,3,-60},0,20,5,-1,50));
+    }
+    if(phase==12){
+      enemies.add(new zigzag(350,30,20,1,100,5,new int[]{2,7,2,3,3,20,-120},0,40,250,-5,500));
+    }
+    if(phase==14){
+      for(int i=0;i<5;i++){
+      Enemy e = new testCircle(100,30+i*50,3,1,100,5,new int[] {0,5,1,2,1,10},i*24,120);
+      Enemy e2 = new testCircle(600,30+i*50,3,1,100,5,new int[] {0,5,1,2,1,10},i*24,120);
+      enemies.add(e);
+      enemies.add(e2);
+     }
+    }
+     if(phase%2==0){
+        phase++; 
+     }
+
     }
     if(level == 2){
     phasefc++;
@@ -158,17 +209,11 @@ void draw(){ //<>// //<>// //<>//
       enemies.add(new testCircle(600,160,3,2,100,5,new int[] {0,10,0}));
     }
     */
-    if(phase%2==1&&phase<level1phaseTimes.length*2){
-       if(phasefc==level1phaseTimes[phase/2]*60||enemies.size()==0){
-         phase++;
-         phasefc=0;
-       }
-    }
+ 
     if(phase==0){
      for(int i=0;i<6;i++){
        enemies.add(new rotate(100+i*100,50,3,1,100,5,new int[] {2},i*10,60));
      }
-
     }
     if(phase==2){
       for(int i=0;i<3;i++){
@@ -220,6 +265,16 @@ void draw(){ //<>// //<>// //<>//
       enemies.add(new zigzag(350,30,5,2,100,5,new int[]{0,3,0,0,0,0,3,-60},0,20,125,-5,250));
       enemies.add(new zigzag(150,30,5,2,100,5,new int[]{0,3,0,0,0,0,3,-60},0,20,5,-1,50));
       enemies.add(new zigzag(550,30,5,2,100,5,new int[]{0,3,0,0,0,0,3,-60},0,20,5,-1,50));
+    }
+       if(phase%2==1&&phase<level1phaseTimes.length*2){
+       if(phasefc==level1phaseTimes[phase/2]*60||enemies.size()==0){
+         phase++;
+         phasefc=0;
+       }
+    }
+    if(phase%2==0){
+      phase++;
+    }
     }
      /*for(int i=0;i<partnum;i++){
          for(int j=0;j<partnum;j++){
@@ -318,7 +373,6 @@ void draw(){ //<>// //<>// //<>//
      human.y=human.radius;
     }
     sideBars();
-  }
   }
   else if(mode == 1){
     //background(255);

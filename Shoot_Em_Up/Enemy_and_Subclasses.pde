@@ -109,7 +109,7 @@ class rotate extends testCircle{
 }
 
 class zigzag extends testCircle{
-   float horiz = 5,factor = -1;
+   float horiz = 5,factor = -1,lim=50;
    zigzag(float X, float Y, float life, float speed, float maxLife, float maxSpeed, int[] ab){
     super(X,Y,life,speed,maxLife,maxSpeed,ab);
   }
@@ -118,6 +118,12 @@ class zigzag extends testCircle{
   }
   zigzag(float X, float Y, float life, float speed, float maxLife, float maxSpeed, int[] ab, int _delay, int _p){
     super(X,Y,life,speed,maxLife,maxSpeed,ab,_delay,_p);
+  }
+   zigzag(float X, float Y, float life, float speed, float maxLife, float maxSpeed, int[] ab, int _delay, int _p, float _h, float _f, float _l){
+    super(X,Y,life,speed,maxLife,maxSpeed,ab,_delay,_p);
+    horiz = _h;
+    factor = _f;
+    lim = _l;
   }
   void move(){
       x -= factor;
