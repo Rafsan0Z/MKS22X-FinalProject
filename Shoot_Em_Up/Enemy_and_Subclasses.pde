@@ -53,6 +53,9 @@ class testCircle extends Enemy{
       if(attbehavior.length>5&&attbehavior[5]>0&&(attbehavior[3]>0||attbehavior[4]>0)){
        shootDown2(attbehavior[3],attbehavior[4],attbehavior[5]); 
       }
+      if(attbehavior.length>7&&attbehavior[6]>0){
+        hoverRings(attbehavior[6],attbehavior[7]);
+      }
     }
   }
   void shootDown(int dy){
@@ -68,12 +71,42 @@ class testCircle extends Enemy{
       enemyproj.add(new hoverBullet(x+100*cos(radians(i*360.0/num)),y+100*sin(radians(i*360.0/num)),1,10,0,this));
     }
   }
-  void aimShot(int num,Living t){
+  void aimShot(int num,Living tar){
     for(int i=0;i<num;i++){
-      enemyproj.add(new aimBullet(x+75*cos(radians(i*360/num)),y+75*sin(radians(i*360/num)),1,10,0,this,t)); 
+      enemyproj.add(new aimBullet(x+75*cos(radians(i*360/num)),y+75*sin(radians(i*360/num)),1,10,0,this,tar)); 
+    }
+  }
+  void hoverRings(int num, int t){
+    for(int i=0;i<num;i++){
+      enemyproj.add(new hoverBullet(x+100*cos(radians(i*360.0/num)),y+100*sin(radians(i*360.0/num)),1,10,0,this,-t));
     }
   }
   void takeDamage(float d){
     health-=d;
   }
-}
+ }
+ class zigzag extends testCircle{
+   float horiz = 5,factor = -1,lim=50;
+   zigzag(float X, float Y, float life, float speed, float maxLife, float maxSpeed, int[] ab){
+    super(X,Y,life,speed,maxLife,maxSpeed,ab);
+  }
+  zigzag(float X, float Y, float life, float speed, float maxLife, float maxSpeed, int[] ab, int _delay){
+    super(X,Y,life,speed,maxLife,maxSpeed,ab,_delay);
+  }
+  zigzag(float X, float Y, float life, float speed, float maxLife, float maxSpeed, int[] ab, int _delay, int _p){
+    super(X,Y,life,speed,maxLife,maxSpeed,ab,_delay,_p);
+  }
+  zigzag(float X, float Y, float life, float speed, float maxLife, float maxSpeed, int[] ab, int _delay, int _p, float _h, float _f, float _l){
+    super(X,Y,life,speed,maxLife,maxSpeed,ab,_delay,_p);
+    horiz = _h;
+    factor = _f;
+    lim = _l;
+  }
+  void move(){
+      x -= factor;
+      horiz += factor;
+      if(horiz <= 0){factor *= -1;}
+      if(horiz >= lim){factor *= -1;}
+      super.move();
+  }
+ }

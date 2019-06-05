@@ -89,7 +89,7 @@ class hoverBullet extends advBullet{
      srcIniY=src.y;
      delay = 60;
    }
-   hoverbullet(float X, float Y, float Dam, float r, int _state, Living source, int _d){
+   hoverBullet(float X, float Y, float Dam, float r, int _state, Living source, int _d){
      super(X,Y,Dam,0,0,r,_state,source); 
      srcIniX=src.x;
      srcIniY=src.y;
@@ -103,8 +103,13 @@ class hoverBullet extends advBullet{
        //dy=(y-src.y)/dist(x,y,src.x,src.y);
      }
      else{
-       if(frameCount>starttime+delay){
+       if(delay>=0&&frameCount>starttime+60){
           state++; 
+       }
+       else{
+          if(delay<0&&frameCount>=starttime+delay){
+            damage=0; 
+          }
        }
      }
      y+=dy;

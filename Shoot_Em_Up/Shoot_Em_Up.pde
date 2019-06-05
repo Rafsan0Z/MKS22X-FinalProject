@@ -2,12 +2,12 @@ import java.util.*;
 
 boolean clicked,run,answer = false,mu,md,ml,mr,f,s,gr;
 int mode,time,t0,prev,etime,partnum,fci,minimode,initialT,waitTime,score,countdown,phasefc;
-int phase=5;
+int phase=7;
 Player human;
 Rect Sidebar;
 char Button;
 boolean[][] partition;
-int[] level1phaseTimes = new int[] {9,5,6,6,3};
+int[] level1phaseTimes = new int[] {9,5,6,6,3,4};
 Controls Up,Down,Left,Right;
 ArrayList<Enemy> enemies = new ArrayList<Enemy>();
 ArrayList<Projectile> enemyproj = new ArrayList<Projectile>();
@@ -182,6 +182,11 @@ void draw(){ //<>//
       enemies.add(new testCircle(200,80,2,2.5,100,5,new int[] {0,0,5},0,50));
       enemies.add(new testCircle(500,80,2,2.5,100,5,new int[] {0,0,5},0,50));
     }
+    if(phase==10){
+      enemies.add(new zigzag(350,30,5,2,100,5,new int[]{0,3,0,0,0,0,3,-60},0,20,125,-5,250));
+      enemies.add(new zigzag(150,30,5,2,100,5,new int[]{0,3,0,0,0,0,3,-60},0,20,5,-1,50));
+      enemies.add(new zigzag(550,30,5,2,100,5,new int[]{0,3,0,0,0,0,3,-60},0,20,5,-1,50));
+    }
     if(phase%2==0){
       phase++;
     }
@@ -229,7 +234,7 @@ void draw(){ //<>//
          iter.remove();
        }
        if(e.health<=0){
-             iter.remove();
+          iter.remove();
         }
     }
     for(Iterator<Projectile> iterp = playerproj.iterator(); iterp.hasNext();){
@@ -252,7 +257,7 @@ void draw(){ //<>//
       if(p.isTouching(human)){
         mode=1;
       }
-      if(p.isOffScreen()){
+      if(p.damage==0||p.isOffScreen()){
        iter.remove();
       }
     }
