@@ -19,7 +19,13 @@ ArrayList<Controls> Balls = new ArrayList<Controls>();
 ArrayList<Question> Qs = new ArrayList<Question>();
 String[] commands = new String[5];
 void setup(){
-  size(1000,900);
+  size(1500,800);
+  enemies.clear();
+  enemyproj.clear();
+  playerproj.clear();
+  extra.clear();
+  Balls.clear();
+  Qs.clear();
   Balls.add(new Controls(350,100,commands[0] = "Up"));
   Balls.add(new Controls(350,250,commands[1] = "Down"));
   Balls.add(new Controls(250,175,commands[2] = "Left"));
@@ -40,13 +46,6 @@ void setup(){
   initialT = 0;
   waitTime = 5000;
   human = new Player(500,960,100,5,100,5);
-  /*for(int i=0;i<5;i++){
-    Enemy e = new testCircle(100,50+i*100,3,1.5,100,5,new int[] {1,0,0},i*12);
-    //Enemy e2 = new testCircle(200,50+i*100,3,1.5,100,5,new int[] {1,0,0},i*3);
-    enemies.add(e);
-    //enemies.add(e2);
-  }
-  */
   partnum=10;
   partition= new boolean[partnum][partnum];
 }
@@ -63,8 +62,8 @@ void sideBars(){
 }
 
  //<>// //<>//
-void draw(){ //<>//
-  background(255);
+void draw(){ //<>// //<>//
+  background(255); //<>//
   if(mode == -3){
     Ex.Add(mouseX,mouseY);
     Ex.move();
@@ -89,8 +88,8 @@ void draw(){ //<>//
     text("Custom Controls. Then Press C",550,300);
     if(keyPressed && key == 'C'){minimode++;}
     else if(keyPressed && key == 'D'){minimode = commands.length;} //<>// //<>//
-    } //<>//
-    else if(minimode < commands.length && minimode >= 0){
+    } //<>// //<>//
+    else if(minimode < commands.length && minimode >= 0){ //<>//
       text("Click on mouse to confirm selection!",750,100);
       Question q = Qs.get((int)minimode);
       Controls b = Balls.get((int)minimode);
@@ -129,7 +128,6 @@ void draw(){ //<>//
     }
   }
   else if(mode == -1){
-    int counter = 0;
   for(Controls b: Balls){
     //b.setText(commands[counter]);
     b.mutate();
@@ -137,8 +135,8 @@ void draw(){ //<>//
    // println(b.text,key);
     counter++; //<>// //<>//
   } //<>//
-  sideBars();
-    Letter(10+"");
+  sideBars(); //<>//
+    Letter(10+""); //<>//
     text("PRESS P TO PLAY",370,550);
     if(keyPressed && key == 'p'){
       t0=millis();
@@ -221,7 +219,7 @@ void draw(){ //<>//
     if(phase%2==0){
       phase++;
     }
-     for(int i=0;i<partnum;i++){
+     /*for(int i=0;i<partnum;i++){
          for(int j=0;j<partnum;j++){
             if(human.isTouchingRect(width/partnum*i,height/partnum*j,width/partnum,height/partnum)){
               partition[i][j]=true;
@@ -231,6 +229,7 @@ void draw(){ //<>//
             }
          }
       }
+      
     if(gr){
       for(int i=0;i<partnum;i++){
         line(width/partnum*i,0,width/partnum*i,height);
@@ -247,7 +246,7 @@ void draw(){ //<>//
          }
       }
     }
-
+   */
     //background(255);
     time=millis()-t0;
     etime=millis()-prev;
@@ -324,6 +323,7 @@ void draw(){ //<>//
     text("GAME OVER!",500,200);
     text("PRESS E TO EXIT", 500, 300);
     if(keyPressed && key == 'e'){exit();}
+    if(keyPressed && key == 'r'){setup();}
   }
 }
 
