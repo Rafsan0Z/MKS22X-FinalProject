@@ -2,14 +2,14 @@ import java.util.*;
 
 boolean clicked,run,answer = false,mu,md,ml,mr,f,s,gr;
 int mode,time,t0,prev,etime,partnum,fci,minimode,initialT,waitTime,score,countdown,phasefc;
-int phase=0;
-int level = 1;
+int phase=13;
+int level = 2;
 Player human;
 Rect Sidebar;
 explosion Ex = new explosion(new PVector(width/2,8));
 char Button;
 boolean[][] partition;
-int[] level1phaseTimes = new int[] {9,5,6,6,3};
+int[] level1phaseTimes = new int[] {9,5,6,6,3,6,6,5,6};
 Controls Up,Down,Left,Right;
 ArrayList<Enemy> enemies = new ArrayList<Enemy>();
 ArrayList<Projectile> enemyproj = new ArrayList<Projectile>();
@@ -152,7 +152,7 @@ void draw(){ //<>//
   else if(mode == 0){
     if(level == 1){
       phasefc = 0;
-      phase = 6;
+      phase = 13;
       level++;
     }
     if(level == 2){
@@ -206,13 +206,18 @@ void draw(){ //<>//
      }
     }
     if(phase == 14){
-      
+      for(int i=0;i<8;i++){
+       enemies.add(new hide(50,300-80*i,3,1,100,5,new int[] {1,0,0,1,1,10},i*10,60));
+       //if(i%2 == 0){enemies.add(new zigzag(120+i*80,70,3,1,100,5,new int[] {1,0,0,1,1,10},i*10,60));}
+     }
     }
     if(phase == 16){
-      
+      for(int i=0;i<8;i++){
+       enemies.add(new hide(50,300-80*i,3,1,100,5,new int[] {1,0,0,1,1,10},i*10,60));
+       //if(i%2 == 0){enemies.add(new zigzag(120+i*80,70,3,1,100,5,new int[] {1,0,0,1,1,10},i*10,60));}
+     }
     }
     if(phase == 18){
-      
     }
     if(phase%2==0){
       phase++;

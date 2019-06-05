@@ -119,3 +119,16 @@ class zigzag extends testCircle{
       super.move();
   }
 }
+
+class hide extends testCircle{
+  hide(float X, float Y, float life, float speed, float maxLife, float maxSpeed, int[] ab){
+    super(X,Y,life,speed,maxLife,maxSpeed,ab);
+  }
+  hide(float X, float Y, float life, float speed, float maxLife, float maxSpeed, int[] ab, int _delay){
+    super(X,Y,life,speed,maxLife,maxSpeed,ab,_delay);
+  }
+  hide(float X, float Y, float life, float speed, float maxLife, float maxSpeed, int[] ab, int _delay, int _p){
+    super(X,Y,life,speed,maxLife,maxSpeed,ab,_delay,_p);
+  }
+  void move(){x += spd;}
+}
