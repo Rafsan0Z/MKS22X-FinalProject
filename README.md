@@ -108,7 +108,7 @@ Rafsan: Made use of controls from the demo, but adding other controls such as fi
 
 ## May 30th Thursdsay -------------
 
-Rafsan: 
+Rafsan: I implemented a simple version of custom controls. Improved the user interaction system. Added pictures of arrows, to be user for arrow keys in the Option menu
 
 ## May 31st Friday ---------------
 
@@ -127,3 +127,5 @@ Rafsan: I fixed problems with customizable user controls. I created an opening p
 Rafsan: Added explosion system for opening screen animation and for laser firing. A target pointer system is also created to accompany that. Improved the UML diagram.
 
 ## June 4th Tuesday -----------
+
+Rafsan: Completed Level 2. Created different types of enemies: zigzag, split and rotate. Attempted a Leaderboard system. Created a Boss, wrote the about page and the credit page. Fixed Bugs, and corrected the sizes and lengths. 
