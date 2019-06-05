@@ -51,7 +51,7 @@ class testCircle extends Enemy{
         aimShot(attbehavior[2],human);
       }
       if(attbehavior.length>5&&attbehavior[5]>0&&(attbehavior[3]>0||attbehavior[4]>0)){
-       shootDown2(attbehavior[3],attbehavior[4],attbehavior[5]); 
+       shootDown2(attbehavior[3],attbehavior[4],attbehavior[5]);
       }
       if(attbehavior.length>7&&attbehavior[6]>0){
         hoverRings(attbehavior[6],attbehavior[7]);
@@ -62,7 +62,7 @@ class testCircle extends Enemy{
      enemyproj.add(new Bullet(this.x,this.y,1,0,dy+spd,10));
   }
   void shootDown2(int dx, int dy, int size){
-    
+
     enemyproj.add(new Bullet(this.x,this.y,1,dx,dy+spd,size));
     enemyproj.add(new Bullet(this.x,this.y,1,-dx,dy+spd,size));
   }
@@ -73,7 +73,7 @@ class testCircle extends Enemy{
   }
   void aimShot(int num,Living tar){
     for(int i=0;i<num;i++){
-      enemyproj.add(new aimBullet(x+75*cos(radians(i*360/num)),y+75*sin(radians(i*360/num)),1,10,0,this,tar)); 
+      enemyproj.add(new aimBullet(x+75*cos(radians(i*360/num)),y+75*sin(radians(i*360/num)),1,10,0,this,tar));
     }
   }
   void hoverRings(int num, int t){
@@ -84,9 +84,32 @@ class testCircle extends Enemy{
   void takeDamage(float d){
     health-=d;
   }
- }
- class zigzag extends testCircle{
-   float horiz = 5,factor = -1,lim=50;
+}
+
+class rotate extends testCircle{
+  float counter = 0;
+  rotate(float X, float Y, float life, float speed, float maxLife, float maxSpeed, int[] ab){
+    super(X,Y,life,speed,maxLife,maxSpeed,ab);
+  }
+  rotate(float X, float Y, float life, float speed, float maxLife, float maxSpeed, int[] ab, int _delay){
+    super(X,Y,life,speed,maxLife,maxSpeed,ab,_delay);
+  }
+  rotate(float X, float Y, float life, float speed, float maxLife, float maxSpeed, int[] ab, int _delay, int _p){
+    super(X,Y,life,speed,maxLife,maxSpeed,ab,_delay,_p);
+  }
+  void display(){
+    counter++;
+    fill(0);
+    pushMatrix();
+    translate(x,y);
+    rotate(counter*TWO_PI/360);
+    rect(0,0,20,20);
+    popMatrix();
+  }
+}
+
+class zigzag extends testCircle{
+   float horiz = 5,factor = -1;
    zigzag(float X, float Y, float life, float speed, float maxLife, float maxSpeed, int[] ab){
     super(X,Y,life,speed,maxLife,maxSpeed,ab);
   }
@@ -96,17 +119,24 @@ class testCircle extends Enemy{
   zigzag(float X, float Y, float life, float speed, float maxLife, float maxSpeed, int[] ab, int _delay, int _p){
     super(X,Y,life,speed,maxLife,maxSpeed,ab,_delay,_p);
   }
-  zigzag(float X, float Y, float life, float speed, float maxLife, float maxSpeed, int[] ab, int _delay, int _p, float _h, float _f, float _l){
-    super(X,Y,life,speed,maxLife,maxSpeed,ab,_delay,_p);
-    horiz = _h;
-    factor = _f;
-    lim = _l;
-  }
   void move(){
       x -= factor;
       horiz += factor;
-      if(horiz <= 0){factor *= -1;}
-      if(horiz >= lim){factor *= -1;}
+      if(horiz == 0){factor *= -1;}
+      if(horiz > 50){factor *= -1;}
       super.move();
   }
- }
+}
+
+class hide extends testCircle{
+  hide(float X, float Y, float life, float speed, float maxLife, float maxSpeed, int[] ab){
+    super(X,Y,life,speed,maxLife,maxSpeed,ab);
+  }
+  hide(float X, float Y, float life, float speed, float maxLife, float maxSpeed, int[] ab, int _delay){
+    super(X,Y,life,speed,maxLife,maxSpeed,ab,_delay);
+  }
+  hide(float X, float Y, float life, float speed, float maxLife, float maxSpeed, int[] ab, int _delay, int _p){
+    super(X,Y,life,speed,maxLife,maxSpeed,ab,_delay,_p);
+  }
+  void move(){x += spd;}
+}

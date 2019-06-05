@@ -17,7 +17,7 @@ class Controls{
     if(text=="Down"){Code = DOWN;}
     if(text== "Left"){Code = LEFT;}
     if(text== "Right"){Code = RIGHT;}
-    if(text== "Fire"){Code = TAB;}
+    if(text== "Fire"){Code = BACKSPACE;}
   }
   void display(){
     //setCode();
