@@ -2,7 +2,8 @@ import java.util.*;
 
 boolean clicked,run,answer = false,mu,md,ml,mr,f,s,gr;
 int mode,time,t0,prev,etime,partnum,fci,minimode,initialT,waitTime,score,countdown,phasefc;
-int phase=9;
+int phase=0;
+int level = 1;
 Player human;
 Rect Sidebar;
 explosion Ex = new explosion(new PVector(width/2,8));
@@ -23,7 +24,7 @@ void setup(){
   Balls.add(new Controls(750,250,commands[1] = "Down"));
   Balls.add(new Controls(650,175,commands[2] = "Left"));
   Balls.add(new Controls(850,175,commands[3] = "Right"));
-  Balls.add(new Controls(750,175,commands[4] = "Fire"));
+  Balls.add(new Controls(750,175,commands[4] = "z"));
   Qs.add(new Question("Enter Key for Up",550,200));
   Qs.add(new Question("Enter Key for Down",550,300));
   Qs.add(new Question("Enter Key for Left",550,400));
@@ -76,7 +77,7 @@ void draw(){ //<>//
     text("Press P to Play!",400,500);
     text("Press O for Options!",360,600);
     if(keyPressed){
-      if(key == 'P'){mode = 0;}
+      if(key == 'P'){mode = -1;}
       else if(key == 'O'){mode = -2;}
       else{text("Please Enter valid Key!",350,700);}
     }
@@ -125,7 +126,7 @@ void draw(){ //<>//
       for(Question q: Qs){q.clear();}
       minimode = 0;
     }
-    else if(keyPressed && key == 'Y'){mode = -3;}
+    else if(keyPressed && key == 'Y'){mode = -3;minimode=-1;}
     }
   }
   else if(mode == -1){
@@ -146,8 +147,15 @@ void draw(){ //<>//
       mode++;
       fci=frameCount;
     }
+    if(keyPressed && key == 'S'){mode = 0;}
   }
   else if(mode == 0){
+    if(level == 1){
+      phasefc = 0;
+      phase = 6;
+      level++;
+    }
+    if(level == 2){
     phasefc++;
     /*if(frameCount-fci==60){
       enemies.add(new testCircle(600,160,3,2,100,5,new int[] {0,10,0}));
@@ -177,43 +185,31 @@ void draw(){ //<>//
     }
     if(phase == 6){
       for(int i=0;i<6;i++){
-       enemies.add(new zigzag(100+i*100,50,3,1,100,5,new int[] {1,0,0,1,1,10}));
-     }
-    }
-    if(phase == 6){
-      for(int i=0;i<6;i++){
-       enemies.add(new zigzag(100+i*100,50,3,1,100,5,new int[] {1,0,0,1,1,10}));
+       enemies.add(new zigzag(100+i*100,50,3,1,100,5,new int[] {1,0,0,1,1,10},i*10,60));
      }
     }
     if(phase == 8){
       for(int i=0;i<6;i++){
-       enemies.add(new zigzag(100+i*100,50,3,1,100,5,new int[] {1,0,0,1,1,10}));
-       if(i%2 == 0){enemies.add(new testCircle(120+i*100,70,3,1,100,5,new int[] {1,0,0,1,1,10}));}
+       enemies.add(new zigzag(100+i*100,50,3,1,100,5,new int[] {1,0,0,1,1,10},i*10,60));
      }
     }
     if(phase == 10){
       for(int i=0;i<8;i++){
-       enemies.add(new testCircle(80+i*80,50,3,1,100,5,new int[] {1,0,0,1,1,10}));
-       if(i%2 == 0){enemies.add(new rotate(120+i*80,70,3,1,100,5,new int[] {1,0,0,1,1,10}));}
+       enemies.add(new testCircle(80+i*80,50,3,1,100,5,new int[] {1,0,0,1,1,10},i*10,60));
+       //if(i%2 == 0){enemies.add(new rotate(120+i*80,70,3,1,100,5,new int[] {1,0,0,1,1,10},i*10,60));}
      }
     }
     if(phase == 12){
       for(int i=0;i<8;i++){
-       enemies.add(new rotate(80+i*80,50,3,1,100,5,new int[] {1,0,0,1,1,10}));
-       if(i%2 == 0){enemies.add(new zigzag(120+i*80,70,3,1,100,5,new int[] {1,0,0,1,1,10}));}
+       enemies.add(new rotate(80+i*80,50,3,1,100,5,new int[] {1,0,0,1,1,10},i*10,60));
+       //if(i%2 == 0){enemies.add(new zigzag(120+i*80,70,3,1,100,5,new int[] {1,0,0,1,1,10},i*10,60));}
      }
     }
     if(phase == 14){
-      for(int i=0;i<8;i++){
-       enemies.add(new zigzag(80+i*80,50,3,1,100,5,new int[] {1,0,0,1,1,10}));
-       if(i%2 == 0){enemies.add(new rotate(120+i*80,70,3,1,100,5,new int[] {1,0,0,1,1,10}));}
-     }
+      
     }
     if(phase == 16){
-      for(int i=0;i<8;i++){
-       enemies.add(new rotate(80+i*80,50,3,1,100,5,new int[] {1,0,0,1,1,10}));
-       if(i%2 == 0){enemies.add(new testCircle(120+i*80,70,3,1,100,5,new int[] {1,0,0,1,1,10}));}
-     }
+      
     }
     if(phase == 18){
       
@@ -221,6 +217,7 @@ void draw(){ //<>//
     if(phase%2==0){
       phase++;
     }
+    println(phase);
      for(int i=0;i<partnum;i++){
          for(int j=0;j<partnum;j++){
             if(human.isTouchingRect(width/partnum*i,height/partnum*j,width/partnum,height/partnum)){
@@ -317,6 +314,7 @@ void draw(){ //<>//
      human.y=human.radius;
     }
     sideBars();
+  }
   }
   else if(mode == 1){
     //background(255);
