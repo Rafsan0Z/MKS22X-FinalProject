@@ -2,8 +2,8 @@ import java.util.*;
 
 boolean clicked,run,answer = false,mu,md,ml,mr,f,s,gr;
 int mode,time,t0,prev,etime,partnum,fci,minimode,initialT,waitTime,score,countdown,phasefc;
-int phase=13;
-int level = 2;
+int phase=0;
+int level = 1;
 Player human;
 Rect Sidebar;
 explosion Ex = new explosion(new PVector(width/2,8));
@@ -152,7 +152,7 @@ void draw(){ //<>//
   else if(mode == 0){
     if(level == 1){
       phasefc = 0;
-      phase = 13;
+      phase = 0;
       level++;
     }
     if(level == 2){
@@ -222,7 +222,6 @@ void draw(){ //<>//
     if(phase%2==0){
       phase++;
     }
-    println(phase);
      for(int i=0;i<partnum;i++){
          for(int j=0;j<partnum;j++){
             if(human.isTouchingRect(width/partnum*i,height/partnum*j,width/partnum,height/partnum)){
