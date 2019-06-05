@@ -46,15 +46,13 @@ Program organized into tabs and game over mode added when player touches the bor
 
 Rafsan: Added countdown mechanism (basic and needs updating)
 
-Kenson:
-
-started enemy class, reorganized constructors of living, wrote circle-circle collision detection to be used in many cases
+Kenson: started enemy class, reorganized constructors of living, wrote circle-circle collision detection to be used in many cases
 
 ## May 20th Monday ----------
 
-Kenson:
+Rafsan: Tried to implemented a multiplayer system using the same keyboard, the attempt was unsuccesful and will not be a feature of the final product
 
-made hitbox only visible in slow mode, started working on enemies shooting at regular time intervals
+Kenson: made hitbox only visible in slow mode, started working on enemies shooting at regular time intervals
 
 ## May 21st Tuesday ----------
 
@@ -65,15 +63,16 @@ Kenson: enemies can now shoot at regular time intervals, multiple enemies can sh
 
 ## May 22nd Wednesday ----------
 
-Kenson:
+Kenson: 
 
 offscreen enemies are deleted, enemies and bullets kill player on contact, player projectile kill enemies, and enemies can be spawned at certain times or when the screen is cleared
 
 ## May 23rd Thursday ------------
 
+Rafsan: Wrote almost no code, but came up with many ideas for enemies and boss, and plans of implementing them. Likely we will implement about 4-5 of these. 
+
 Kenson:
 projectiles are now deleted when they come in contact with an enemy or go offscreen
-
 
 ## May 24th Friday -------------
 
