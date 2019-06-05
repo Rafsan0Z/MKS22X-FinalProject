@@ -31,11 +31,11 @@ void setup(){
   Balls.add(new Controls(250,175,commands[2] = "Left"));
   Balls.add(new Controls(450,175,commands[3] = "Right"));
   Balls.add(new Controls(350,175,commands[4] = "z"));
-  Qs.add(new Question("Enter Key for Up",550,200));
-  Qs.add(new Question("Enter Key for Down",550,300));
-  Qs.add(new Question("Enter Key for Left",550,400));
-  Qs.add(new Question("Enter Key for Right",550,500));
-  Qs.add(new Question("Enter Key for Fire",550,600));
+  Qs.add(new Question("Enter Key for Up",350,200));
+  Qs.add(new Question("Enter Key for Down",350,300));
+  Qs.add(new Question("Enter Key for Left",350,400));
+  Qs.add(new Question("Enter Key for Right",350,500));
+  Qs.add(new Question("Enter Key for Fire",350,600));
   minimode = -1;
   human = new Player(500,960,100,5,100,5);
   //extra.add(new Health(500,100,10));
@@ -103,13 +103,13 @@ void draw(){ //<>// //<>// //<>//
     if(minimode == -1){
     textSize(32);
     fill(155);
-    text("Default Controls. The Press D",550,200);
-    text("Custom Controls. Then Press C",550,300);
+    text("Default Controls. The Press D",350,200);
+    text("Custom Controls. Then Press C",350,300);
     if(keyPressed && key == 'C'){minimode++;}
     else if(keyPressed && key == 'D'){minimode = commands.length;} //<>// //<>// //<>//
     } //<>// //<>// //<>//
     else if(minimode < commands.length && minimode >= 0){ //<>// //<>//
-      text("Click on mouse to confirm selection!",750,100);
+      text("Click on mouse to confirm selection!",350,100);
       Question q = Qs.get((int)minimode);
       Controls b = Balls.get((int)minimode);
       q.display();
@@ -137,7 +137,7 @@ void draw(){ //<>// //<>// //<>//
       q.display();
       counter++;
     }
-    text("ARE YOU SURE ? : PRESS Y/N",550,750);
+    text("ARE YOU SURE ? : PRESS Y/N",350,750);
     if(keyPressed && key == 'N'){
       background(255);
       for(Question q: Qs){q.clear();}
@@ -154,16 +154,12 @@ void draw(){ //<>// //<>// //<>//
    // println(b.text,key);
     //counter++; //<>// //<>// //<>//
   } //<>// //<>//
-  sideBars(); //<>// //<>//
-    Letter(10+""); //<>// //<>//
-    text("PRESS P TO PLAY",370,550);
-    if(keyPressed && key == 'p'){
-      t0=millis();
-      prev=t0;
-      mode++;
-      fci=frameCount;
+  sideBars(); //<>// //<>// //<>//
+    text("Controls Work? Then Press S. If not Press R",150,500);
+    if(keyPressed){
+      if(key == 'S'){mode = 0;}
+      if(key == 'R'){mode = -3;}
     }
-    if(keyPressed && key == 'S'){mode = 0;}
   }
   else if(mode == 0){
     if(level == 1){
