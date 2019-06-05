@@ -2,12 +2,12 @@ import java.util.*;
 
 boolean clicked,run,answer = false,mu,md,ml,mr,f,s,gr;
 int mode,time,t0,prev,etime,partnum,fci,minimode,initialT,waitTime,score,countdown,phasefc;
-int phase=7;
+int phase=13;
 Player human;
 Rect Sidebar;
 char Button;
 boolean[][] partition;
-int[] level1phaseTimes = new int[] {9,5,6,6,3,4};
+int[] level1phaseTimes = new int[] {9,5,6,6,3,6,10};
 Controls Up,Down,Left,Right;
 ArrayList<Enemy> enemies = new ArrayList<Enemy>();
 ArrayList<Projectile> enemyproj = new ArrayList<Projectile>();
@@ -38,13 +38,7 @@ void setup(){
   initialT = 0;
   waitTime = 5000;
   human = new Player(500,960,100,5,100,5);
-  /*for(int i=0;i<5;i++){
-    Enemy e = new testCircle(100,50+i*100,3,1.5,100,5,new int[] {1,0,0},i*12);
-    //Enemy e2 = new testCircle(200,50+i*100,3,1.5,100,5,new int[] {1,0,0},i*3);
-    enemies.add(e);
-    //enemies.add(e2);
-  }
-  */
+  
   partnum=10;
   partition= new boolean[partnum][partnum];
 }
@@ -62,13 +56,13 @@ void sideBars(){
 
  //<>// //<>//
 void draw(){ //<>//
-  background(255); //<>//
+  background(255);
   if(mode == -3){
     rect(550,200,90,90);
     fill(random(105),random(135),random(75));
     textFont(createFont("Arial Bold", 90));
     text("SPACE PATROL",250,400);
-    textFont(createFont("Lucida Sans",32));
+    textFont(createFont("Lucida Sans",32)); //<>//
     textSize(32);
     text("Press P to Play!",400,500);
     text("Press O for Options!",360,600);
@@ -89,13 +83,13 @@ void draw(){ //<>//
     } //<>//
     else if(minimode < commands.length && minimode >= 0){
       text("Click on mouse to confirm selection!",750,100);
-      Question q = Qs.get((int)minimode); //<>//
+      Question q = Qs.get((int)minimode);
       Controls b = Balls.get((int)minimode);
       q.display();
       if(!q.isAnswered()){
         if(keyPressed){
           if(key == CODED){
-            String T = CodeKey(keyCode);
+            String T = CodeKey(keyCode); //<>//
             if(T == b.text){q.setAns(b.text);}
             else{q.setAns(T);b.Default = false;}
           }
@@ -136,13 +130,13 @@ void draw(){ //<>//
   } //<>//
   sideBars();
     Letter(10+"");
-    text("PRESS P TO PLAY",370,550); //<>//
+    text("PRESS P TO PLAY",370,550);
     if(keyPressed && key == 'p'){
       t0=millis();
       prev=t0;
       mode++;
       fci=frameCount;
-    }
+    } //<>//
   }
   else if(mode == 0){
     phasefc++;
@@ -186,6 +180,17 @@ void draw(){ //<>//
       enemies.add(new zigzag(350,30,5,2,100,5,new int[]{0,3,0,0,0,0,3,-60},0,20,125,-5,250));
       enemies.add(new zigzag(150,30,5,2,100,5,new int[]{0,3,0,0,0,0,3,-60},0,20,5,-1,50));
       enemies.add(new zigzag(550,30,5,2,100,5,new int[]{0,3,0,0,0,0,3,-60},0,20,5,-1,50));
+    }
+    if(phase==12){
+      enemies.add(new zigzag(350,30,20,1,100,5,new int[]{2,7,2,3,3,20,-120},0,40,250,-5,500));
+    }
+    if(phase==14){
+      for(int i=0;i<5;i++){
+      Enemy e = new testCircle(100,30+i*50,3,1,100,5,new int[] {0,5,1,2,1,10},i*24,120);
+      Enemy e2 = new testCircle(600,30+i*50,3,1,100,5,new int[] {0,5,1,2,1,10},i*24,120);
+      enemies.add(e);
+      enemies.add(e2);
+     }
     }
     if(phase%2==0){
       phase++;
@@ -291,7 +296,7 @@ void draw(){ //<>//
     //background(255);
     text("GAME OVER!",500,200);
     text("PRESS E TO EXIT", 500, 300);
-    if(keyPressed && key == 'e'){exit();}
+    if(keyPressed && (key == 'e' || key == 'E')){exit();}
   }
 }
 
