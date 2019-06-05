@@ -2,13 +2,19 @@
 
 Proposal Link: https://docs.google.com/document/d/1RerI4eAoXOlD_h9LP6QWaa-pHZHdHKrM2GXd6T4xs4s/edit
 
-Prototype Link: https://docs.google.com/document/d/1i1rNw3WjzWzoSHw8UqQt8DXhQaxMBi8zXDU82bmqAoE/edit
+Prototype Link: https://docs.google.com/document/d/1i1rNw3WjzWzoSHw8UqQt8DXhQaxMBi8zXDU82bmqAoE/edit (Unedited)
 
 UML Link: https://www.draw.io/#G1RLAxiiLrnN3N4yy_u8gt_xPWXEU1h1OJ
 
 About:
 
 This is a simple shoot-em-up game with 2 levels, each of which contains a boss. The game allows you to customize the controls. The controls include up,down,left,right movement, firing bullets,bombs and firing lasers when aquired.
+
+When you open the game, you can chose to play the game by pressing P, go to options by pressing O and see the credits by pressing C. When options is chosen, the user is given the chance to view the default controls, and even chose custom controls. When players press P, they will be reminded of the controls before starting the game.
+
+In each level, of which there is two, there are waves of enemies with varying characters such as movement and shooting method. After the end of the wave, the player will face a boss. There will be health dropped by the enemies occasionally and the user will die when the health bar reaches 0. 
+
+When the player dies, he/she is given the chance to return to the main menu, or exit the game.
 
 # Development Log:
 
