@@ -393,7 +393,7 @@ void draw(){ //<>// //<>// //<>//
     if(keyPressed && (key == 'e' || key == 'E')){exit();}
     if(keyPressed && (key == 'r'||key== 'R')){ setup();}
   }
-  println(Default);
+  //println(Default);
 }
 
 public void keyPressed(){
@@ -415,16 +415,16 @@ public void keyPressed(){
      }
   }
   else{
-    if(Balls.get(0).text == key+""){
+    if(Balls.get(0).text.equals(key+"")){
        mu=true;
      }
-     if(Balls.get(2).text == key+""){
+     if(Balls.get(2).text.equals(key+"")){
        ml=true;
      }
-     if(Balls.get(3).text == key+""){
+     if(Balls.get(3).text.equals(key+"")){
        mr=true;
      }
-     if(Balls.get(1).text == key+""){
+     if(Balls.get(1).text.equals(key+"")){
        md=true;
      }
      if(keyCode==SHIFT){
@@ -437,7 +437,7 @@ public void keyPressed(){
    }
   }
   else{
-    if(Balls.get(4).text == key+""){f=true;}
+    if(Balls.get(4).text.equals(key+"")){f=true;}
   }
 }
 
@@ -460,16 +460,16 @@ public void keyReleased(){
      }
   }
   else{
-    if(Balls.get(0).text == key+""){
+    if(Balls.get(0).text.equals(key+"")){
        mu=false;
      }
-     if(Balls.get(2).text == key+""){
+     if(Balls.get(2).text.equals(key+"")){
        ml=false;
      }
-     if(Balls.get(3).text == key+""){
+     if(Balls.get(3).text.equals(key+"")){
        mr=false;
      }
-     if(Balls.get(1).text == key+""){
+     if(Balls.get(1).text.equals(key+"")){
        md=false;
      }
      if(keyCode==SHIFT){
@@ -482,7 +482,7 @@ public void keyReleased(){
    }
   }
   else{
-    if(Balls.get(4).text == key+""){f=false;}
+    if(Balls.get(4).text.equals(key+"")){f=false;}
   }
 }
 
