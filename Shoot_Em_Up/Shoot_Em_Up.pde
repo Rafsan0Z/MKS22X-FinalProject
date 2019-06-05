@@ -20,11 +20,11 @@ ArrayList<Question> Qs = new ArrayList<Question>();
 String[] commands = new String[5];
 void setup(){
   size(1000,900);
-  Balls.add(new Controls(750,100,commands[0] = "Up"));
-  Balls.add(new Controls(750,250,commands[1] = "Down"));
-  Balls.add(new Controls(650,175,commands[2] = "Left"));
-  Balls.add(new Controls(850,175,commands[3] = "Right"));
-  Balls.add(new Controls(750,175,commands[4] = "z"));
+  Balls.add(new Controls(350,100,commands[0] = "Up"));
+  Balls.add(new Controls(350,250,commands[1] = "Down"));
+  Balls.add(new Controls(250,175,commands[2] = "Left"));
+  Balls.add(new Controls(450,175,commands[3] = "Right"));
+  Balls.add(new Controls(350,175,commands[4] = "z"));
   Qs.add(new Question("Enter Key for Up",550,200));
   Qs.add(new Question("Enter Key for Down",550,300));
   Qs.add(new Question("Enter Key for Left",550,400));
@@ -68,7 +68,6 @@ void draw(){ //<>//
   if(mode == -3){
     Ex.Add(mouseX,mouseY);
     Ex.move();
-    rect(550,200,90,90);
     fill(random(105),random(135),random(75));
     textFont(createFont("Arial Bold", 90));
     text("SPACE PATROL",250,400);
@@ -79,7 +78,7 @@ void draw(){ //<>//
     if(keyPressed){
       if(key == 'P'){mode = -1;}
       else if(key == 'O'){mode = -2;}
-      else{text("Please Enter valid Key!",350,700);}
+      else{text("Please Enter valid Key!",350,200);}
     }
   }
   else if(mode == -2){
