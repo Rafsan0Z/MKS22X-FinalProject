@@ -13,10 +13,10 @@ class Rect implements Displayable{
   fill(health*1.5,0,0);
   noStroke();
   float drawWidth = (health / MAX_HEALTH) * rectWidth;
-  rect(width-340, 150, drawWidth, 25);
+  rect(width-300, 120, drawWidth, 25);
   stroke(0);
   noFill();
-  rect(width-340, 150, rectWidth, 25);
+  rect(width-300, 120, rectWidth, 25);
   }
   boolean isTouching(Living other){
      return false; 
