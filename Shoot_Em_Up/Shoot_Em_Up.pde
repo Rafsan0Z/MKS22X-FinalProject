@@ -397,6 +397,9 @@ void draw(){ //<>// //<>// //<>//
 }
 
 public void keyPressed(){
+  if(key == 'z'){
+    s=true;
+  }
   if(key==CODED && Default){
      if(keyCode==UP){
        mu=true;
@@ -409,9 +412,6 @@ public void keyPressed(){
      }
      if(keyCode==DOWN){
        md=true;
-     }
-     if(keyCode==SHIFT){
-       s=true;
      }
   }
   else{
@@ -427,12 +427,9 @@ public void keyPressed(){
      if(Balls.get(1).text.equals(key+"")){
        md=true;
      }
-     if(keyCode==SHIFT){
-       s=true;
-     }
   }
   if(Balls.get(4).Default){
-   if(key == 'z'){
+   if(key == 'x'){
      f=true;
    }
   }
@@ -442,6 +439,9 @@ public void keyPressed(){
 }
 
 public void keyReleased(){
+  if(key=='z'){
+   s=false; 
+  }
   if(key==CODED && Default){
      if(keyCode==UP){
        mu=false;
@@ -455,7 +455,7 @@ public void keyReleased(){
      if(keyCode==DOWN){
        md=false;
      }
-     if(keyCode==SHIFT){
+     if(keyCode==CONTROL){
        s=false;
      }
   }
@@ -472,12 +472,9 @@ public void keyReleased(){
      if(Balls.get(1).text.equals(key+"")){
        md=false;
      }
-     if(keyCode==SHIFT){
-       s=false;
-     }
   }
   if(Balls.get(4).Default){
-   if(key == 'z'){
+   if(key == 'x'){
      f=false;
    }
   }
