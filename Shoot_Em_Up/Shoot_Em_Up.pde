@@ -1,6 +1,6 @@
 import java.util.*;
 
-boolean clicked,run,answer = false,mu,md,ml,mr,f,s,gr;
+boolean clicked,run,answer = false,mu,md,ml,mr,f,s,gr,Default;
 int mode,time,t0,prev,etime,partnum,fci,minimode,initialT,waitTime,score,countdown,phasefc;
 int phase=0;
 int level = 1;
@@ -48,6 +48,7 @@ void setup(){
   human = new Player(500,960,100,5,100,5);
   partnum=10;
   partition= new boolean[partnum][partnum];
+  Default = true;
 }
 
 void sideBars(){
@@ -63,7 +64,6 @@ void sideBars(){
 
  //<>// //<>// //<>//
 void draw(){ //<>// //<>// //<>//
-  println(phase);
   background(255); //<>// //<>//
   if(mode == -3){
     Ex.Add(mouseX,mouseY);
@@ -129,6 +129,7 @@ void draw(){ //<>// //<>// //<>//
        if(mousePressed && q.ans != ""){q.confirm();}
       }
       else if(q.isAnswered()){minimode++;}
+      Default = false;
     }
     else if (minimode >= commands.length){
     int counter = 0;
@@ -388,14 +389,15 @@ void draw(){ //<>// //<>// //<>//
     //background(255);
     text("GAME OVER!",500,200);
     text("PRESS E TO EXIT", 500, 300);
-    text("PRESS R TO RESET", 500, 400);
+    text("PRESS R TO RETURN TO MAIN MENU", 500, 400);
     if(keyPressed && (key == 'e' || key == 'E')){exit();}
     if(keyPressed && (key == 'r'||key== 'R')){ setup();}
   }
+  println(Default);
 }
 
 public void keyPressed(){
-  if(key==CODED){
+  if(key==CODED && Default){
      if(keyCode==UP){
        mu=true;
      }
@@ -412,13 +414,35 @@ public void keyPressed(){
        s=true;
      }
   }
-  if(key=='z'||key=='Z'){
-   f=true;
+  else{
+    if(Balls.get(0).text == key+""){
+       mu=true;
+     }
+     if(Balls.get(2).text == key+""){
+       ml=true;
+     }
+     if(Balls.get(3).text == key+""){
+       mr=true;
+     }
+     if(Balls.get(1).text == key+""){
+       md=true;
+     }
+     if(keyCode==SHIFT){
+       s=true;
+     }
+  }
+  if(Balls.get(4).Default){
+   if(key == 'z'){
+     f=true;
+   }
+  }
+  else{
+    if(Balls.get(4).text == key+""){f=true;}
   }
 }
 
 public void keyReleased(){
-  if(key==CODED){
+  if(key==CODED && Default){
      if(keyCode==UP){
        mu=false;
      }
@@ -435,8 +459,30 @@ public void keyReleased(){
        s=false;
      }
   }
-  if(key=='z'||key=='Z'){
-   f=false;
+  else{
+    if(Balls.get(0).text == key+""){
+       mu=false;
+     }
+     if(Balls.get(2).text == key+""){
+       ml=false;
+     }
+     if(Balls.get(3).text == key+""){
+       mr=false;
+     }
+     if(Balls.get(1).text == key+""){
+       md=false;
+     }
+     if(keyCode==SHIFT){
+       s=false;
+     }
+  }
+  if(Balls.get(4).Default){
+   if(key == 'z'){
+     f=false;
+   }
+  }
+  else{
+    if(Balls.get(4).text == key+""){f=false;}
   }
 }
 
