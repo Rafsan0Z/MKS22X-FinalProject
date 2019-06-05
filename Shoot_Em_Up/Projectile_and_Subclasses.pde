@@ -29,7 +29,7 @@ class Bullet extends Projectile{
     <=this.radius+other.radius;
   }
   boolean isOffScreen(){
-     return x+radius < 0 || x-radius > width || y+radius < 0 || y-radius > height; 
+     return x+radius < 0 || x-radius > Sidebar.x || y+radius < 0 || y-radius > height; 
   }
   boolean isTouchingRect(float rx, float ry, float rw, float rh){
     float checkX = x;
@@ -82,10 +82,18 @@ class aimBullet extends advBullet{
 
 class hoverBullet extends advBullet{
    float srcIniX, srcIniY;
+   int delay;
    hoverBullet(float X, float Y, float Dam, float r, int _state, Living source){
      super(X,Y,Dam,0,0,r,_state,source); 
      srcIniX=src.x;
      srcIniY=src.y;
+     delay = 60;
+   }
+   hoverBullet(float X, float Y, float Dam, float r, int _state, Living source, int _d){
+     super(X,Y,Dam,0,0,r,_state,source); 
+     srcIniX=src.x;
+     srcIniY=src.y;
+     delay = _d;
    }
    void move(){
      if(state>0){
@@ -95,8 +103,13 @@ class hoverBullet extends advBullet{
        //dy=(y-src.y)/dist(x,y,src.x,src.y);
      }
      else{
-       if(frameCount>starttime+60){
+       if(delay>=0&&frameCount>starttime+60){
           state++; 
+       }
+       else{
+          if(delay<0&&frameCount>=starttime+delay){
+            damage=0; 
+          }
        }
      }
      y+=dy;
